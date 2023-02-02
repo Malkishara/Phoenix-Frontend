@@ -72,6 +72,7 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "phoenix:build"
+
           }
         },
         "test": {
@@ -94,5 +95,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
