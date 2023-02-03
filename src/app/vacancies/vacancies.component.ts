@@ -9,15 +9,20 @@ import { JobVacanciesService } from '../services/job-vacancies.service';
 export class VacanciesComponent {
   categoryData:any;
   jobCategories:any;
+  categoryId:any=null;
+
   constructor(private jobVacancies:JobVacanciesService){
     this.jobVacancies.vacancies().subscribe((data)=>{
       console.warn("data",data);
       this.categoryData=data;
 
-      this.jobCategories=this.categoryData.category;
-      console.warn(this.jobCategories)
+      this.jobCategories=this.categoryData.categories;
+      console.warn(this.jobCategories);
     });
   }
 
+  public resetCategoryId(){
+    this.categoryId=1;
+  }
 
 }

@@ -1,9 +1,12 @@
-<div class="card">
+<div>
   <h3>Job Categories</h3>
-
-  <div class="container">
-    <p *ngFor="let jobCategory of jobCategories">{{ jobCategory.name }}</p>
+  <div class="category">
+    <select>
+      <option value="null">Select Category</option>
+      <option  *ngFor="let category of jobCategories" value="category.category_id">{{ category.title }}</option>
+    </select>
   </div>
+
 
 </div>
 

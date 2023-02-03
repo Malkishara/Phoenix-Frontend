@@ -8,14 +8,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class JobVacanciesService {
 
-
-
-  // url='https://jsonplaceholder.typicode.com/users';
-  url='http://localhost:3002/vacancies';
+  url='http://localhost:3002';
 
   constructor(private http:HttpClient) { }
 
   vacancies(){
-   return this.http.get(this.url)
+   return this.http.get(this.url+"/category")
   }
 }
