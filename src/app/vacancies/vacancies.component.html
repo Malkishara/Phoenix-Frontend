@@ -1,10 +1,12 @@
 <div class="row">
-  <div class="col-sm-4">
+  <!--start of job categories card-->
+  <div class="col-sm-3">
 
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 16rem;">
       <div class="card-body">
         <h5 class="card-title">Job Categories</h5>
         <div class="row">
+          <!--start of drop down list-->
           <div class="col-sm-6">
             <div class="category">
               <select>
@@ -13,6 +15,8 @@
               </select>
             </div>
           </div>
+          <!--end of drop down list-->
+          <!--search button-->
           <div class="col-sm-6">
             <button type="button" class="btn btn-primary">Search</button>
          </div>
@@ -21,8 +25,45 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-8">Vacancies</div>
-
+  <!--end of job categories card-->
+  <!--start of job vacancies cards-->
+  <div class="col-sm-9">
+    <div class="card" style="width: 48rem; margin: 5px;" *ngFor="let data of allData">
+      <div class="card-body" style="margin: 10px;" >
+        <div class="row">
+            <div class="col-sm-1">
+              <img src="{{ data.thumbnailUrl }}" alt="" height="50px" width="50px">
+            </div>
+            <div class="col-sm-9">
+              <h5 class="card-title">{{ data.position }}</h5>
+              <h6 class="card-title">{{ data.company.name }}</h6>
+            </div>
+            <div class="col-sm-2">
+              <a href="#" class="btn btn-primary">Apply</a>
+            </div>
+        </div>
+        <div class="row">
+          <p class="card-text">{{ data.category.title }}</p>
+          <div class="col-sm-2">
+            <p class="card-text">Type: {{ data.type}}</p>
+          </div>
+          <div class="col-sm-3">
+            <p class="card-text">Location: {{ data.company.address}}</p>
+          </div>
+          <div class="col-sm-2">
+            <p class="card-text">Modality: {{ data.modality}}</p>
+          </div>
+          <div class="col-sm-5">
+            <p class="card-text">Salary: {{ data.salary}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <p class="card-text">Posted: {{ data.posted_date}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+ <!--end of job vacancies-->
 </div>
 
 

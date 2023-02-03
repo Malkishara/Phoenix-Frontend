@@ -12,7 +12,13 @@ export class JobVacanciesService {
 
   constructor(private http:HttpClient) { }
 
-  vacancies(){
+  //get categories data
+  categories(){
    return this.http.get(this.url+"/category")
   }
+
+  //get vacancies data
+  vacancies(){
+    return this.http.get(this.url+"/vacancies")
+   }
 }

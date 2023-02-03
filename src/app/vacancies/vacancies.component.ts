@@ -8,21 +8,25 @@ import { JobVacanciesService } from '../services/job-vacancies.service';
 })
 export class VacanciesComponent {
   categoryData:any;
-  jobCategories:any;
-  categoryId:any=null;
+  jobCategories:any;//for use categories data
+  vacancyData:any;
+  allData:any;//for use vacancies data
 
-  constructor(private jobVacancies:JobVacanciesService){
-    this.jobVacancies.vacancies().subscribe((data)=>{
-      console.warn("data",data);
+  constructor(private categories:JobVacanciesService){
+    //fetch categories
+    this.categories.categories().subscribe((data)=>{
       this.categoryData=data;
-
       this.jobCategories=this.categoryData.categories;
       console.warn(this.jobCategories);
     });
+
+    //fetch vacancies
+    this.categories.vacancies().subscribe((data)=>{
+      this.vacancyData=data;
+      this.allData=this.vacancyData.vacancies;
+      console.warn(this.allData);
+    });
   }
 
-  public resetCategoryId(){
-    this.categoryId=1;
-  }
 
 }
