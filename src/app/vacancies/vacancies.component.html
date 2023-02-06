@@ -28,15 +28,22 @@
   <!--end of job categories card-->
   <!--start of job vacancies cards-->
   <div class="col-sm-9">
-    <div class="card" style="width: 48rem; margin: 5px;" *ngFor="let data of allData">
+
+    <div class="card" style="width: 48rem; margin: 5px;" *ngFor="let data of allData |paginate:{
+      itemsPerPage:tableSize,
+      currentPage:page,
+      totalItems:count
+    }; let i=index">
+
       <div class="card-body" style="margin: 10px;" >
         <div class="row">
             <div class="col-sm-1">
               <img src="{{ data.thumbnailUrl }}" alt="" height="50px" width="50px">
             </div>
             <div class="col-sm-9">
-              <h5 class="card-title">{{ data.position }}</h5>
-              <h6 class="card-title">{{ data.company.name }}</h6>
+              <a (click)="onClick(data.vacancy_id)"><h5 class="card-title">{{ data.position }}</h5></a>
+              <h6 class="">{{ data.company.name }}</h6>
+              <h6 class="">{{ data.vacancy_id }}</h6>
             </div>
             <div class="col-sm-2">
               <a href="#" class="btn btn-primary">Apply</a>
@@ -59,12 +66,33 @@
         </div>
         <div class="row">
           <p class="card-text">Posted: {{ data.posted_date}}</p>
+          <!--start more details-->
+          <div *ngIf="visible">
+            <p class="card-text">{{ data.description }}</p>
+          </div>
+          <!--end more details-->
+
         </div>
+
       </div>
     </div>
+
+    <!--pagination control start-->
+    <div>
+      <pagination-controls
+      previousLable="Prev"
+      nextLabel="Next"
+      (pageChange)="onTableDataChange($event)">
+
+      </pagination-controls>
+
+    </div>
+    <!--pagination control end-->
   </div>
  <!--end of job vacancies-->
 </div>
+
+
 
 
 
