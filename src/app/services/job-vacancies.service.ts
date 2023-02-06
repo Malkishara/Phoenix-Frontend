@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -21,4 +20,9 @@ export class JobVacanciesService {
   vacancies(){
     return this.http.get(this.url+"/vacancies")
    }
+//get job types
+types(){
+  return this.http.get(this.url+"/types")
+}
+
 }

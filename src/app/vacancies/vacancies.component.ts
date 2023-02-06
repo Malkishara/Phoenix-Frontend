@@ -11,6 +11,10 @@ export class VacanciesComponent {
   jobCategories:any;//for use categories data
   vacancyData:any;
   allData:any;//for use vacancies data
+  categorySelected:any;//for select category
+  types:any;
+  jobTypes:any;//for show job types
+
 
   //ReadMore:boolean=true;//for show & hide more details
   visible:boolean=false;//hide more details
@@ -26,6 +30,7 @@ export class VacanciesComponent {
   ngOnInit():void{
     this.postCategories();
     this.postVacancyData();
+    this.postJobTypes();
   }
 
   //fetch categories
@@ -34,17 +39,28 @@ export class VacanciesComponent {
     this.categoryData=data;
     this.jobCategories=this.categoryData.categories;
     console.warn(this.jobCategories);
+    this.categorySelected=null;
   });
   }
 
 
    //fetch vacancies
   postVacancyData():void{
+
     this.categories.vacancies().subscribe((data)=>{
       this.vacancyData=data;
       this.allData=this.vacancyData.vacancies;
       console.warn(this.allData);
       console.warn(this.allData.length);
+    });
+  }
+
+  //post job type
+  postJobTypes():void{
+    this.categories.types().subscribe((data)=>{
+      this.types=data;
+      this.jobTypes=this.types.job_type;
+      console.warn(this.jobTypes);
     });
   }
 
@@ -75,6 +91,16 @@ export class VacanciesComponent {
 
       }
     }
+  }
+
+  //select data according to the choosen category
+  selectCategory(id:any){
+    console.warn(id);
+
+  }
+
+  onClickCompany(c_id:any){
+    console.warn(c_id);
   }
 
 }

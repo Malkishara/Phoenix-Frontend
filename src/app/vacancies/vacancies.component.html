@@ -1,6 +1,6 @@
 <div class="row">
   <!--start of job categories card-->
-  <div class="col-sm-3">
+  <div class="col-sm-3" style="margin-top: 50px; ">
 
     <div class="card" style="width: 16rem;">
       <div class="card-body">
@@ -9,25 +9,36 @@
           <!--start of drop down list-->
           <div class="col-sm-6">
             <div class="category">
-              <select>
+              <select [(ngModel)]="categorySelected">
                 <option value="null">All</option>
-                <option  *ngFor="let category of jobCategories" value="category.category_id">{{ category.title }}</option>
+                <option  *ngFor="let category of jobCategories" [value]="category.category_id">{{ category.title }}</option>
               </select>
             </div>
           </div>
           <!--end of drop down list-->
           <!--search button-->
           <div class="col-sm-6">
-            <button type="button" class="btn btn-primary">Search</button>
+            <button type="button" class="btn btn-primary" (click)="selectCategory(categorySelected)">Search</button>
          </div>
         </div>
+        <!--job types selecting part start-->
+        <div style="margin-top: 50px;">
+          <h5>Job Types</h5>
+        <div class="types" *ngFor="let type of jobTypes">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+          <label class="form-check-label" for="flexCheckChecked"  >
+            {{ type.type }}
+          </label>
+        </div>
+        </div>
+         <!--job types selecting part end-->
 
       </div>
     </div>
   </div>
   <!--end of job categories card-->
   <!--start of job vacancies cards-->
-  <div class="col-sm-9">
+  <div class="col-sm-9" style="margin-top: 50px; ">
 
     <div class="card" style="width: 48rem; margin: 5px;" *ngFor="let data of allData |paginate:{
       itemsPerPage:tableSize,
@@ -42,8 +53,7 @@
             </div>
             <div class="col-sm-9">
               <a (click)="onClick(data.vacancy_id)"><h5 class="card-title">{{ data.position }}</h5></a>
-              <h6 class="">{{ data.company.name }}</h6>
-              <h6 class="">{{ data.vacancy_id }}</h6>
+              <a (click)="onClickCompany( data.company.company_id)"> <h6 class="company">{{ data.company.name }}</h6></a>
             </div>
             <div class="col-sm-2">
               <a href="#" class="btn btn-primary">Apply</a>
