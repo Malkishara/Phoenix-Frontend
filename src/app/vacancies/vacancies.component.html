@@ -25,13 +25,32 @@
         <div style="margin-top: 50px;">
           <h5>Job Types</h5>
         <div class="types" *ngFor="let type of jobTypes">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
           <label class="form-check-label" for="flexCheckChecked"  >
             {{ type.type }}
           </label>
         </div>
         </div>
+
          <!--job types selecting part end-->
+
+         <!--modality part start-->
+         <div style="margin-top: 50px;">
+          <h5>Modality</h5>
+        <div class="types" >
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+          <label class="form-check-label" for="flexCheckChecked"  >
+            In Office
+          </label>
+        </div>
+        <div class="types" >
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+          <label class="form-check-label" for="flexCheckChecked"  >
+            Remote
+          </label>
+        </div>
+        </div>
+         <!--modality part end-->
 
       </div>
     </div>
