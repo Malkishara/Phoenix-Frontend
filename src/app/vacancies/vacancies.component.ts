@@ -14,6 +14,8 @@ export class VacanciesComponent {
   categorySelected:any;//for select category
   types:any;
   jobTypes:any;//for show job types
+  typeSelected:any;//for select type
+
 
 
   //ReadMore:boolean=true;//for show & hide more details
@@ -46,6 +48,8 @@ export class VacanciesComponent {
 
    //fetch vacancies
   postVacancyData():void{
+
+
 
     this.categories.vacancies().subscribe((data)=>{
       this.vacancyData=data;
@@ -81,7 +85,7 @@ export class VacanciesComponent {
   //show and hide description
   onClick(id:any){
 
-
+     console.warn(id)
     for(let i:number=0;i<this.allData.length;i++){
 
       if(id==this.allData[i].vacancy_id ){
@@ -94,9 +98,98 @@ export class VacanciesComponent {
   }
 
   //select data according to the choosen category
-  selectCategory(id:any){
-    console.warn(id);
-
+  selectCategory(catId:any){
+    console.warn(catId);
+    if(catId==="001"){
+      console.warn("true")
+      this.categories.accountVacancies().subscribe((data)=>{
+        this.vacancyData=data;
+        this.allData=this.vacancyData.vacancies;
+        console.warn(this.allData);
+        console.warn(this.allData.length);
+      });
+     }
+     else if(catId==="002"){
+      console.warn("true")
+      this.categories.bankingVacancies().subscribe((data)=>{
+        this.vacancyData=data;
+        this.allData=this.vacancyData.vacancies;
+        console.warn(this.allData);
+        console.warn(this.allData.length);
+      });
+     }
+    else if(catId==="003"){
+      console.warn("true")
+      this.categories.hrVacancies().subscribe((data)=>{
+        this.vacancyData=data;
+        this.allData=this.vacancyData.vacancies;
+        console.warn(this.allData);
+        console.warn(this.allData.length);
+      });
+     }
+     else if(catId==="004"){
+      console.warn("true")
+      this.categories.marketingVacancies().subscribe((data)=>{
+        this.vacancyData=data;
+        this.allData=this.vacancyData.vacancies;
+        console.warn(this.allData);
+        console.warn(this.allData.length);
+      });
+     }
+     else if(catId==="005"){
+      console.warn("true")
+      this.categories.engineerVacancies().subscribe((data)=>{
+        this.vacancyData=data;
+        this.allData=this.vacancyData.vacancies;
+        console.warn(this.allData);
+        console.warn(this.allData.length);
+      });
+     }
+     else if(catId==="006"){
+      console.warn("true")
+      this.categories.hospitalVacancies().subscribe((data)=>{
+        this.vacancyData=data;
+        this.allData=this.vacancyData.vacancies;
+        console.warn(this.allData);
+        console.warn(this.allData.length);
+      });
+     }
+     else if(catId==="007"){
+      console.warn("true")
+      this.categories.hotelsVacancies().subscribe((data)=>{
+        this.vacancyData=data;
+        this.allData=this.vacancyData.vacancies;
+        console.warn(this.allData);
+        console.warn(this.allData.length);
+      });
+     }
+     else if(catId==="008"){
+      console.warn("true")
+      this.categories.teachVacancies().subscribe((data)=>{
+        this.vacancyData=data;
+        this.allData=this.vacancyData.vacancies;
+        console.warn(this.allData);
+        console.warn(this.allData.length);
+      });
+     }
+     else if(catId==="009"){
+      console.warn("true")
+      this.categories.environmentVacancies().subscribe((data)=>{
+        this.vacancyData=data;
+        this.allData=this.vacancyData.vacancies;
+        console.warn(this.allData);
+        console.warn(this.allData.length);
+      });
+     }
+     else{
+      console.warn("false")
+      this.categories.vacancies().subscribe((data)=>{
+        this.vacancyData=data;
+        this.allData=this.vacancyData.vacancies;
+        console.warn(this.allData);
+        console.warn(this.allData.length);
+      });
+     }
   }
 
   onClickCompany(c_id:any){
