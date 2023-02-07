@@ -2,31 +2,28 @@
   <!--start of job categories card-->
   <div class="col-sm-3" style="margin-top: 50px; ">
 
-    <div class="card" style="width: 16rem;">
+    <div class="card" style="width: 16rem;align-items: center;">
       <div class="card-body">
+
         <h5 class="card-title">Job Categories</h5>
         <div class="row">
           <!--start of drop down list-->
-          <div class="col-sm-6">
+          <div >
             <div class="category">
-              <select [(ngModel)]="categorySelected">
+              <select [(ngModel)]="categorySelected" (click)="selectCategory(categorySelected)">
                 <option value="null">All</option>
                 <option  *ngFor="let category of jobCategories" [value]="category.category_id">{{ category.title }}</option>
               </select>
             </div>
           </div>
           <!--end of drop down list-->
-          <!--search button-->
-          <div class="col-sm-6">
-            <button type="button" class="btn btn-primary" (click)="selectCategory(categorySelected)">Search</button>
-       Hii {{ categorySelected }}
-          </div>
+
         </div>
         <!--job types selecting part start-->
         <div style="margin-top: 50px;">
           <h5>Job Types</h5>
-        <div class="types" *ngFor="let type of jobTypes">
-          <input class="form-check-input" type="checkbox" value="type.type_id" id="flexCheckDefault">
+        <div class="types" *ngFor="let type of jobTypes" >
+          <input  class="form-check-input" type="checkbox" value="type.type_id" id="flexCheckDefault" (click)="selectType(type.type_id)">
           <label class="form-check-label" for="flexCheckChecked"  >
             {{ type.type }}
           </label>
@@ -40,19 +37,20 @@
           <h5>Modality</h5>
 
         <div class="types" >
-          <input [(ngModel)]="categorySelected" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" [value]="1000" >
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" [value]="1000" (click)="selectModality(1000)">
           <label class="form-check-label" for="flexCheckChecked"  >
             In Office
           </label>
         </div>
         <div class="types" >
-          <input [(ngModel)]="categorySelected" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" [value]="1001">
+          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" [value]="1001" (click)="selectModality(1001)">
           <label class="form-check-label" for="flexCheckChecked"  >
             Remote
           </label>
         </div>
         </div>
          <!--modality part end-->
+
 
       </div>
     </div>

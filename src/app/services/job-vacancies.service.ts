@@ -78,4 +78,29 @@ remoteVacancies(){
 officeVacancies(){
   return this.http.get(this.url+"/modality/office")
 }
+
+//get part time vacancies
+partTimeVacancies(){
+  return this.http.get(this.url+"/type/part_time")
+}
+
+//get full time vacancies
+fullTimeVacancies(){
+  return this.http.get(this.url+"/type/full_time")
+}
+
+//get intern vacancies
+internVacancies(){
+  return this.http.get(this.url+"/type/intern")
+}
+
+//get casual vacancies
+casualVacancies(){
+  return this.http.get(this.url+"/type/casual")
+}
+
+//get contract vacancies
+contractVacancies(){
+  return this.http.get(this.url+"/type/contract")
+}
 }

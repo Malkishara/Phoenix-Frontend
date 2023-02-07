@@ -101,7 +101,7 @@ export class VacanciesComponent {
   selectCategory(catId:any){
     console.warn(catId);
     if(catId==="001"){
-      console.warn("true")
+      console.warn("accout")
       this.categories.accountVacancies().subscribe((data)=>{
         this.vacancyData=data;
         this.allData=this.vacancyData.vacancies;
@@ -110,7 +110,7 @@ export class VacanciesComponent {
       });
      }
      else if(catId==="002"){
-      console.warn("true")
+      console.warn("banking")
       this.categories.bankingVacancies().subscribe((data)=>{
         this.vacancyData=data;
         this.allData=this.vacancyData.vacancies;
@@ -119,7 +119,7 @@ export class VacanciesComponent {
       });
      }
     else if(catId==="003"){
-      console.warn("true")
+      console.warn("hr")
       this.categories.hrVacancies().subscribe((data)=>{
         this.vacancyData=data;
         this.allData=this.vacancyData.vacancies;
@@ -128,7 +128,7 @@ export class VacanciesComponent {
       });
      }
      else if(catId==="004"){
-      console.warn("true")
+      console.warn("marketing")
       this.categories.marketingVacancies().subscribe((data)=>{
         this.vacancyData=data;
         this.allData=this.vacancyData.vacancies;
@@ -137,7 +137,7 @@ export class VacanciesComponent {
       });
      }
      else if(catId==="005"){
-      console.warn("true")
+      console.warn("engineer")
       this.categories.engineerVacancies().subscribe((data)=>{
         this.vacancyData=data;
         this.allData=this.vacancyData.vacancies;
@@ -146,7 +146,7 @@ export class VacanciesComponent {
       });
      }
      else if(catId==="006"){
-      console.warn("true")
+      console.warn("hospital")
       this.categories.hospitalVacancies().subscribe((data)=>{
         this.vacancyData=data;
         this.allData=this.vacancyData.vacancies;
@@ -155,7 +155,7 @@ export class VacanciesComponent {
       });
      }
      else if(catId==="007"){
-      console.warn("true")
+      console.warn("hotel")
       this.categories.hotelsVacancies().subscribe((data)=>{
         this.vacancyData=data;
         this.allData=this.vacancyData.vacancies;
@@ -164,7 +164,7 @@ export class VacanciesComponent {
       });
      }
      else if(catId==="008"){
-      console.warn("true")
+      console.warn("teach")
       this.categories.teachVacancies().subscribe((data)=>{
         this.vacancyData=data;
         this.allData=this.vacancyData.vacancies;
@@ -173,7 +173,7 @@ export class VacanciesComponent {
       });
      }
      else if(catId==="009"){
-      console.warn("true")
+      console.warn("environment")
       this.categories.environmentVacancies().subscribe((data)=>{
         this.vacancyData=data;
         this.allData=this.vacancyData.vacancies;
@@ -181,18 +181,65 @@ export class VacanciesComponent {
         console.warn(this.allData.length);
       });
      }
-     else if(catId=="1000"){
-      console.warn("remote")
-      this.categories.remoteVacancies().subscribe((data)=>{
+
+     else{
+      console.warn("false")
+      this.categories.vacancies().subscribe((data)=>{
         this.vacancyData=data;
         this.allData=this.vacancyData.vacancies;
         console.warn(this.allData);
         console.warn(this.allData.length);
       });
      }
-     else if(catId=="1001"){
-      console.warn("office")
-      this.categories.officeVacancies().subscribe((data)=>{
+
+
+  }
+
+  onClickCompany(c_id:any){
+    console.warn(c_id);
+  }
+//Select vacancies by type
+  selectType(t_id:any){
+     if(t_id=="T001"){
+      console.warn("full time")
+      this.categories.fullTimeVacancies().subscribe((data)=>{
+        this.vacancyData=data;
+        this.allData=this.vacancyData.vacancies;
+        console.warn(this.allData);
+        console.warn(this.allData.length);
+      });
+     }
+
+     else if(t_id=="T002"){
+      console.warn("part time")
+      this.categories.partTimeVacancies().subscribe((data)=>{
+        this.vacancyData=data;
+        this.allData=this.vacancyData.vacancies;
+        console.warn(this.allData);
+        console.warn(this.allData.length);
+      });
+     }
+     else if(t_id=="T003"){
+      console.warn("intern")
+      this.categories.internVacancies().subscribe((data)=>{
+        this.vacancyData=data;
+        this.allData=this.vacancyData.vacancies;
+        console.warn(this.allData);
+        console.warn(this.allData.length);
+      });
+     }
+     else if(t_id=="T004"){
+      console.warn("casual")
+      this.categories.casualVacancies().subscribe((data)=>{
+        this.vacancyData=data;
+        this.allData=this.vacancyData.vacancies;
+        console.warn(this.allData);
+        console.warn(this.allData.length);
+      });
+     }
+     else if(t_id=="T005"){
+      console.warn("contract")
+      this.categories.contractVacancies().subscribe((data)=>{
         this.vacancyData=data;
         this.allData=this.vacancyData.vacancies;
         console.warn(this.allData);
@@ -210,8 +257,34 @@ export class VacanciesComponent {
      }
   }
 
-  onClickCompany(c_id:any){
-    console.warn(c_id);
+  //select by modality
+  selectModality(m_id:any){
+     if(m_id=="1000"){
+      console.warn("office")
+      this.categories.officeVacancies().subscribe((data)=>{
+        this.vacancyData=data;
+        this.allData=this.vacancyData.vacancies;
+        console.warn(this.allData);
+        console.warn(this.allData.length);
+      });
+     }
+     else if(m_id=="1001"){
+      console.warn("remote")
+      this.categories.remoteVacancies().subscribe((data)=>{
+        this.vacancyData=data;
+        this.allData=this.vacancyData.vacancies;
+        console.warn(this.allData);
+        console.warn(this.allData.length);
+      });
+     }
+    else{
+      console.warn("false")
+      this.categories.vacancies().subscribe((data)=>{
+        this.vacancyData=data;
+        this.allData=this.vacancyData.vacancies;
+        console.warn(this.allData);
+        console.warn(this.allData.length);
+      });
+     }
   }
-
 }
