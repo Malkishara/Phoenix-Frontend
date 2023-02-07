@@ -181,6 +181,24 @@ export class VacanciesComponent {
         console.warn(this.allData.length);
       });
      }
+     else if(catId=="1000"){
+      console.warn("remote")
+      this.categories.remoteVacancies().subscribe((data)=>{
+        this.vacancyData=data;
+        this.allData=this.vacancyData.vacancies;
+        console.warn(this.allData);
+        console.warn(this.allData.length);
+      });
+     }
+     else if(catId=="1001"){
+      console.warn("office")
+      this.categories.officeVacancies().subscribe((data)=>{
+        this.vacancyData=data;
+        this.allData=this.vacancyData.vacancies;
+        console.warn(this.allData);
+        console.warn(this.allData.length);
+      });
+     }
      else{
       console.warn("false")
       this.categories.vacancies().subscribe((data)=>{

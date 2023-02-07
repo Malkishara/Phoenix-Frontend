@@ -68,4 +68,14 @@ teachVacancies(){
 environmentVacancies(){
   return this.http.get(this.url+"/vacancy/environment")
 }
+
+//get remote vacancies
+remoteVacancies(){
+  return this.http.get(this.url+"/modality/remote")
+}
+
+//get office vacancies
+officeVacancies(){
+  return this.http.get(this.url+"/modality/office")
+}
 }
