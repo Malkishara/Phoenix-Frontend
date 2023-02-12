@@ -20,7 +20,7 @@ import {NgxPaginationModule} from 'ngx-pagination'
     NgxPaginationModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

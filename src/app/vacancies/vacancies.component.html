@@ -4,7 +4,7 @@
 
     <div class="card" style="width: 16rem;align-items: center;">
       <div class="card-body">
-        <button type="button" class="btn btn-success" style="width: 150px;">Search</button>
+        <button type="button" class="btn btn-success" style="width: 150px;" (click)="selectCategory(categorySelected)">Search</button>
         <h5 class="card-title">Job Categories</h5>
         <div class="row">
           <!--start of drop down list-->
@@ -20,11 +20,13 @@
 
         </div>
         <!--job types selecting part start-->
-        <div style="margin-top: 50px;">
+        <div style="margin-top: 50px;" >
           <h5>Job Types</h5>
-        <div class="types" *ngFor="let type of jobTypes" >
-          <input  class="form-check-input" type="checkbox" value="type.id" id="flexCheckDefault" >
-          <label class="form-check-label" for="flexCheckChecked"  >
+        <div class="types" *ngFor="let type of jobTypes" [(ngModel)]="isSelected">
+
+          <input  class="form-check-input" type="checkbox"  id="flexCheckDefault" [value]="type.id"
+          (change)="selectJobType(type.id)" >
+          <label class="form-check-label" for="flexCheckChecked" >
             {{ type.type }}
           </label>
         </div>
@@ -35,14 +37,15 @@
          <!--modality part start-->
          <div style="margin-top: 50px;" >
           <h5>Modality</h5>
-          <div class="types" *ngFor="let modal of jobModality" >
-            <input  class="form-check-input" type="checkbox" value="modal.id" id="flexCheckDefault" >
-            <label class="form-check-label" for="flexCheckChecked"  >
-              {{ modal.title }}
-            </label>
+          <div [(ngModel)]="modalitySelected">
+            <div class="types" *ngFor="let modal of jobModality" >
+              <input  class="form-check-input" type="checkbox" [value]="modal.id"  id="flexCheckDefault"
+              (change)="selectJobModality(modal.id)" >
+              <label class="form-check-label" for="flexCheckChecked"  >
+                {{ modal.title }}
+              </label>
+            </div>
           </div>
-
-
         </div>
          <!--modality part end-->
 
@@ -67,7 +70,7 @@
             </div>
             <div class="col-sm-9">
               <a (click)="onClick(data)"><h5 class="card-title">{{ data.position }}</h5></a>
-              <a> <h6 class="company">{{ data.company.name }}</h6></a>
+              <a (click)="onClickCompany(data.company.id)"> <h6 class="company">{{ data.company.name }}</h6></a>
             </div>
             <div class="col-sm-2">
               <a href="#" class="btn btn-primary">Apply</a>
