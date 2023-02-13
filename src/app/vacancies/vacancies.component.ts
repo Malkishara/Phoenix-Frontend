@@ -93,7 +93,7 @@ export class VacanciesComponent {
   onClick(data:any):void{
 
      console.warn(data)
-     this.vacancySelected=data;
+     this.vacancySelected=data.id;
      this.visible=!this.visible;
 
   }
