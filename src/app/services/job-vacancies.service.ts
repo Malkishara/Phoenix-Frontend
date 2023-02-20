@@ -7,13 +7,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class JobVacanciesService {
 
-  url='http://localhost:3002';
+  url='http://localhost:8080';
 
   constructor(private http:HttpClient) { }
 
   //get categories data
   categories(){
-   return this.http.get(this.url+"/category")
+   return this.http.get(this.url+"/categories")
   }
 
   //get vacancies data
@@ -27,8 +27,17 @@ types(){
 
 //get job modality
 modality(){
-  return this.http.get(this.url+"/modality")
+  return this.http.get(this.url+"/modalities")
 }
 
+//search vacancies by company
+searchByCompany(companyId:any){
+  return this.http.post(this.url+"/company",companyId)
+}
+
+//search vacancies by selected data
+searchBySelectedData(data:any){
+  return this.http.post(this.url+"/search_data",data)
+}
 
 }

@@ -19,6 +19,7 @@ export class VacanciesComponent {
   vacancySelected?:any;//for more datails
   isSelected:boolean=false;
   selectedJobType:any;
+  searchText:any;//for get search text
 
 
   visible:boolean=false;//hide more details
@@ -26,7 +27,7 @@ export class VacanciesComponent {
   //for pagination
   page:number=1;
   count:number=0;
-  tableSize:number=5;
+  tableSize:number=6;
 
 
   constructor(private categories:JobVacanciesService){}
@@ -98,115 +99,11 @@ export class VacanciesComponent {
 
   }
 
-//search functionality
-selectCategory(selectedCategoryId:any):void{
-console.log("search function... ")
-console.log(selectedCategoryId)
-
-this.allVacancyData=[];
-
-for(let k=0;k<this.vacancyData.length;k++){
-  var allSelectedModality=[];
-  var popedModalityElement;
-  for(let p=this.modalitySelected.length-1;p>-1;p--){
-    popedModalityElement=this.modalitySelected.pop();
-    if(popedModalityElement!=null){
-      allSelectedModality.push(popedModalityElement);
-    }
-  }
-  console.log(allSelectedModality)
-
-  if(allSelectedModality.length!=0){
-    for(let q=0;q<allSelectedModality.length;q++){
-
-
-
-        var allSelectedTypes=[];
-        var popedTypesElement;
-        for(let r=this.typeSelected.length-1;r>-1;r--){
-       popedTypesElement=this.typeSelected.pop();
-       if(popedTypesElement!=null){
-        allSelectedTypes.push(popedTypesElement);
-    }
-  }
-  console.log(allSelectedTypes)
-      if(allSelectedTypes.length!=0){
-
-        for(let s=0;s<allSelectedTypes.length;s++){
-
-          if(selectedCategoryId!=null){
-            if(selectedCategoryId==this.vacancyData[k].category.id && allSelectedTypes[s]==this.vacancyData[k].type.id && allSelectedModality[q]==this.vacancyData.modality.id){
-              this.allVacancyData.push(this.vacancyData[k])
-            }
-          }else{
-            if(allSelectedTypes[s]==this.vacancyData[k].type.id && allSelectedModality[q]==this.vacancyData[k].modality.id){
-              this.allVacancyData.push(this.vacancyData[k])
-            }
-          }
-
-
-
-
-        }
-
-      }else{
-        if(selectedCategoryId!=null){
-          if(selectedCategoryId==this.vacancyData[k].category.id && allSelectedModality[q]==this.vacancyData[k].modality.id){
-            this.allVacancyData.push(this.vacancyData[k])
-          }
-        }else{
-          if(allSelectedModality[q]==this.vacancyData[k].modality.id){
-            this.allVacancyData.push(this.vacancyData[k])
-          }
-        }
-      }
-
-    }
-
-  }else{
-    var allSelectedTypes=[];
-    var popedTypesElement;
-    for(let r=this.typeSelected.length-1;r>-1;r--){
-   popedTypesElement=this.typeSelected.pop();
-   if(popedTypesElement!=null){
-    allSelectedTypes.push(popedTypesElement);
-}
-}
-console.log(allSelectedTypes)
-  if(allSelectedTypes.length!=0){
-
-    for(let s=0;s<allSelectedTypes.length;s++){
-
-      if(selectedCategoryId!=null){
-        if(selectedCategoryId==this.vacancyData[k].category.id && allSelectedTypes[s]==this.vacancyData[k].type.id){
-          this.allVacancyData.push(this.vacancyData[k])
-        }
-      }else{
-        if(allSelectedTypes[s]==this.vacancyData[k].type.id ){
-          this.allVacancyData.push(this.vacancyData[k])
-        }
-      }
-
-
-    }
-
-  }else{
-    if(selectedCategoryId!=null){
-      if(selectedCategoryId==this.vacancyData[k].category.id){
-        this.allVacancyData.push(this.vacancyData[k])
-      }
-    }
-  }
-  }
-}
-
-console.log(this.allVacancyData)
-}
 
 //select type
 selectJobType(data:any):void{
 
-console.log(data);
+console.warn(data);
 var num=0;
 for(let i=0;i<this.typeSelected.length;i++){
   if(data==this.typeSelected[i]){
@@ -217,12 +114,12 @@ for(let i=0;i<this.typeSelected.length;i++){
 if(num==0){
   this.typeSelected.push(data)
 }
-console.log(this.typeSelected);
+console.warn(this.typeSelected);
 }
 
 //select modality
 selectJobModality(data:any):void{
-  console.log(data);
+  console.warn(data);
 var num=0;
 for(let i=0;i<this.modalitySelected.length;i++){
   if(data==this.modalitySelected[i]){
@@ -233,23 +130,75 @@ for(let i=0;i<this.modalitySelected.length;i++){
 if(num==0){
   this.modalitySelected.push(data)
 }
-console.log(this.modalitySelected);
+console.warn(this.modalitySelected);
 }
 
 //select vacancy by comapany
-onClickCompany(data:any):void{
-console.log(data)
-this.allVacancyData=[];
+onClickCompany(id:any):void{
+console.warn(id)
 
-for(let i=0;i<this.vacancyData.length;i++){
-
-  if(data==this.vacancyData[i].company.id){
-    this.allVacancyData.push(this.vacancyData[i])
-  }
-}
-console.log(this.allVacancyData)
+var companyId={
+  "id":id
 }
 
+console.warn(companyId)
+this.categories.searchByCompany(companyId).subscribe((res)=>
+this.vacancyData=res)
+this.allVacancyData=this.vacancyData;
+console.warn(this.allVacancyData)
   }
 
 
+//search functionality
+selectCategory(selectedCategoryId:any,searchedText:any):void{
+console.warn(selectedCategoryId)
+console.warn(searchedText)
+if(searchedText!=undefined && searchedText.length>0){
+  var words=searchedText.split(" ");
+
+  console.warn(words)
+var wordNew;
+var searched_text=[];
+for(let i=0;i<words.length;i++){
+ // if(words[i].charAt(0))
+  wordNew=words[i].charAt(0).toUpperCase()+words[i].slice(1);
+    searched_text.push({"word":wordNew});
+}
+}else{
+  searched_text=[]
+}
+
+
+
+var types_selected=[];
+for(let i=0;i<this.typeSelected.length;i++){
+  if(this.typeSelected[i]!=undefined){
+    types_selected.push({"id":this.typeSelected[i]});
+  }
+
+}
+
+var modalities_selected=[];
+for(let i=0;i<this.modalitySelected.length;i++){
+  if(this.modalitySelected[i]!=undefined){
+    modalities_selected.push({"id":this.modalitySelected[i]});
+  }
+
+}
+console.warn(types_selected);
+console.warn(modalities_selected);
+var searchData={
+  "category_id":selectedCategoryId,
+  "type":types_selected,
+  "modality":modalities_selected,
+  "search_text":searched_text
+}
+
+console.warn(searchData)
+
+this.categories.searchBySelectedData(searchData).subscribe((res)=>
+this.allVacancyData=res)
+console.warn(this.allVacancyData)
+}
+
+}

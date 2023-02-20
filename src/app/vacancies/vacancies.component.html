@@ -4,7 +4,8 @@
 
     <div class="card" style="width: 16rem;align-items: center;">
       <div class="card-body">
-        <button type="button" class="btn btn-success" style="width: 150px;" (click)="selectCategory(categorySelected)">Search</button>
+        <button type="button" class="btn btn-success" style="width: 200px;margin-bottom: 10px;" (click)="selectCategory(categorySelected,searchText)">Search</button>
+        <input [(ngModel)]="searchText" type="text"  placeholder="Type here to search" style="width: 200px;">
         <h5 class="card-title">Job Categories</h5>
         <div class="row">
           <!--start of drop down list-->
@@ -22,12 +23,12 @@
         <!--job types selecting part start-->
         <div style="margin-top: 50px;" >
           <h5>Job Types</h5>
-        <div class="types" *ngFor="let type of jobTypes" [(ngModel)]="isSelected">
+        <div class="types" *ngFor="let type of jobTypes" [(ngModel)]="typeSelected" >
 
           <input  class="form-check-input" type="checkbox"  id="flexCheckDefault" [value]="type.id"
           (change)="selectJobType(type.id)" >
           <label class="form-check-label" for="flexCheckChecked" >
-            {{ type.type }}
+            {{ type.title }}
           </label>
         </div>
         </div>
@@ -37,12 +38,12 @@
          <!--modality part start-->
          <div style="margin-top: 50px;" >
           <h5>Modality</h5>
-          <div [(ngModel)]="modalitySelected">
-            <div class="types" *ngFor="let modal of jobModality" >
-              <input  class="form-check-input" type="checkbox" [value]="modal.id"  id="flexCheckDefault"
-              (change)="selectJobModality(modal.id)" >
+          <div [(ngModel)]="modalitySelected" >
+            <div class="types" *ngFor="let modality of jobModality" >
+              <input  class="form-check-input" type="checkbox" [value]="modality.id"  id="flexCheckDefault"
+              (change)="selectJobModality(modality.id)" >
               <label class="form-check-label" for="flexCheckChecked"  >
-                {{ modal.title }}
+                {{ modality.title }}
               </label>
             </div>
           </div>
@@ -69,7 +70,8 @@
               <img src="{{ data.thumbnailUrl }}" alt="" height="50px" width="50px">
             </div>
             <div class="col-sm-9">
-              <a (click)="onClick(data)"><h5 class="card-title">{{ data.position }}</h5></a>
+              <a (click)="onClick(data)"><h5 class="card-title">{{ data.title }}</h5></a>
+
               <a (click)="onClickCompany(data.company.id)"> <h6 class="company">{{ data.company.name }}</h6></a>
             </div>
             <div class="col-sm-2">
@@ -88,11 +90,11 @@
             <p class="card-text">Modality: {{ data.modality.title}}</p>
           </div>
           <div class="col-sm-5">
-            <p class="card-text">Salary: {{ data.salary}}</p>
+            <p class="card-text">Salary: {{ data.salaryRange}}</p>
           </div>
         </div>
         <div class="row">
-          <p class="card-text">Posted: {{ data.posted_date}}</p>
+          <p class="card-text">Posted: {{ data.postedDate}}</p>
         </div>
       </div>
     <!--start more details-->
