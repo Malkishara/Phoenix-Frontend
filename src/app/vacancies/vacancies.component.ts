@@ -37,6 +37,7 @@ export class VacanciesComponent {
     this.postVacancyData();
     this.postJobTypes();
     this.postJobModality();
+
   }
 
   //fetch categories
@@ -143,9 +144,11 @@ var companyId={
 
 console.warn(companyId)
 this.categories.searchByCompany(companyId).subscribe((res)=>
-this.vacancyData=res)
-this.allVacancyData=this.vacancyData;
-console.warn(this.allVacancyData)
+this.allVacancyData=res)
+
+ console.warn(this.allVacancyData)
+
+
   }
 
 

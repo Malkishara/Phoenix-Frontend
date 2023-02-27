@@ -1,64 +1,84 @@
+<div>
+<div class="row" style="margin-top: 20px;">
+  <div class="col-sm-6"><h1>Phoenix</h1></div>
+  <div class="col-sm-6">
+    <a href="" class="btn btn-primary" style="margin-right: 10px;">Post a job</a>
+    <a href="/jobseeker_signup" class="btn btn-success" style="margin-right: 10px;">Signin</a>
+    <a href="/employer_signup" class="btn btn-success" style="margin-right: 10px;">Employer Signup</a>
+    <a href="/jobseeker_signup" class="btn btn-success">JobSeeker Signup</a>
+      <!-- <select type="button" class="btn btn-success">
+        <option value="null" href="/employer_signup">Empleyer Signup</option>
+        <option value="null" href="/jobseeker_signup">JobSeeker Signup</option>
+      </select> -->
+</div>
+
+
+</div>
+
+
 <div class="row">
   <!--start of job categories card-->
   <div class="col-sm-3" style="margin-top: 50px; ">
 
-    <div class="card" style="width: 16rem;align-items: center;">
-      <div class="card-body">
-        <button type="button" class="btn btn-success" style="width: 200px;margin-bottom: 10px;" (click)="selectCategory(categorySelected,searchText)">Search</button>
-        <input [(ngModel)]="searchText" type="text"  placeholder="Type here to search" style="width: 200px;">
-        <h5 class="card-title">Job Categories</h5>
-        <div class="row">
-          <!--start of drop down list-->
-          <div >
-            <div class="category">
-              <select [(ngModel)]="categorySelected">
-                <option value="null">All</option>
-                <option  *ngFor="let category of jobCategories" [value]="category.id">{{ category.title }}</option>
-              </select>
+      <div class="card" style="width: 16rem;align-items: center;">
+        <div class="card-body">
+          <button type="button" class="btn btn-success" style="width: 200px;margin-bottom: 20px;" (click)="selectCategory(categorySelected,searchText)">Search</button>
+          <input [(ngModel)]="searchText" type="text"  placeholder="Type here to search" style="width: 200px;margin-bottom: 20px;">
+          <h5 class="card-title">Job Categories</h5>
+          <div class="row">
+            <!--start of drop down list-->
+            <div >
+              <div class="category">
+                <select [(ngModel)]="categorySelected" style="width: 200px;">
+                  <option value="null">All</option>
+                  <option  *ngFor="let category of jobCategories" [value]="category.id">{{ category.title }}</option>
+                </select>
+              </div>
+            </div>
+            <!--end of drop down list-->
+
+          </div>
+          <!--job types selecting part start-->
+          <div style="margin-top: 20px;" >
+            <h5>Job Types</h5>
+          <div class="types" *ngFor="let type of jobTypes" [(ngModel)]="typeSelected">
+
+            <input  class="form-check-input" type="checkbox"  id="flexCheckDefault" [value]="type.id"
+            (change)="selectJobType(type.id)">
+            <label class="form-check-label" for="flexCheckChecked" >
+              {{ type.title }}
+            </label>
+          </div>
+          </div>
+
+           <!--job types selecting part end-->
+
+           <!--modality part start-->
+           <div style="margin-top: 20px;" >
+            <h5>Modality</h5>
+            <div [(ngModel)]="modalitySelected" >
+              <div class="types" *ngFor="let modality of jobModality" >
+                <input  class="form-check-input" type="checkbox" [value]="modality.id"  id="flexCheckDefault"
+                (change)="selectJobModality(modality.id)" >
+                <label class="form-check-label" for="flexCheckChecked"  >
+                  {{ modality.title }}
+                </label>
+              </div>
             </div>
           </div>
-          <!--end of drop down list-->
+           <!--modality part end-->
+
 
         </div>
-        <!--job types selecting part start-->
-        <div style="margin-top: 50px;" >
-          <h5>Job Types</h5>
-        <div class="types" *ngFor="let type of jobTypes" [(ngModel)]="typeSelected" >
-
-          <input  class="form-check-input" type="checkbox"  id="flexCheckDefault" [value]="type.id"
-          (change)="selectJobType(type.id)" >
-          <label class="form-check-label" for="flexCheckChecked" >
-            {{ type.title }}
-          </label>
-        </div>
-        </div>
-
-         <!--job types selecting part end-->
-
-         <!--modality part start-->
-         <div style="margin-top: 50px;" >
-          <h5>Modality</h5>
-          <div [(ngModel)]="modalitySelected" >
-            <div class="types" *ngFor="let modality of jobModality" >
-              <input  class="form-check-input" type="checkbox" [value]="modality.id"  id="flexCheckDefault"
-              (change)="selectJobModality(modality.id)" >
-              <label class="form-check-label" for="flexCheckChecked"  >
-                {{ modality.title }}
-              </label>
-            </div>
-          </div>
-        </div>
-         <!--modality part end-->
-
-
       </div>
-    </div>
+
+
   </div>
   <!--end of job categories card-->
   <!--start of job vacancies cards-->
   <div class="col-sm-9" style="margin-top: 50px; ">
 
-    <div class="card" style="width: 48rem; margin: 5px;" *ngFor="let data of allVacancyData |paginate:{
+    <div class="card" style="width: 53rem; margin: 5px;" *ngFor="let data of allVacancyData |paginate:{
       itemsPerPage:tableSize,
       currentPage:page,
       totalItems:count
@@ -123,7 +143,7 @@
  <!--end of job vacancies-->
 </div>
 
-
+</div>
 
 
 
