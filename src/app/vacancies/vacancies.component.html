@@ -6,10 +6,7 @@
     <a href="/jobseeker_signup" class="btn btn-success" style="margin-right: 10px;">Signin</a>
     <a href="/employer_signup" class="btn btn-success" style="margin-right: 10px;">Employer Signup</a>
     <a href="/jobseeker_signup" class="btn btn-success">JobSeeker Signup</a>
-      <!-- <select type="button" class="btn btn-success">
-        <option value="null" href="/employer_signup">Empleyer Signup</option>
-        <option value="null" href="/jobseeker_signup">JobSeeker Signup</option>
-      </select> -->
+
 </div>
 
 
@@ -24,7 +21,7 @@
         <div class="card-body">
           <button type="button" class="btn btn-success" style="width: 200px;margin-bottom: 20px;" (click)="selectCategory(categorySelected,searchText)">Search</button>
           <input [(ngModel)]="searchText" type="text"  placeholder="Type here to search" style="width: 200px;margin-bottom: 20px;">
-          <h5 class="card-title">Job Categories</h5>
+          <h3 class="card-title">Job Categories</h3>
           <div class="row">
             <!--start of drop down list-->
             <div >
@@ -40,7 +37,7 @@
           </div>
           <!--job types selecting part start-->
           <div style="margin-top: 20px;" >
-            <h5>Job Types</h5>
+            <h3>Job Types</h3>
           <div class="types" *ngFor="let type of jobTypes" [(ngModel)]="typeSelected">
 
             <input  class="form-check-input" type="checkbox"  id="flexCheckDefault" [value]="type.id"
@@ -55,7 +52,7 @@
 
            <!--modality part start-->
            <div style="margin-top: 20px;" >
-            <h5>Modality</h5>
+            <h3>Modality</h3>
             <div [(ngModel)]="modalitySelected" >
               <div class="types" *ngFor="let modality of jobModality" >
                 <input  class="form-check-input" type="checkbox" [value]="modality.id"  id="flexCheckDefault"
@@ -86,13 +83,16 @@
 
       <div class="card-body" style="margin: 10px;" >
         <div class="row">
+           <h4 *ngIf="data.company.verification" style="color: rgb(5, 126, 11); font: bold;">Verified</h4>
+        </div>
+        <div class="row">
             <div class="col-sm-1">
               <img src="{{ data.thumbnailUrl }}" alt="" height="50px" width="50px">
             </div>
             <div class="col-sm-9">
-              <a (click)="onClick(data)"><h5 class="card-title">{{ data.title }}</h5></a>
+              <a (click)="onClick(data)"><h3 class="card-title">{{ data.title }}</h3></a>
 
-              <a (click)="onClickCompany(data.company.id)"> <h6 class="company">{{ data.company.name }}</h6></a>
+              <a (click)="onClickCompany(data.company.id)"> <p class="company">{{ data.company.name }}</p></a>
             </div>
             <div class="col-sm-2">
               <a href="#" class="btn btn-primary">Apply</a>

@@ -10,6 +10,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { EmployerSignupComponent } from './employer-signup/employer-signup.component';
 import { JobseekerSignupComponent } from './jobseeker-signup/jobseeker-signup.component'
 import { RouterModule, Routes } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatIconModule} from '@angular/material/icon';
 
 const routes:Routes=[
   {path:'',component:VacanciesComponent},
@@ -29,7 +31,9 @@ const routes:Routes=[
     HttpClientModule,
     NgxPaginationModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   exports:[RouterModule],
   providers: [

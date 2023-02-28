@@ -199,9 +199,12 @@ var searchData={
 
 console.warn(searchData)
 
-this.categories.searchBySelectedData(searchData).subscribe((res)=>
-this.allVacancyData=res)
-console.warn(this.allVacancyData)
+this.categories.searchBySelectedData(searchData).subscribe((res)=>{
+  this.allVacancyData=res;
+  console.warn(this.allVacancyData)
+}
+)
+
 }
 
 }

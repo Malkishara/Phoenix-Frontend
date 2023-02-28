@@ -33,27 +33,31 @@ export class JobseekerSignupComponent {
 
       };
 
-      this.signup.Signup(signupData).subscribe((res:any)=>
-      this.result=res)
-      if(this.result=="1"){
-        alert("Successfully registered");
+      this.signup.Signup(signupData).subscribe((res:any)=>{
+        this.result=res;
 
-        this.first_name="";
-        this.last_name="";
-        this.email="";
-        this.phone="";
-        this.cv="";
-        this.password="";
-        this.confirmPassword="";
+        if(this.result=="1"){
+          alert("Successfully registered");
 
-        this.result=="";
-      }else if(this.result=="2"){
-        alert("Already registered email");
-        this.result=="";
-      }else if(this.result=="3"){
-        alert("Confirmed password not matching with password");
-        this.result=="";
+          this.first_name="";
+          this.last_name="";
+          this.email="";
+          this.phone="";
+          this.cv="";
+          this.password="";
+          this.confirmPassword="";
+
+          this.result=="";
+        }else if(this.result=="2"){
+          alert("Already registered email");
+          this.result=="";
+        }else if(this.result=="3"){
+          alert("Confirmed password not matching with password");
+          this.result=="";
+        }
       }
+      )
+
 
 
 
