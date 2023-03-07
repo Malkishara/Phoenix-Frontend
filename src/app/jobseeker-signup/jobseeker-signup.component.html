@@ -1,76 +1,143 @@
-<div class="body">
-  <div class="signup">
-    <div class="card" style="width: 30rem;">
-      <div class="card-body">
-        <h3 class="card-title-center" style="text-align: center;">JobSeeker Signup</h3>
-      <form>
-        <div class="form-group">
-          <div class="row" style="margin-top: 10px;">
-            <div class="col">
-              <label for="exampleFormControlFile1">First Name:</label>
+<div class="signup">
+  <div class="signupcontent">
+    <div class="card" >
+      <div class="card-body" style="background-color: rgb(175, 232, 250);">
+        <h1 class="card-title-center" style="text-align: center;">JobSeeker Signup</h1>
+        <form (submit)="onSubmit()" [formGroup]="registerForm">
+          <div class="form-group">
+            <div class="row" style="margin-top: 10px;">
+
+                <div class="col">
+                  <label for="firstName">First Name:</label>
+                </div>
+                <div class="col">
+                  <input [ngClass]="{'is-invalid':submitted && registerForm.controls.firstName.errors}" formControlName="firstName" type="text" class="form-control" [(ngModel)]="firstName" >
+                  <div *ngIf="submitted && registerForm.controls.firstName.errors" class="text-danger">
+                    <div *ngIf="submitted && registerForm.controls.firstName.errors.required">
+                      First Name is required
+                    </div>
+                  </div>
+                </div>
+
             </div>
-            <div class="col">
-              <input type="text" class="form-control" id="exampleFormControlFile1" [(ngModel)]="first_name"  [ngModelOptions]="{standalone: true}">
+            <div class="row" style="margin-top: 10px;">
+
+                <div class="col">
+                  <label for="lastName">Last Name:</label>
+                </div>
+                <div class="col">
+                  <input [ngClass]="{'is-invalid':submitted && registerForm.controls.lastName.errors}" formControlName="lastName" type="text" class="form-control" [(ngModel)]="lastName"  >
+                            <div *ngIf="submitted && registerForm.controls.lastName.errors" class="text-danger">
+                              <div *ngIf="submitted && registerForm.controls.lastName.errors.required">
+                               Last Name is required
+                              </div>
+                            </div>
+                </div>
+
             </div>
-          </div>
-          <div class="row" style="margin-top: 10px;">
-            <div class="col">
-              <label for="exampleFormControlFile1"> Last Name:</label>
+            <div class="row" style="margin-top: 10px;">
+
+                <div class="col">
+                  <label for="phone">Contact Number:</label>
+                </div>
+                <div class="col">
+                  <input [ngClass]="{'is-invalid':submitted && registerForm.controls.phoneNumber.errors}" formControlName="phoneNumber" type="text" class="form-control" [(ngModel)]="phoneNumber" placeholder="94*********">
+                <div *ngIf="submitted && registerForm.controls.phoneNumber.errors" class="text-danger">
+                  <div *ngIf="submitted && registerForm.controls.phoneNumber.errors.required">
+                    Contact Number is required
+                  </div>
+                  <div *ngIf="submitted && registerForm.controls.phoneNumber.errors.minlength && registerForm.controls.phoneNumber.errors.maxlength">
+                    Phone Number Should be 11 characters
+                  </div>
+                </div>
+                </div>
+
             </div>
-            <div class="col">
-              <input type="text" class="form-control" id="exampleFormControlFile1" [(ngModel)]="last_name"  [ngModelOptions]="{standalone: true}">
+            <div class="row" style="margin-top: 10px;">
+
+                <div class="col">
+                  <label for="email">Email Address:</label>
+                </div>
+                <div class="col">
+                  <input [ngClass]="{'is-invalid':submitted && registerForm.controls.email.errors}" formControlName="email" type="email" class="form-control" [(ngModel)]="email" placeholder="abc@gmail.com">
+                            <div *ngIf="submitted && registerForm.controls.email.errors" class="text-danger">
+                              <div *ngIf="submitted && registerForm.controls.email.errors.required">
+                                Email Address is required
+                              </div>
+                              <div *ngIf="submitted && registerForm.controls.email.errors.email">
+                                Email Address is not Valid
+                              </div>
+                            </div>
+                            <div *ngIf="isEmailTrue==false" class="text-danger">
+                              Email is already used.
+                            </div>
+                </div>
+
             </div>
-          </div>
-          <div class="row" style="margin-top: 10px;">
-            <div class="col">
-              <label for="exampleFormControlFile1">Contact Number:</label>
+            <div class="row" style="margin-top: 10px;">
+
+                <div class="col">
+                  <label for="password">Password:</label>
+                </div>
+                <div class="col">
+                  <input [ngClass]="{'is-invalid':submitted && registerForm.controls.password.errors}" formControlName="password" type="password" class="form-control" [(ngModel)]="password"  >
+                            <div *ngIf="submitted && registerForm.controls.password.errors" class="text-danger">
+                              <div *ngIf="submitted && registerForm.controls.password.errors.required">
+                                Password is required
+                              </div>
+                              <div *ngIf="submitted && registerForm.controls.password.errors.minlength">
+                                Password should be atleast 8 characters
+                              </div>
+                            </div>
+                </div>
+
             </div>
-            <div class="col">
-              <input type="text" class="form-control" id="exampleFormControlFile1" [(ngModel)]="phone"  [ngModelOptions]="{standalone: true}">
+            <div class="row" style="margin-top: 10px;">
+
+                <div class="col">
+                  <label for="confirmPassword">Confirm Password:</label>
+                </div>
+                <div class="col">
+                  <input [ngClass]="{'is-invalid':submitted && registerForm.controls.confirmPassword.errors}" formControlName="confirmPassword" type="password" class="form-control" [(ngModel)]="confirmPassword" >
+                            <div *ngIf="submitted && registerForm.controls.confirmPassword.errors" class="text-danger">
+                              <div *ngIf="submitted && registerForm.controls.confirmPassword.errors.required">
+                                Confirm Password is required
+                              </div>
+                              <div *ngIf="submitted && registerForm.controls.confirmPassword.errors.minlength">
+                                Confirm Password should be atleast 8 characters
+                              </div>
+                            </div>
+                            <div *ngIf="isPasswordTrue==false" class="text-danger">
+                             Confirm Password not matching
+                            </div>
+                </div>
+
             </div>
-          </div>
-          <div class="row" style="margin-top: 10px;">
-            <div class="col">
-              <label for="exampleFormControlFile1">Email Address:</label>
+            <div class="row" style="margin-top: 10px;">
+
+                <div class="col">
+                  <label for="cv">CV:</label>
+                </div>
+                <div class="col" >
+                  <input [ngClass]="{'is-invalid':submitted && registerForm.controls.cv.errors}" formControlName="cv" type="file" class="form-control" (change)="onSelectFile($event)"  accept=".doc,.docx,.pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
+                            <div *ngIf="submitted && registerForm.controls.cv.errors" class="text-danger">
+                              <div *ngIf="submitted && registerForm.controls.cv.errors.required">
+                                CV is required
+                              </div>
+                            </div>
+                </div>
+
             </div>
-            <div class="col">
-              <input type="text" class="form-control" id="exampleFormControlFile1" [(ngModel)]="email"  [ngModelOptions]="{standalone: true}">
+            <div class="row" style="margin-top: 10px;text-align: center;">
+              <div class="form-group">
+                <button type="submit" class="btn btn-success" style="margin: 10px;">Signup</button>
+                <button type="reset" class="btn btn-danger" >Reset</button>
+              </div>
             </div>
-          </div>
-          <div class="row" style="margin-top: 10px;">
-            <div class="col">
-              <label for="exampleFormControlFile1">Password:</label>
-            </div>
-            <div class="col">
-              <input type="password" class="form-control" id="exampleFormControlFile1" [(ngModel)]="password"  [ngModelOptions]="{standalone: true}">
-            </div>
-          </div>
-          <div class="row" style="margin-top: 10px;">
-            <div class="col">
-              <label for="exampleFormControlFile1">Confirm Password:</label>
-            </div>
-            <div class="col">
-              <input type="password" class="form-control" id="exampleFormControlFile1" [(ngModel)]="confirmPassword"  [ngModelOptions]="{standalone: true}">
-            </div>
-          </div>
-          <div class="row" style="margin-top: 10px;">
-            <div class="col">
-              <label for="exampleFormControlFile1">CV:</label>
-            </div>
-            <div class="col" >
-              <input type="file" class="form-control-file" id="exampleFormControlFile1" [(ngModel)]="cv"  [ngModelOptions]="{standalone: true}">
-            </div>
-          </div>
-          <div class="row" style="margin-top: 10px;text-align: center;">
-            <div >
-              <button type="button" class="btn btn-success" style="margin: 10px;" (click)="onSubmit()">Signup</button>
-              <button type="reset" class="btn btn-danger">Reset</button>
-            </div>
+
           </div>
 
-
-        </div>
-      </form>
+        </form>
       </div>
     </div>
   </div>

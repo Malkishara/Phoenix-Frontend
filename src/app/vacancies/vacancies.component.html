@@ -1,11 +1,12 @@
-<div>
+<div class="content">
 <div class="row" style="margin-top: 20px;">
-  <div class="col-sm-6"><h1>Phoenix</h1></div>
+  <div class="col-sm-6"><p style="font-size:50px">Phoenix</p></div>
   <div class="col-sm-6">
-    <a href="" class="btn btn-primary" style="margin-right: 10px;">Post a job</a>
-    <a href="/jobseeker_signup" class="btn btn-success" style="margin-right: 10px;">Signin</a>
-    <a href="/employer_signup" class="btn btn-success" style="margin-right: 10px;">Employer Signup</a>
-    <a href="/jobseeker_signup" class="btn btn-success">JobSeeker Signup</a>
+
+    <a href="" class="btn btn-primary" style="margin-right: 10px;margin-bottom: 5px;">Post a job</a>
+    <a href="/signin" class="btn btn-success" style="margin-right: 10px;margin-bottom: 5px;">Signin</a>
+    <a href="/employer_signup" class="btn btn-success" style="margin-right: 10px;margin-bottom: 5px;">Employer Signup</a>
+    <a href="/jobseeker_signup" class="btn btn-success" style="margin-bottom: 5px;">JobSeeker Signup</a>
 
 </div>
 
@@ -14,19 +15,20 @@
 
 
 <div class="row">
+  <div class="home" style="margin-top: 30px; ">
   <!--start of job categories card-->
-  <div class="col-sm-3" style="margin-top: 50px; ">
+  <div class="col-sm-3" >
 
-      <div class="card" style="width: 16rem;align-items: center;">
-        <div class="card-body">
-          <button type="button" class="btn btn-success" style="width: 200px;margin-bottom: 20px;" (click)="selectCategory(categorySelected,searchText)">Search</button>
-          <input [(ngModel)]="searchText" type="text"  placeholder="Type here to search" style="width: 200px;margin-bottom: 20px;">
+      <div class="card" style="align-items: center;">
+        <div class="card-body" style="background-color: rgb(205, 238, 248);">
+          <button type="button" class="btn btn-success" style="margin-bottom: 20px;width: 100%;" (click)="selectCategory(categorySelected,searchText)">Search</button>
+          <input [(ngModel)]="searchText" type="text"  placeholder="Type here to search" style="width: 100%;margin-bottom: 20px;">
           <h3 class="card-title">Job Categories</h3>
           <div class="row">
             <!--start of drop down list-->
             <div >
               <div class="category">
-                <select [(ngModel)]="categorySelected" style="width: 200px;">
+                <select [(ngModel)]="categorySelected" style="width:100%">
                   <option value="null">All</option>
                   <option  *ngFor="let category of jobCategories" [value]="category.id">{{ category.title }}</option>
                 </select>
@@ -41,7 +43,7 @@
           <div class="types" *ngFor="let type of jobTypes" [(ngModel)]="typeSelected">
 
             <input  class="form-check-input" type="checkbox"  id="flexCheckDefault" [value]="type.id"
-            (change)="selectJobType(type.id)">
+            (change)="selectJobType(type.id)">&nbsp;
             <label class="form-check-label" for="flexCheckChecked" >
               {{ type.title }}
             </label>
@@ -56,7 +58,7 @@
             <div [(ngModel)]="modalitySelected" >
               <div class="types" *ngFor="let modality of jobModality" >
                 <input  class="form-check-input" type="checkbox" [value]="modality.id"  id="flexCheckDefault"
-                (change)="selectJobModality(modality.id)" >
+                (change)="selectJobModality(modality.id)" >&nbsp;
                 <label class="form-check-label" for="flexCheckChecked"  >
                   {{ modality.title }}
                 </label>
@@ -73,26 +75,32 @@
   </div>
   <!--end of job categories card-->
   <!--start of job vacancies cards-->
-  <div class="col-sm-9" style="margin-top: 50px; ">
+  <div class="col-sm-9" >
 
-    <div class="card" style="width: 53rem; margin: 5px;" *ngFor="let data of allVacancyData |paginate:{
+    <div class="card" style=" margin: 5px;" *ngFor="let data of allVacancyData |paginate:{
       itemsPerPage:tableSize,
       currentPage:page,
       totalItems:count
     }; let i=index" >
 
-      <div class="card-body" style="margin: 10px;" >
-        <div class="row">
-           <h4 *ngIf="data.company.verification" style="color: rgb(5, 126, 11); font: bold;">Verified</h4>
-        </div>
+      <div class="card-body" style="background-color: rgb(214, 252, 252);" >
         <div class="row">
             <div class="col-sm-1">
-              <img src="{{ data.thumbnailUrl }}" alt="" height="50px" width="50px">
+              <img src="{{ data.company.logo }}" alt="" height="50px" width="50px">
             </div>
             <div class="col-sm-9">
-              <a (click)="onClick(data)"><h3 class="card-title">{{ data.title }}</h3></a>
+              <a (click)="onClick(data)"><h1 class="card-title">{{ data.title }}</h1></a>
+              <div class="row">
 
-              <a (click)="onClickCompany(data.company.id)"> <p class="company">{{ data.company.name }}</p></a>
+                <div class="col">
+
+                  <a (click)="onClickCompany(data.company.id)">
+                    <p class="company">
+                      <mat-icon [inline]="true" *ngIf="data.company.verification" style="color: rgb(3, 110, 3); height: 19px;width: 19px;">check_circle</mat-icon>&nbsp;{{ data.company.name }}</p></a>
+                </div>
+
+              </div>
+
             </div>
             <div class="col-sm-2">
               <a href="#" class="btn btn-primary">Apply</a>
@@ -103,27 +111,28 @@
           <div class="col-sm-2">
             <p class="card-text">Type: {{ data.type.title}}</p>
           </div>
-          <div class="col-sm-3">
+          <div class="col-sm-5">
             <p class="card-text">Location: {{ data.company.address}}</p>
           </div>
           <div class="col-sm-2">
             <p class="card-text">Modality: {{ data.modality.title}}</p>
           </div>
-          <div class="col-sm-5">
+          <div class="col-sm-3">
             <p class="card-text">Salary: {{ data.salaryRange}}</p>
           </div>
         </div>
-        <div class="row">
-          <p class="card-text">Posted: {{ data.postedDate}}</p>
+        <div class="row" >
+          <p class="card-text" style="margin-top:15px;">Posted: {{ data.postedDate}}</p>
         </div>
-      </div>
-    <!--start more details-->
-    <div class="row">
-      <div *ngIf="data.id==vacancySelected">
-        <p class="card-text" *ngIf="visible">{{ data.description }}</p>
+        <!--start more details-->
+    <div class="row" >
+      <div *ngIf="data.id==vacancySelected" >
+        <p class="card-text" *ngIf="visible"style="margin-top:15px;">{{ data.description }}</p>
       </div>
     </div>
     <!--end more details-->
+      </div>
+
     </div>
 
 
@@ -142,7 +151,7 @@
   </div>
  <!--end of job vacancies-->
 </div>
-
+</div>
 </div>
 
 

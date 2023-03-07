@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Observable, Subscriber } from 'rxjs';
 import { EmployerSignupService } from '../services/signup/employer-signup.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PopUpComponent } from '../pop-up/pop-up.component';
+
 
 @Component({
   selector: 'app-employer-signup',
@@ -7,66 +13,108 @@ import { EmployerSignupService } from '../services/signup/employer-signup.servic
   styleUrls: ['./employer-signup.component.css']
 })
 export class EmployerSignupComponent {
+  registerForm!:FormGroup
+  title = 'angularvalidate';
+  submitted=false
+  logo!:Observable<any>;
+
   name:String="";
   address:String="";
   email:String="";
-  phone:String="";
-  logo:any="";
+  phoneNumber:String="";
   password:String="";
   confirmPassword:String="";
   selectedFile!: File;
 
+  isPasswordTrue:boolean=true;
+  isEmailTrue:boolean=true;
+
   result:any;
 
-  constructor(private signup:EmployerSignupService){}
+  constructor(private signup:EmployerSignupService,private formBuilder:FormBuilder,private router: Router,private matDialogRef:MatDialog){}
 
-  //Gets called when the user selects an image
-  // public onFileChanged(event:any): void {
-  //   //Select File
-  //   this.selectedFile = event.target.files[0];
-  // }
+  ngOnInit(){
+    this.registerForm = this.formBuilder.group({
+      name:['',Validators.required],
+      address:['',Validators.required],
+      phoneNumber:['',[Validators.required,Validators.maxLength(11),Validators.minLength(11)]],
+      email:['',[Validators.required,Validators.email]],
+      password:['',[Validators.required,Validators.minLength(8)]],
+      confirmPassword:['',[Validators.required,Validators.minLength(8)]],
+      logo:['',Validators.required]
+    })
+  }
 
-  employerSignup(){
+  onSelectFile(event:any){
+    const target = event.target as HTMLInputElement;
+    const file: File = (target.files as FileList)[0];
+    console.log(file);
+    this.convertToBase64(file)
+  }
+  convertToBase64(file: File) {
+    const observable = new Observable((subscriber: Subscriber<any>) => {
+      this.readFile(file, subscriber);
+    });
 
-    // console.log(this.selectedFile);
+    observable.subscribe((d) => {
+      console.warn(d)
+      this.logo = d
+    })
+  }
 
-    // //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
-    // const uploadImageData = new FormData();
-    // uploadImageData.append('imageFile', this.selectedFile,this.selectedFile?.name);
+  readFile(file: File, subscriber: Subscriber<any>) {
+    const filereader = new FileReader();
+    filereader.readAsDataURL(file);
 
-    if(this.name!="" && this.address!="" && this.email!="" && this.phone!="" && this.logo!="" && this.password!="" && this.confirmPassword!=""){
+    filereader.onload = () => {
+      subscriber.next(filereader.result);
+      subscriber.complete();
+    };
+    filereader.onerror = (error) => {
+      subscriber.error(error);
+      subscriber.complete();
+    };
+  }
+
+  openDialog(){
+    this.matDialogRef.open(PopUpComponent);
+  }
+
+  onSubmit(){
+
+    this.submitted = true
+
+    if(this.registerForm.invalid){
+      return
+    }else{
       let signupData={
         "name":this.name,
         "address":this.address,
         "email":this.email,
-        "phone":this.phone,
+        "phone":this.phoneNumber,
         "logo":this.logo,
         "password":this.password,
         "confirmPassword":this.confirmPassword
 
       };
-
+       console.warn(signupData);
+       this.isPasswordTrue=true;
+      this.isEmailTrue=true;
       this.signup.Signup(signupData).subscribe((res:any)=>{
         this.result=res;
         if(this.result=="1"){
-          alert("Successfully registered");
+        this.router.navigateByUrl("");
+        this.openDialog()
 
-        this.name="";
-        this.address="";
-        this.email="";
-        this.phone="";
-        this.logo="";
-        this.password="";
-        this.confirmPassword="";
-
-        this.result=="";
         }else if(this.result=="2"){
-          alert("Already registered email");
+          this.isEmailTrue=false;
           this.result=="";
         }else if(this.result=="3"){
-          alert("Confirmed password not matching with password");
+          this.isPasswordTrue=false;
           this.result=="";
         }
+
+
       }
       )
 
@@ -74,15 +122,8 @@ export class EmployerSignupComponent {
 
 
 
-    }else{
-      alert("All fields are required")
+
     }
-
-  }
-
-  onSubmit(){
-    this.employerSignup();
-    console.warn("send")
 
   }
 }

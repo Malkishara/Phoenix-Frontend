@@ -1,8 +1,14 @@
 
 .signup{
-  align-items: center;
-  margin-top: 100px;
-  margin-left: 300px;
+  width: 100%;
+    min-height: 100vh;
+    /* FLEX */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+
 }
 
 

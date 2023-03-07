@@ -1,3 +1,18 @@
+.content{
+width: 100%;
+min-height: 100vh;
+}
+
+.home{
+
+    /* FLEX */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
 .card-title{
   cursor: pointer;
 }
