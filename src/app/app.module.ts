@@ -8,18 +8,18 @@ import { VacanciesComponent } from './vacancies/vacancies.component';
 import { HttpClientModule } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { EmployerSignupComponent } from './employer-signup/employer-signup.component';
-import { JobseekerSignupComponent } from './jobseeker-signup/jobseeker-signup.component'
+import { JobseekerSignupComponent } from './jobseeker-signup/jobseeker-signup.component';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
-import { SigninComponent } from './signin/signin.component';
+import { LoginComponent } from './login/login.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
 const routes:Routes=[
   {path:'',component:VacanciesComponent},
   {path:'employer_signup',component:EmployerSignupComponent},
   {path:'jobseeker_signup',component:JobseekerSignupComponent},
-  {path:'signin',component:SigninComponent}
+  {path:'login',component:LoginComponent}
 ];
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ const routes:Routes=[
     VacanciesComponent,
     EmployerSignupComponent,
     JobseekerSignupComponent,
-    SigninComponent,
+    LoginComponent,
     PopUpComponent
   ],
   imports: [
