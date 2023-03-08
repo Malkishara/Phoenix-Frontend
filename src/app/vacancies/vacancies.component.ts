@@ -37,6 +37,7 @@ export class VacanciesComponent {
     this.postVacancyData();
     this.postJobTypes();
     this.postJobModality();
+
   }
 
   //fetch categories
@@ -79,13 +80,17 @@ export class VacanciesComponent {
   //pagination start
   onTableDataChange(event:any){
     this.page=event;
-    this.postVacancyData();
+   // this.postVacancyData();
+   this.allVacancyData;
+
   }
 
   onTableSizeChange(event:any):void{
     this.tableSize=event.target.value;
     this.page=1;
-    this.postVacancyData();
+    //this.postVacancyData();
+    this.allVacancyData;
+
   }
 
   //pagination end
@@ -135,6 +140,7 @@ console.warn(this.modalitySelected);
 
 //select vacancy by comapany
 onClickCompany(id:any):void{
+  this.page=1;
 console.warn(id)
 
 var companyId={
@@ -142,15 +148,21 @@ var companyId={
 }
 
 console.warn(companyId)
-this.categories.searchByCompany(companyId).subscribe((res)=>
-this.vacancyData=res)
-this.allVacancyData=this.vacancyData;
-console.warn(this.allVacancyData)
+this.categories.searchByCompany(companyId).subscribe((res)=>{
+  this.allVacancyData=res;
+  console.warn(this.allVacancyData)
+}
+)
+
+
+
+
   }
 
 
 //search functionality
 selectCategory(selectedCategoryId:any,searchedText:any):void{
+
 console.warn(selectedCategoryId)
 console.warn(searchedText)
 if(searchedText!=undefined && searchedText.length>0){
@@ -196,9 +208,13 @@ var searchData={
 
 console.warn(searchData)
 
-this.categories.searchBySelectedData(searchData).subscribe((res)=>
-this.allVacancyData=res)
-console.warn(this.allVacancyData)
+this.categories.searchBySelectedData(searchData).subscribe((res)=>{
+  this.allVacancyData=res;
+  console.warn(this.allVacancyData)
 }
+)
+
+}
+
 
 }

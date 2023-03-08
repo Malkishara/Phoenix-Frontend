@@ -1,10 +1,7 @@
-.content{
-width: 100%;
-min-height: 100vh;
-}
 
-.home{
-
+.signup{
+  width: 100%;
+    min-height: 100vh;
     /* FLEX */
     display: flex;
     flex-direction: row;
@@ -13,10 +10,4 @@ min-height: 100vh;
     align-content: center;
 }
 
-.card-title{
-  cursor: pointer;
-}
 
-.company{
-  cursor: pointer;
-}
