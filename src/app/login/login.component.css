@@ -1,4 +1,4 @@
-.signin{
+.login{
   width: 100%;
     min-height: 100vh;
     /* FLEX */
@@ -7,7 +7,4 @@
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
-
 }
-
-

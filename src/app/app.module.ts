@@ -15,11 +15,14 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
+import { JobSeekerProfileComponent } from './job-seeker-profile/job-seeker-profile.component';
+
 const routes:Routes=[
   {path:'',component:VacanciesComponent},
   {path:'employer_signup',component:EmployerSignupComponent},
   {path:'jobseeker_signup',component:JobseekerSignupComponent},
-  {path:'login',component:LoginComponent}
+  {path:'login',component:LoginComponent},
+  {path:'jobseeker_profile',component:JobSeekerProfileComponent}
 ];
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ const routes:Routes=[
     EmployerSignupComponent,
     JobseekerSignupComponent,
     LoginComponent,
-    PopUpComponent
+    PopUpComponent,
+    JobSeekerProfileComponent
   ],
   imports: [
     BrowserModule,

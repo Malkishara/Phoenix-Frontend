@@ -1,14 +1,20 @@
 <div class="content">
 <div class="row" style="margin-top: 20px;">
-  <div class="col-sm-6"><p style="font-size:50px">Phoenix</p></div>
-  <div class="col-sm-6">
+  <nav class="navbar navbar-light" style="background-color: #FFFFFF;">
+    <div class="col-sm-6">
+      <img src="../assets/logo.png" alt="" height="70px" width="160px">
+    </div>
+    <div class="col-sm-6">
 
-    <a href="" class="btn btn-primary" style="margin-right: 10px;margin-bottom: 5px;">Post a job</a>
-    <a href="/signin" class="btn btn-success" style="margin-right: 10px;margin-bottom: 5px;">Signin</a>
-    <a href="/employer_signup" class="btn btn-success" style="margin-right: 10px;margin-bottom: 5px;">Employer Signup</a>
-    <a href="/jobseeker_signup" class="btn btn-success" style="margin-bottom: 5px;">JobSeeker Signup</a>
+      <a href="" class="btn btn-primary" style="margin-right: 5px;margin-bottom: 5px;">Post a job</a>
+      <a href="/login" class="btn btn-success" style="margin-right: 5px;margin-bottom: 5px;">Login</a>
+      <a href="/employer_signup" class="btn btn-success" style="margin-right: 5px;margin-bottom: 5px;">Employer Signup</a>
+      <a href="/jobseeker_signup" class="btn btn-success" style="margin-bottom: 5px;margin-right: 15px;">JobSeeker Signup</a>
+      <a  href="/jobseeker_profile" class=""><mat-icon [inline]="true" style="transform: scale(2.7);vertical-align: middle;">account_circle</mat-icon></a>
 
-</div>
+  </div>
+  </nav>
+
 
 
 </div>
@@ -86,10 +92,10 @@
       <div class="card-body" style="background-color: rgb(214, 252, 252);" >
         <div class="row">
             <div class="col-sm-1">
-              <img src="{{ data.company.logo }}" alt="" height="50px" width="50px">
+              <img src="{{ data.company.logo }}" alt="" height="60px" width="60px">
             </div>
             <div class="col-sm-9">
-              <a (click)="onClick(data)"><h1 class="card-title">{{ data.title }}</h1></a>
+              <a (click)="onClick(data)"><h2 class="card-title">{{ data.title }}</h2></a>
               <div class="row">
 
                 <div class="col">
