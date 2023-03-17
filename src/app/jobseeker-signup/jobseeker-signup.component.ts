@@ -73,7 +73,11 @@ export class JobseekerSignupComponent {
   }
 
   openDialog(){
-    this.matDialogRef.open(PopUpComponent);
+    this.matDialogRef.open(PopUpComponent,{
+      data : {
+        message : 'Registration Successfull'
+      }
+    });
   }
   onSubmit(){
 

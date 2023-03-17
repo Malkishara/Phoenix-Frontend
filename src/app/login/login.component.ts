@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { PopUpComponent } from '../pop-up/pop-up.component';
 import { LoginService } from '../services/login/login.service';
+// import { User } from '../user.module';
 
 @Component({
   selector: 'app-login',
@@ -20,13 +23,26 @@ export class LoginComponent {
 
   result:any;
 
-  constructor(private login:LoginService, private formBuilder:FormBuilder,private router: Router){}
+  isLoggedin:Boolean=false;
+  loggedinUserType:String="";
+  loggedinUserId:any;
+
+
+  constructor(private login:LoginService, private formBuilder:FormBuilder,private router: Router,private matDialogRef:MatDialog){}
 
   ngOnInit(){
     this.loginForm = this.formBuilder.group({
       email:['',[Validators.required]],
       password:['',[Validators.required]],
     })
+  }
+
+  openDialog(){
+    this.matDialogRef.open(PopUpComponent,{
+      data : {
+        message : 'Successfully Login'
+      }
+    });
   }
 
   onSubmit(){
@@ -46,8 +62,21 @@ export class LoginComponent {
       this.login.Login(loginData).subscribe((res:any)=>{
         this.result=res;
 
+        localStorage.setItem('userType',JSON.stringify(this.result.user_type))
+        localStorage.setItem("userId",JSON.stringify(this.result.user_id))
+        localStorage.setItem('isLoggined',JSON.stringify(this.result.result))
+        localStorage.setItem("token",JSON.stringify(this.result.access_token))
+        localStorage.setItem('expireAt',JSON.stringify(this.result.expires_at))
+        localStorage.setItem("expireIn",JSON.stringify(this.result.expires_in))
+
         console.warn(this.result);
+
+
+
         this.router.navigateByUrl("");
+        this.openDialog()
+
+
 
       },(error)=>{
         console.warn(error);

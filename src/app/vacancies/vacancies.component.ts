@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { empty } from 'rxjs';
 import { JobVacanciesService } from '../services/job-vacancies.service';
+import { LoginService } from '../services/login/login.service';
+import { JobseekerSignupService } from '../services/signup/jobseeker-signup.service';
 
 @Component({
   selector: 'app-vacancies',
@@ -29,8 +32,16 @@ export class VacanciesComponent {
   count:number=0;
   tableSize:number=6;
 
+  isLoggedin:any;
+  loggedinUserType:any;
+  loggedinUserId:any;
 
-  constructor(private categories:JobVacanciesService){}
+  jobSeekerProfileData:any;
+
+
+
+
+  constructor(private servise:JobVacanciesService,private loginService:LoginService,private router: Router){}
 
   ngOnInit():void{
     this.postCategories();
@@ -38,11 +49,29 @@ export class VacanciesComponent {
     this.postJobTypes();
     this.postJobModality();
 
+    //profile icon
+//     this.isLoggedin=this.loginService.getIsLoggedin();
+//     this.loggedinUserType=this.loginService.getLoggedinUserType();
+// this.loggedinUserId=this.loginService.getId();
+// console.warn("User id "+this.loggedinUserId)
+
+    this.isLoggedin=localStorage.getItem('isLoggined');
+    this.loggedinUserType=localStorage.getItem('userType');
+    this.loggedinUserId=localStorage.getItem('userId');
+
+    console.warn("User type "+this.loggedinUserType)
+    console.warn("loggin "+this.isLoggedin)
+
   }
+
+onClickProfile(){
+  this.router.navigateByUrl("jobseeker_profile/"+this.loggedinUserId);
+}
+
 
   //fetch categories
   postCategories():void{
-  this.categories.categories().subscribe((data)=>{
+  this.servise.categories().subscribe((data)=>{
     this.jobCategories=data;
     console.warn(this.jobCategories);
     this.categorySelected=null;
@@ -53,7 +82,7 @@ export class VacanciesComponent {
 
    //fetch vacancies
   postVacancyData():void{
-    this.categories.vacancies().subscribe((data)=>{
+    this.servise.vacancies().subscribe((data)=>{
       this.vacancyData=data;
       this.allVacancyData=this.vacancyData
       console.warn(this.allVacancyData);
@@ -63,7 +92,7 @@ export class VacanciesComponent {
 
   //post job type
   postJobTypes():void{
-    this.categories.types().subscribe((data)=>{
+    this.servise.types().subscribe((data)=>{
       this.jobTypes=data;
       console.warn(this.jobTypes);
     });
@@ -71,7 +100,7 @@ export class VacanciesComponent {
 
   //post job modality
   postJobModality():void{
-    this.categories.modality().subscribe((data)=>{
+    this.servise.modality().subscribe((data)=>{
       this.jobModality=data;
       console.warn(this.jobModality);
     });
@@ -148,7 +177,7 @@ var companyId={
 }
 
 console.warn(companyId)
-this.categories.searchByCompany(companyId).subscribe((res)=>{
+this.servise.searchByCompany(companyId).subscribe((res)=>{
   this.allVacancyData=res;
   console.warn(this.allVacancyData)
 }
@@ -208,13 +237,14 @@ var searchData={
 
 console.warn(searchData)
 
-this.categories.searchBySelectedData(searchData).subscribe((res)=>{
+this.servise.searchBySelectedData(searchData).subscribe((res)=>{
   this.allVacancyData=res;
   console.warn(this.allVacancyData)
 }
 )
 
 }
+
 
 
 }

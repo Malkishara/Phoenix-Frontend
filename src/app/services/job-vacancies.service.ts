@@ -40,4 +40,5 @@ searchBySelectedData(data:any){
   return this.http.post(this.url+"/search_data",data)
 }
 
+
 }

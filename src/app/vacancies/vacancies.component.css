@@ -17,6 +17,10 @@ min-height: 100vh;
   cursor: pointer;
 }
 
+.profile{
+  cursor: pointer;
+}
+
 .company{
   cursor: pointer;
 }

@@ -1,25 +1,36 @@
 <div class="content">
-<div class="row" style="margin-top: 20px;">
-  <nav class="navbar navbar-light" style="background-color: #FFFFFF;">
-    <div class="col-sm-6">
-      <img src="../assets/logo.png" alt="" height="70px" width="160px">
-    </div>
-    <div class="col-sm-6">
-
-      <a href="" class="btn btn-primary" style="margin-right: 5px;margin-bottom: 5px;">Post a job</a>
-      <a href="/login" class="btn btn-success" style="margin-right: 5px;margin-bottom: 5px;">Login</a>
-      <a href="/employer_signup" class="btn btn-success" style="margin-right: 5px;margin-bottom: 5px;">Employer Signup</a>
-      <a href="/jobseeker_signup" class="btn btn-success" style="margin-bottom: 5px;margin-right: 15px;">JobSeeker Signup</a>
-      <a  href="/jobseeker_profile" class=""><mat-icon [inline]="true" style="transform: scale(2.7);vertical-align: middle;">account_circle</mat-icon></a>
-
+<div class="row">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFFFFF;">
+  <div class="col-sm-6">
+    <img src="../assets/logo.png" alt="" height="70px" width="160px">
   </div>
-  </nav>
 
 
-
+  <div class="col-sm-6" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a href="" class="btn btn-primary" style="margin-right: 5px;margin-bottom: 5px;">Post a job</a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="btn btn-success" style="margin-right: 5px;margin-bottom: 5px;">Login</a>
+      </li>
+      <li class="nav-item">
+        <a href="/employer_signup" class="btn btn-success" style="margin-right: 5px;margin-bottom: 5px;">Employer Signup</a>
+      </li>
+      <li class="nav-item">
+        <a href="/jobseeker_signup" class="btn btn-success" style="margin-bottom: 5px;margin-right: 15px;">JobSeeker Signup</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a  (click)="onClickProfile()" *ngIf="isLoggedin" class="profile"><mat-icon [inline]="true" style="transform: scale(2.7);vertical-align: middle;">account_circle</mat-icon></a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Profile</a>
+          <a class="dropdown-item" href="#">Logout</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
 </div>
-
-
 <div class="row">
   <div class="home" style="margin-top: 30px; ">
   <!--start of job categories card-->

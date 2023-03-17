@@ -7,6 +7,13 @@ import { catchError, throwError } from 'rxjs';
 })
 export class LoginService {
 
+  isLoggedin:Boolean | undefined;
+  loggedinUserType:String="";
+  userId:any;
+
+
+
+
   constructor(private http:HttpClient) { }
 
   Login(data:any){
@@ -30,4 +37,7 @@ export class LoginService {
     // Return an observable with a user-facing error message.
     return throwError(() => new Error(errorMessage));
   }
+
+
+
 }

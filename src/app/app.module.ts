@@ -16,13 +16,15 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
 import { JobSeekerProfileComponent } from './job-seeker-profile/job-seeker-profile.component';
+import {PdfViewerModule} from 'ng2-pdf-viewer'
+
 
 const routes:Routes=[
   {path:'',component:VacanciesComponent},
   {path:'employer_signup',component:EmployerSignupComponent},
   {path:'jobseeker_signup',component:JobseekerSignupComponent},
   {path:'login',component:LoginComponent},
-  {path:'jobseeker_profile',component:JobSeekerProfileComponent}
+  {path:'jobseeker_profile/:id',component:JobSeekerProfileComponent}
 ];
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ const routes:Routes=[
     BrowserAnimationsModule,
     MatIconModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PdfViewerModule
   ],
   exports:[RouterModule],
   providers: [

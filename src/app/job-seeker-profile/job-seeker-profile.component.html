@@ -1,1 +1,221 @@
-<p>job-seeker-profile works!</p>
+<div class="profile" style="">
+
+  <div class="title" style="text-align: center;"><h1>User Profile</h1></div>
+  <div class="profile_data">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card" style="width: 18rem;height:18rem;display: flex;justify-content: center;align-items: center;margin: 20px;">
+          <img class="card-img-top" src="{{ profilePicture }}" alt="Card image cap"style="height: 60%;width:60%; border- radius: 50%;border:2px solid black;margin-top:5%">
+          <div class="card-body">
+            <h2 class="card-title" style="text-align: center;">{{ firstName }} {{ lastName }}</h2>
+            <h4 class="card-title" style="text-align: center;">{{ position }} </h4>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 10px;">
+          <div >
+             <label >Edit Profile Picture:</label>
+           </div>
+           <div >
+             <input class="form-control" type="file" value="{{ profilePicture }}" name="profilePicture" (change)="onSelectImage($event)"  accept="image/*">
+            </div>
+         </div>
+        </div>
+      <div class="col-sm-7" style="margin: 20px;">
+        <form >
+          <div class="form-group">
+            <div class="row" style="margin-top: 10px;">
+              <div class="col">
+                <div class="col">
+                  <label >First Name:</label>
+                </div>
+                <div class="col" >
+                  <input class="form-control" type="text" value="{{ firstName }}" name="firstName" (change)="changeFirstName($event)">
+
+                </div>
+              </div>
+              <div class="col">
+                <div class="col">
+                  <label>Last Name:</label>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="text" value="{{ lastName }}" name="lastName" (change)="changeLastName($event)">
+                </div>
+              </div>
+
+            </div>
+
+
+         <div class="row" style="margin-top: 10px;">
+
+             <label >Location:</label>
+
+           <div class="col">
+            <label >District:</label>
+             <input class="form-control" type="text" value="{{ district }}"  name="district" (change)="changeDistrict($event)">
+           </div>
+           <div class="col">
+            <label >Country:</label>
+             <input class="form-control" type="text" value="{{ country }}"  name="country" (change)="changeCountry($event)">
+           </div>
+         </div>
+         <div class="row" style="margin-top: 10px;">
+          <label >Contact Info:</label>
+          <div class="col">
+             <label >Email:</label>
+             <input class="form-control" type="text" value="{{ email }}" name="email" (change)="changeEmail($event)">
+           </div>
+           <div class="col">
+            <label >Phone:</label>
+            <input class="form-control" type="text" value="{{ phone }}"  name="phone" (change)="changePhone($event)">
+          </div>
+         </div>
+         <div class="row" style="margin-top: 10px;">
+          <div class="col">
+             <label >Position:</label>
+           </div>
+           <div class="col">
+             <input class="form-control" type="text" value="{{ position }}"  name="position" (change)="changePosition($event)">
+           </div>
+         </div>
+         <div class="row" style="margin-top: 10px;">
+          <div class="col">
+             <label >Linkdin:</label>
+           </div>
+           <div class="col">
+             <input class="form-control" type="text" value="{{ linkdin }}"  name="linkdin" (change)="changeLinkdin($event)">
+           </div>
+         </div>
+         <!-- <div class="row" style="margin-top: 10px;">
+          <div class="col">
+             <label >Profile Picture:</label>
+           </div>
+           <div class="col">
+             <input class="form-control" type="file" value="{{ profilePicture }}" name="profilePicture" (change)="onSelectImage($event)"  accept="image/*">
+            </div>
+         </div> -->
+         <div class="row" style="margin-top: 10px;">
+          <div class="row">
+            <div class="col">
+              <label >CV:</label>
+            </div>
+            <div class="col">
+              <input class="form-control" (change)="onSelectCv($event)" type="file" accept=".doc,.docx,.pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="margin-top: 10px;">
+
+            </div>
+          </div>
+          <div class="row">
+            <!-- <pdf-viewer
+             [src]=" jobSeekerProfileData.cv"
+             [render-text]="true"
+             style="display: block; height:1000px; width: 700px;margin-top: 10px;"> </pdf-viewer> -->
+          </div>
+
+         </div>
+         <div class="row" style="margin-top: 10px;">
+             <label >Education Qualification:</label>
+           <div class="col">
+            <div class="row" style="margin-top: 10px;">
+              <div class="col">
+                <label for="name">Degree:</label>
+                <input  class="form-control" type="text" value="{{degree }}" name="degree" (change)="changeDegree($event)">
+              </div>
+            <div class="col">
+               <label for="name">College:</label>
+               <input  class="form-control" type="text" value="{{ college }}"  name="college" (change)="changeCollege($event)">
+             </div>
+           </div>
+
+           </div>
+         </div>
+
+         <div class="row" style="margin-top: 10px;">
+
+           <div class="col">
+             <label for="name">Work Experince:</label>
+           </div>
+         <div class="col">
+          <select class="form-control"  (change)="changeExperience($event)">
+            <option value="null">{{ experience }}</option>
+            <option  *ngFor="let experience of experienceList" [value]="experience.title">{{ experience.title }}</option>
+          </select>
+          </div>
+        </div>
+          <div class="row" style="margin-top: 10px;">
+
+            <div class="col">
+              <label >Languages:</label>
+            </div>
+          <div class="col">
+            <div class="languages" *ngFor="let language of languagesList" >
+
+              <input  class="form-check-input" type="checkbox"  id="flexCheckDefault" [value]="language?.id"
+              [checked]="language?.select" (change)="selectedLanguages($event)" >&nbsp;
+              <label class="form-check-label" for="flexCheckChecked" >
+                {{ language.language }}
+              </label>
+            </div>
+          </div>
+
+      </div>
+
+     <div class="row" style="margin-top: 10px;">
+      <label for="">Skills:</label>
+      <div class="row" *ngFor="let skill of skills;let i=index" >
+        <div class="col-9">
+          <input type="text" class="form-control" name="skill{{i}}" [(ngModel)]="skill.skill" style="margin-top: 10px;" >
+        </div>
+        <div class="col-3" >
+          <button class="btn btn-danger" (click)="removeSkill(i)" style="margin-top: 10px;">Remove</button>
+        </div>
+      </div>
+      <div *ngIf="isSkillEmpty==true" class="text-danger">
+        Skill feild can't be empty
+       </div>
+      <div class="row" style="display: flex;justify-content: center;align-items: center;">
+      <button class="btn btn-success" (click)="addSkill()" style="margin-top: 10px;width: 200px;">Add</button>
+       </div>
+     </div>
+
+     <div class="row" style="margin-top: 10px;">
+      <label for="">Certification:</label>
+      <div class="row" *ngFor="let certification of jobSeekerProfileData.certification;let j=index" >
+        <div class="col-9">
+
+          <input type="text" class="form-control" name="cetification{{j}}" [(ngModel)]="certification.certification" style="margin-top: 10px;">
+        </div>
+        <div class="col-3" >
+          <button class="btn btn-danger" (click)="removeCertification(j)" style="margin-top: 10px;">Remove</button>
+        </div>
+      </div>
+      <div *ngIf="isCertificationEmpty==true" class="text-danger">
+        Certification feild can't be empty
+       </div>
+       <div class="row" style="display: flex;justify-content: center;align-items: center;">
+        <button class="btn btn-success" (click)="addCertification()" style="margin-top: 10px;width: 200px;">Add</button>
+       </div>
+
+
+     </div>
+
+
+
+            <div class="row" style="margin-top: 10px;text-align: center;">
+              <div class="form-group">
+                <button type="submit" class="btn btn-success" style="margin: 10px;" (click)="onSubmit()">Update Profile</button>
+
+              </div>
+            </div>
+
+          </div>
+
+        </form>
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
