@@ -50,11 +50,6 @@ export class VacanciesComponent {
     this.postJobModality();
 
     //profile icon
-//     this.isLoggedin=this.loginService.getIsLoggedin();
-//     this.loggedinUserType=this.loginService.getLoggedinUserType();
-// this.loggedinUserId=this.loginService.getId();
-// console.warn("User id "+this.loggedinUserId)
-
     this.isLoggedin=localStorage.getItem('isLoggined');
     this.loggedinUserType=localStorage.getItem('userType');
     this.loggedinUserId=localStorage.getItem('userId');

@@ -39,7 +39,7 @@ export class JobSeekerProfileComponent {
   position:String="";
   linkdin:String="";
   selectedExperience:String="";
-  languages:Array<String>=[];
+  languages:any[]=[];
   experience:String="";
   experienceList:any;
   languagesList:any;
@@ -85,6 +85,7 @@ export class JobSeekerProfileComponent {
     //this.languages.push()
 
 
+
   }
 
 
@@ -119,8 +120,18 @@ export class JobSeekerProfileComponent {
       this.profilePicture="../assets/default_p_p.jfif";
      }
 
+
+    for(let i=0;i<this.languagesList.length;i++){
+      for(let j=0;j<this.languages.length;j++){
+        if(this.languagesList[i].language==this.languages[j].language){
+        this.languagesList[i].select=true;
+        }
+      }
+     }
+
+
     })
-console.warn(this.certifications)
+
   }
 
   //convert cv to string
