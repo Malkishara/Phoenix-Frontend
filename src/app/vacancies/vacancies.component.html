@@ -20,17 +20,19 @@
       <li class="nav-item">
         <a href="/jobseeker_signup" class="btn btn-success" style="margin-bottom: 5px;margin-right: 15px;">JobSeeker Signup</a>
       </li>
-      <li class="nav-item dropdown">
-        <a  (click)="onClickProfile()" *ngIf="isLoggedin" class="profile"><mat-icon [inline]="true" style="transform: scale(2.7);vertical-align: middle;">account_circle</mat-icon></a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Profile</a>
-          <a class="dropdown-item" href="#">Logout</a>
-        </div>
+      <li class="nav-item" >
+        <a mat-button [matMenuTriggerFor]="menu" *ngIf="isLoggedin" class="profile"><mat-icon [inline]="true" style="transform: scale(2.7);vertical-align: middle;color: rgb(50, 7, 243);margin-top: 100%;">account_circle</mat-icon></a>
+           <mat-menu #menu="matMenu">
+           <button mat-menu-item (click)="onClickProfile()">Profile</button>
+           <button mat-menu-item (click)="logout()">Logout</button>
+           </mat-menu>
       </li>
     </ul>
   </div>
 </nav>
 </div>
+
+
 <div class="row">
   <div class="home" style="margin-top: 30px; ">
   <!--start of job categories card-->

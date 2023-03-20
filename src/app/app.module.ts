@@ -16,7 +16,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
 import { JobSeekerProfileComponent } from './job-seeker-profile/job-seeker-profile.component';
-import {PdfViewerModule} from 'ng2-pdf-viewer'
+import {PdfViewerModule} from 'ng2-pdf-viewer';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 
 
 const routes:Routes=[
@@ -47,7 +49,9 @@ const routes:Routes=[
     MatIconModule,
     MatDialogModule,
     ReactiveFormsModule,
-    PdfViewerModule
+    PdfViewerModule,
+    MatMenuModule,
+    MatButtonModule
   ],
   exports:[RouterModule],
   providers: [

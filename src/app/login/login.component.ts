@@ -64,7 +64,7 @@ export class LoginComponent {
 
         localStorage.setItem('userType',JSON.stringify(this.result.user_type))
         localStorage.setItem("userId",JSON.stringify(this.result.user_id))
-        localStorage.setItem('isLoggined',JSON.stringify(this.result.result))
+        localStorage.setItem('isLoggedin',JSON.stringify(this.result.result))
         localStorage.setItem("token",JSON.stringify(this.result.access_token))
         localStorage.setItem('expireAt',JSON.stringify(this.result.expires_at))
         localStorage.setItem("expireIn",JSON.stringify(this.result.expires_in))

@@ -50,7 +50,7 @@ export class VacanciesComponent {
     this.postJobModality();
 
     //profile icon
-    this.isLoggedin=localStorage.getItem('isLoggined');
+    this.isLoggedin=localStorage.getItem('isLoggedin');
     this.loggedinUserType=localStorage.getItem('userType');
     this.loggedinUserId=localStorage.getItem('userId');
 
@@ -240,6 +240,15 @@ this.servise.searchBySelectedData(searchData).subscribe((res)=>{
 
 }
 
+logout(){
 
+        localStorage.removeItem("userId")
+        localStorage.removeItem('userType')
+        localStorage.removeItem('isLoggedin')
+        localStorage.removeItem("token")
+        localStorage.removeItem('expireAt')
+        localStorage.removeItem("expireIn")
+        this.isLoggedin=false;
+}
 
 }
