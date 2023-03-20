@@ -60,7 +60,15 @@ export class VacanciesComponent {
   }
 
 onClickProfile(){
-  this.router.navigateByUrl("jobseeker_profile/"+this.loggedinUserId);
+  console.warn(typeof this.loggedinUserType);
+  console.warn(this.loggedinUserType);
+  if(this.loggedinUserType.includes("Employer") ){
+    console.warn("employer")
+    this.router.navigateByUrl("employer/"+this.loggedinUserId);
+  }else if(this.loggedinUserType.includes("JobSeeker")){
+    console.warn("jobseeker")
+  this.router.navigateByUrl("jobseeker/"+this.loggedinUserId);
+  }
 }
 
 

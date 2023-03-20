@@ -1,0 +1,72 @@
+<div class="employer">
+  <div >
+    <div class="card" >
+      <div class="card-body" style="background-color: rgb(175, 232, 250);">
+        <h1 class="card-title-center" style="text-align: center;">Employer Profile</h1>
+        <form>
+          <div class="form-group">
+            <div class="row" style="margin-top: 10px;">
+
+              <div class="col">
+                <img src="{{ logo }}" style="height: 60%;width:60%; ">
+              </div>
+              <div class="col">
+                <input class="form-control" type="file" value="{{ logo }}" name="logo"  accept="image/*" (change)="changeLogo($event)">
+              </div>
+
+          </div>
+            <div class="row" style="margin-top: 10px;">
+
+                <div class="col">
+                  <label for="companyName">Company Name:</label>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="text" value="{{ name }}" name="name" (change)="changeName($event)">
+                </div>
+
+            </div>
+            <div class="row" style="margin-top: 10px;">
+
+              <div class="col">
+                <label for="address">Address:</label>
+              </div>
+              <div class="col">
+                <input class="form-control" type="text" value="{{ address }}" name="address" (change)="changeAddress($event)">
+              </div>
+
+          </div>
+          <div class="row" style="margin-top: 10px;">
+
+            <div class="col">
+              <label for="email">Email Address:</label>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text" value="{{ email }}" name="email" (change)="changeEmail($event)">
+            </div>
+
+        </div>
+        <div class="row" style="margin-top: 10px;">
+
+          <div class="col">
+            <label for="phone">Phone Number:</label>
+          </div>
+          <div class="col">
+            <input class="form-control" type="text" value="{{ phone }}" name="phone" (change)="changePhone($event)">
+          </div>
+
+      </div>
+
+
+            <div class="row" style="margin-top: 10px;text-align: center;">
+              <div class="form-group">
+                <button type="submit" class="btn btn-success" style="margin: 10px;" (click)="onSubmit()">Update</button>
+              </div>
+            </div>
+
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>

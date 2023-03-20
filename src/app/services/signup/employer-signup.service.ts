@@ -11,4 +11,12 @@ export class EmployerSignupService {
   Signup(data:any){
     return this.http.post("http://localhost:8080/signup",data,{ responseType: 'text'})
   }
+
+  GetProfileData(data:any){
+    return this.http.post("http://localhost:8080/employer",data);
+  }
+
+  UpdateProfileData(data:any,id:any){
+    return this.http.put("http://localhost:8080/employer/"+id,data);
+  }
 }

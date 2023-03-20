@@ -19,6 +19,9 @@ import { JobSeekerProfileComponent } from './job-seeker-profile/job-seeker-profi
 import {PdfViewerModule} from 'ng2-pdf-viewer';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { EmployerProfileComponent } from './employer-profile/employer-profile.component';
+import { EmployerProfileNavbarComponent } from './employer-profile-navbar/employer-profile-navbar.component';
+import { EditEmployerProfileComponent } from './edit-employer-profile/edit-employer-profile.component';
 
 
 const routes:Routes=[
@@ -26,7 +29,8 @@ const routes:Routes=[
   {path:'employer_signup',component:EmployerSignupComponent},
   {path:'jobseeker_signup',component:JobseekerSignupComponent},
   {path:'login',component:LoginComponent},
-  {path:'jobseeker_profile/:id',component:JobSeekerProfileComponent}
+  {path:'jobseeker/:id',component:JobSeekerProfileComponent},
+  {path:'employer/:id',component:EmployerProfileComponent}
 ];
 @NgModule({
   declarations: [
@@ -36,7 +40,10 @@ const routes:Routes=[
     JobseekerSignupComponent,
     LoginComponent,
     PopUpComponent,
-    JobSeekerProfileComponent
+    JobSeekerProfileComponent,
+    EmployerProfileComponent,
+    EmployerProfileNavbarComponent,
+    EditEmployerProfileComponent
   ],
   imports: [
     BrowserModule,
