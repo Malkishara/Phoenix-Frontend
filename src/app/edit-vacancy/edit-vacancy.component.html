@@ -1,0 +1,93 @@
+<div class="vacancy">
+  <div >
+    <div class="card" >
+      <div class="card-body" style="background-color: rgb(175, 232, 250);">
+        <h1 class="card-title-center" style="text-align: center;">{{ jobTitle }}</h1>
+        <form>
+          <div class="form-group">
+
+            <div class="row" style="margin-top: 10px;">
+
+                <div class="col">
+                  <label for="jobTitle">Title:</label>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="text" value="{{ jobTitle }}" name="jobTitle"  (change)="changeTitle($event)">
+                </div>
+
+            </div>
+            <div class="row" style="margin-top: 10px;">
+
+              <div class="col">
+                <label for="salaryRange">Salary Range:</label>
+              </div>
+              <div class="col">
+                <input class="form-control" type="text" value="{{ salaryRange }}" name="salaryRange" (change)="changeSalary($event)">
+              </div>
+
+          </div>
+          <div class="row" style="margin-top: 10px;">
+
+            <div class="col">
+              <label for="description">Job Description:</label>
+            </div>
+            <div class="col">
+              <input class="form-control" type="text" value="{{ jobDescription }}" name="jobDescription" (change)="changeDescription($event)">
+            </div>
+
+        </div>
+          <div class="row" style="margin-top: 10px;">
+
+            <div class="col">
+              <label for="jobCategory">Job Category:</label>
+            </div>
+            <div class="col">
+              <select class="form-control" (change)="changeCategory($event)" >
+                <option value="jobCategory.id">{{ jobCategory.title }}</option>
+                <option  *ngFor="let category of jobCategoryList" [value]="category.id">{{ category.title }}</option>
+              </select>
+            </div>
+
+        </div>
+        <div class="row" style="margin-top: 10px;">
+
+          <div class="col">
+            <label for="jobModality">Job Modality:</label>
+          </div>
+          <div class="col">
+            <select class="form-control"  (change)="changeModality($event)">
+              <option value="jobModality.id">{{ jobModality.title }}</option>
+              <option  *ngFor="let modality of jobModalityList" [value]="modality.id">{{ modality.title }}</option>
+            </select>
+          </div>
+
+      </div>
+
+      <div class="row" style="margin-top: 10px;">
+
+        <div class="col">
+          <label for="jobType">Job Type:</label>
+        </div>
+        <div class="col">
+          <select class="form-control" (change)="changeType($event)" >
+            <option value="jobType.id">{{ jobType.title }}</option>
+            <option  *ngFor="let type of jobTypeList" [value]="type.id">{{ type.title }}</option>
+          </select>
+        </div>
+
+    </div>
+
+
+            <div class="row" style="margin-top: 10px;text-align: center;">
+              <div class="form-group">
+                <button type="submit" class="btn btn-success" style="margin: 10px;" (click)="updateVacancy()">Update</button>
+              </div>
+            </div>
+
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>

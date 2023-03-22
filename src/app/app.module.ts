@@ -19,9 +19,11 @@ import { JobSeekerProfileComponent } from './job-seeker-profile/job-seeker-profi
 import {PdfViewerModule} from 'ng2-pdf-viewer';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { EmployerProfileComponent } from './employer-profile/employer-profile.component';
 import { EmployerProfileNavbarComponent } from './employer-profile-navbar/employer-profile-navbar.component';
 import { EditEmployerProfileComponent } from './edit-employer-profile/edit-employer-profile.component';
+import { SharedJobVacanciesComponent } from './shared-job-vacancies/shared-job-vacancies.component';
+import { EmployerProfileComponent } from './employer-profile/employer-profile.component';
+import { EditVacancyComponent } from './edit-vacancy/edit-vacancy.component';
 
 
 const routes:Routes=[
@@ -30,7 +32,11 @@ const routes:Routes=[
   {path:'jobseeker_signup',component:JobseekerSignupComponent},
   {path:'login',component:LoginComponent},
   {path:'jobseeker/:id',component:JobSeekerProfileComponent},
-  {path:'employer/:id',component:EmployerProfileComponent}
+  {path:'employer/:id',component:EmployerProfileComponent,children: [
+    { path: '', component: EditEmployerProfileComponent },
+    { path: 'shared', component: SharedJobVacanciesComponent }
+  ] },
+  {path:'employer/:id/shared/edit/:vid',component:EditVacancyComponent}
 ];
 @NgModule({
   declarations: [
@@ -41,9 +47,11 @@ const routes:Routes=[
     LoginComponent,
     PopUpComponent,
     JobSeekerProfileComponent,
-    EmployerProfileComponent,
     EmployerProfileNavbarComponent,
-    EditEmployerProfileComponent
+    EditEmployerProfileComponent,
+    SharedJobVacanciesComponent,
+    EmployerProfileComponent,
+    EditVacancyComponent
   ],
   imports: [
     BrowserModule,

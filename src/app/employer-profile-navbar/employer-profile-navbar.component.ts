@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./employer-profile-navbar.component.css']
 })
 export class EmployerProfileNavbarComponent {
+id:any;
+collapsed = true;
 
+ngOnInit():void{
+  this.id=localStorage.getItem('userId')
+}
 }
