@@ -58,7 +58,7 @@ export class EditVacancyComponent {
       this.jobTypeList=data;
     });
 
-    this.companyId=localStorage.getItem('userId')
+    this.companyId=sessionStorage.getItem('userId')
 
   }
   getVacancyById(id:any){

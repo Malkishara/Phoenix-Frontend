@@ -62,12 +62,14 @@ export class LoginComponent {
       this.login.Login(loginData).subscribe((res:any)=>{
         this.result=res;
 
-        localStorage.setItem('userType',JSON.stringify(this.result.user_type))
-        localStorage.setItem("userId",JSON.stringify(this.result.user_id))
-        localStorage.setItem('isLoggedin',JSON.stringify(this.result.result))
-        localStorage.setItem("token",JSON.stringify(this.result.access_token))
-        localStorage.setItem('expireAt',JSON.stringify(this.result.expires_at))
-        localStorage.setItem("expireIn",JSON.stringify(this.result.expires_in))
+
+
+        sessionStorage.setItem('userType',JSON.stringify(this.result.user_type))
+        sessionStorage.setItem("userId",JSON.stringify(this.result.user_id))
+        sessionStorage.setItem('isLoggedin',JSON.stringify(this.result.result))
+        sessionStorage.setItem("token",JSON.stringify(this.result.access_token))
+        sessionStorage.setItem('expireAt',JSON.stringify(this.result.expires_at))
+        sessionStorage.setItem("expireIn",JSON.stringify(this.result.expires_in))
 
         console.warn(this.result);
 

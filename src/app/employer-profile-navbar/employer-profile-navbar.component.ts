@@ -10,6 +10,6 @@ id:any;
 collapsed = true;
 
 ngOnInit():void{
-  this.id=localStorage.getItem('userId')
+  this.id=sessionStorage.getItem('userId')
 }
 }

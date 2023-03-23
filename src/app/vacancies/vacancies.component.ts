@@ -50,9 +50,9 @@ export class VacanciesComponent {
     this.postJobModality();
 
     //profile icon
-    this.isLoggedin=localStorage.getItem('isLoggedin');
-    this.loggedinUserType=localStorage.getItem('userType');
-    this.loggedinUserId=localStorage.getItem('userId');
+    this.isLoggedin=sessionStorage.getItem('isLoggedin');
+    this.loggedinUserType=sessionStorage.getItem('userType');
+    this.loggedinUserId=sessionStorage.getItem('userId');
 
     console.warn("User type "+this.loggedinUserType)
     console.warn("loggin "+this.isLoggedin)
@@ -250,12 +250,12 @@ this.servise.searchBySelectedData(searchData).subscribe((res)=>{
 
 logout(){
 
-        localStorage.removeItem("userId")
-        localStorage.removeItem('userType')
-        localStorage.removeItem('isLoggedin')
-        localStorage.removeItem("token")
-        localStorage.removeItem('expireAt')
-        localStorage.removeItem("expireIn")
+        sessionStorage.removeItem("userId")
+        sessionStorage.removeItem('userType')
+        sessionStorage.removeItem('isLoggedin')
+        sessionStorage.removeItem("token")
+        sessionStorage.removeItem('expireAt')
+        sessionStorage.removeItem("expireIn")
         this.isLoggedin=false;
 }
 

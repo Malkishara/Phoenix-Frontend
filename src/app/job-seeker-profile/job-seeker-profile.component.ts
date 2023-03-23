@@ -18,7 +18,7 @@ export class JobSeekerProfileComponent {
 
   jobseekerEmail:any;
   jobSeekerProfileData:any;
-  data:any;
+
 
   user:{ type: String; id: Number; } ={type: "",id:-1}
 
@@ -92,11 +92,7 @@ export class JobSeekerProfileComponent {
 
   getUserData(id:Number):void{
 
-    this.data={
-      "id":id
-    }
-    console.warn(this.data)
-    this.signup.GetProfileData(this.data).subscribe((data:any)=>{
+    this.signup.GetJobseekerDataById(id).subscribe((data:any)=>{
       this.jobSeekerProfileData=data;
       console.log(this.jobSeekerProfileData);
      this.firstName=this.jobSeekerProfileData.firstName;

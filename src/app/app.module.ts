@@ -24,6 +24,10 @@ import { EditEmployerProfileComponent } from './edit-employer-profile/edit-emplo
 import { SharedJobVacanciesComponent } from './shared-job-vacancies/shared-job-vacancies.component';
 import { EmployerProfileComponent } from './employer-profile/employer-profile.component';
 import { EditVacancyComponent } from './edit-vacancy/edit-vacancy.component';
+import { JobseekerRequestsComponent } from './jobseeker-requests/jobseeker-requests.component';
+import { AppliedJobseekerDataComponent } from './applied-jobseeker-data/applied-jobseeker-data.component';
+import { PostAJobComponent } from './post-a-job/post-a-job.component';
+
 
 
 const routes:Routes=[
@@ -34,9 +38,12 @@ const routes:Routes=[
   {path:'jobseeker/:id',component:JobSeekerProfileComponent},
   {path:'employer/:id',component:EmployerProfileComponent,children: [
     { path: '', component: EditEmployerProfileComponent },
-    { path: 'shared', component: SharedJobVacanciesComponent }
+    { path: 'shared', component: SharedJobVacanciesComponent },
+
   ] },
-  {path:'employer/:id/shared/edit/:vid',component:EditVacancyComponent}
+  {path:'employer/:id/shared/edit/:vid',component:EditVacancyComponent},
+  {path:'employer/:id/shared/request/:vid',component:JobseekerRequestsComponent},
+  {path:'employer/:id/shared/request/:vid/:jsid',component:AppliedJobseekerDataComponent}
 ];
 @NgModule({
   declarations: [
@@ -51,7 +58,10 @@ const routes:Routes=[
     EditEmployerProfileComponent,
     SharedJobVacanciesComponent,
     EmployerProfileComponent,
-    EditVacancyComponent
+    EditVacancyComponent,
+    JobseekerRequestsComponent,
+    AppliedJobseekerDataComponent,
+    PostAJobComponent
   ],
   imports: [
     BrowserModule,

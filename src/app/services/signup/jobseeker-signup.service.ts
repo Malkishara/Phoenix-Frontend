@@ -7,6 +7,7 @@ import { LoginService } from '../login/login.service';
 })
 export class JobseekerSignupService {
 
+  url='http://localhost:8080';
 
   constructor(private http:HttpClient) { }
   ngOnInit():void{
@@ -15,14 +16,17 @@ export class JobseekerSignupService {
 
 
   Signup(data:any){
-    return this.http.post("http://localhost:8080/jobseeker_signup",data,{ responseType: 'text'})
+    return this.http.post(this.url+"/jobseeker_signup",data,{ responseType: 'text'})
   }
 
-  GetProfileData(data:any){
-    return this.http.post("http://localhost:8080/jobseeker",data);
-  }
+
 
   UpdateProfileData(data:any,id:any){
-    return this.http.put("http://localhost:8080/jobseeker/"+id,data);
+    return this.http.put(this.url+"/jobseeker/"+id,data);
+  }
+
+  GetJobseekerDataById(id:any){
+    return this.http.get(this.url+"/jobseeker/"+id)
+
   }
 }

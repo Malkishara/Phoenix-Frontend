@@ -22,7 +22,8 @@ vacancySelected?:any;//for more datails
 
   ngOnInit():void{
 
-    this.companyId=localStorage.getItem('userId')
+
+    this.companyId=sessionStorage.getItem('userId')
 
     console.warn(this.companyId)
     this.getVacancyData(this.companyId);
@@ -84,6 +85,10 @@ vacancySelected?:any;//for more datails
 
   this.router.navigateByUrl("employer/"+this.companyId+"/shared/edit/"+vid);
 
+ }
+
+ showRequests(vid:any){
+  this.router.navigateByUrl("employer/"+this.companyId+"/shared/request/"+vid);
  }
 
 }

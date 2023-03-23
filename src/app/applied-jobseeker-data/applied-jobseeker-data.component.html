@@ -1,0 +1,101 @@
+
+<div class="profile" style="margin: 20px;">
+  <div class="row" >
+    <div class="col-sm-4">
+      <div class="row">
+        <div class="card" style="width: 18rem;height:18rem;display: flex;justify-content: center;align-items: center;margin: 20px;">
+          <img class="card-img-top" src="{{ jobseekerData.profilePicture }}" alt="Card image cap"style="height: 60%;width:60%; border- radius: 50%;border:2px solid black;margin-top:5%">
+          <div class="card-body">
+            <h2 class="card-title" style="text-align: center;">{{jobseekerData.firstName }} {{ jobseekerData.lastName }}</h2>
+            <h4 class="card-title" style="text-align: center;">{{ jobseekerData.position }} </h4>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 10px;">
+        <div class="col">
+          <label >Email Address:</label>
+        </div>
+        <div class="col">
+          <a href="jobseekerData.email"><input class="form-control" value="{{ jobseekerData.email }}" type="text" ></a>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 10px;">
+        <div class="col">
+          <label >Phone Number:</label>
+        </div>
+        <div class="col">
+         <input class="form-control" value="{{ jobseekerData.phone }}" type="text" >
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 10px;">
+        <div class="col">
+          <label >Linkdin:</label>
+        </div>
+        <div class="col">
+          <a href="jobseekerData.linkdin"><input class="form-control" value="{{ jobseekerData.linkdin }}" type="text" ></a>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 10px;">
+        <div class="col">
+          <label >District:</label>
+        </div>
+        <div class="col">
+          <input class="form-control" value="{{ jobseekerData.district }}" type="text" >
+        </div>
+      </div>
+      <div class="row" style="margin-top: 10px;">
+        <div class="col">
+          <label >Country:</label>
+        </div>
+        <div class="col">
+          <input class="form-control" value="{{ jobseekerData.country }}" type="text" >
+        </div>
+      </div>
+      <div class="row" style="margin-top: 10px;">
+        <div class="col"> <label >Degree:</label></div>
+          <div class="col"> <input class="form-control" value="{{ jobseekerData.degree }}" type="text" ></div>
+      </div>
+      <div class="row" style="margin-top: 10px;">
+        <div class="col"> <label >University:</label></div>
+          <div class="col"> <input class="form-control" value="{{ jobseekerData.college }}" type="text" ></div>
+      </div>
+      <div class="row" style="margin-top: 10px;">
+        <div class="col"> <label >Experience:</label></div>
+          <div class="col"> <input class="form-control" value="{{ jobseekerData.experience }}" type="text" ></div>
+      </div>
+      <div class="row" style="margin-top: 10px;">
+        <div class="col"> <label >Langulages:</label></div>
+        <div class="col">
+          <div class="row" *ngFor="let language of jobseekerData.languages" style="margin-top: 5px;"> <input class="form-control" value="{{ language.language }}" type="text" ></div>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 10px;">
+        <div class="col"> <label >Skills:</label></div>
+        <div class="col">
+          <div class="row" *ngFor="let skill of jobseekerData.skills" style="margin-top: 5px;"><input class="form-control" value="{{ skill.skill }}" type="text" ></div>
+        </div>
+
+      </div>
+      <div class="row" style="margin-top: 10px;">
+        <div class="col"> <label >Certifications:</label></div>
+        <div class="col">
+          <div class="row" *ngFor="let certification of jobseekerData.certification" style="margin-top: 5px;"> <input class="form-control" value="{{ certification.certification }}" type="text" ></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+
+      <div class="row">
+        <label >CV:</label>
+        <pdf-viewer
+             [src]=" jobseekerData.cv"
+             [render-text]="true"
+             style="display: block; height:1000px;margin-top: 10px;"> </pdf-viewer>
+      </div>
+    </div>
+  </div>
+
+</div>

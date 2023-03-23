@@ -25,8 +25,13 @@ export class EmployerServiceService {
    }
 
    updateVacancy(data:any,id:any){
-    return this.http.put("http://localhost:8080/vacancy/"+id,data);
+    return this.http.put(this.url+"/vacancy/"+id,data);
   }
+
+  getRequestsByVacancyId(id:any){
+    return this.http.get(this.url+"/request/"+id)
+   }
+
 
 
 }
