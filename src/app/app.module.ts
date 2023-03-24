@@ -30,11 +30,13 @@ import { PostAJobComponent } from './post-a-job/post-a-job.component';
 
 
 
+
 const routes:Routes=[
   {path:'',component:VacanciesComponent},
   {path:'employer_signup',component:EmployerSignupComponent},
   {path:'jobseeker_signup',component:JobseekerSignupComponent},
   {path:'login',component:LoginComponent},
+  {path:'post',component:PostAJobComponent},
   {path:'jobseeker/:id',component:JobSeekerProfileComponent},
   {path:'employer/:id',component:EmployerProfileComponent,children: [
     { path: '', component: EditEmployerProfileComponent },
@@ -76,7 +78,8 @@ const routes:Routes=[
     ReactiveFormsModule,
     PdfViewerModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+
   ],
   exports:[RouterModule],
   providers: [

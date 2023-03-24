@@ -39,6 +39,9 @@ searchByCompany(companyId:any){
 searchBySelectedData(data:any){
   return this.http.post(this.url+"/search_data",data)
 }
-
+//post a vacancy
+addVacancy(data:any){
+  return this.http.post(this.url+"/vacancy",data)
+}
 
 }

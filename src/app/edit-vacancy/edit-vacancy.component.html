@@ -32,7 +32,8 @@
               <label for="description">Job Description:</label>
             </div>
             <div class="col">
-              <input class="form-control" type="text" value="{{ jobDescription }}" name="jobDescription" (change)="changeDescription($event)">
+              <textarea class="form-control" aria-label="With textarea" type="text" value="{{ jobDescription }}" name="jobDescription" (change)="changeDescription($event)"></textarea>
+              <!-- <input class="form-control" type="text" value="{{ jobDescription }}" name="jobDescription" (change)="changeDescription($event)"> -->
             </div>
 
         </div>

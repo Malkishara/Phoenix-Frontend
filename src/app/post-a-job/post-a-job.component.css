@@ -1,0 +1,11 @@
+.vacancy{
+  width: 100%;
+    min-height: 100vh;
+    /* FLEX */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+
+}

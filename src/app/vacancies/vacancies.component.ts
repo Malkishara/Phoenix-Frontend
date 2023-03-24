@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { empty } from 'rxjs';
+import { PopUpComponent } from '../pop-up/pop-up.component';
 import { JobVacanciesService } from '../services/job-vacancies.service';
 import { LoginService } from '../services/login/login.service';
 import { JobseekerSignupService } from '../services/signup/jobseeker-signup.service';
@@ -41,7 +43,7 @@ export class VacanciesComponent {
 
 
 
-  constructor(private servise:JobVacanciesService,private loginService:LoginService,private router: Router){}
+  constructor(private servise:JobVacanciesService,private loginService:LoginService,private router: Router,private matDialogRef:MatDialog){}
 
   ngOnInit():void{
     this.postCategories();
@@ -257,6 +259,25 @@ logout(){
         sessionStorage.removeItem('expireAt')
         sessionStorage.removeItem("expireIn")
         this.isLoggedin=false;
+}
+
+openDialog(){
+  this.matDialogRef.open(PopUpComponent,{
+    data : {
+      message : 'For post a vacancy,you must be login as a Employer'
+    }
+  });
+}
+
+onClickPostAJob(){
+  console.warn(this.loggedinUserType)
+  console.warn(typeof this.loggedinUserType)
+  if(this.isLoggedin==="true" && this.loggedinUserType.includes("Employer")){
+    this.router.navigateByUrl("post");
+  }else{
+    this.router.navigateByUrl("login");
+    this.openDialog()
+  }
 }
 
 }
