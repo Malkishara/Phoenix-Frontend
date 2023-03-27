@@ -6,28 +6,22 @@
 
     <div class="card-body" style="background-color: rgb(214, 252, 252);" >
       <div class="row">
-        <div style="text-align: right;">
+        <div class="col" style="text-align: left;">
+          <h1 class="card-title" (click)="onClick(data)">{{ data.title }}</h1>
+       </div>
+        <div class="col" style="text-align: right;">
+          <a   (click)="showRequests(data.id)" class="requests" [matBadge]="numberOfRequest" matBadgeColor="warn" matBadgeSize="small" matBadgePosition="above after"><mat-icon [inline]="true" style="color: rgba(46, 5, 141, 0.74);transform: scale(1.5);">feedback</mat-icon></a>&nbsp;&nbsp;
           <a  (click)="editVacancy(data.id)" class="delete"><mat-icon [inline]="true" style="color: rgb(5, 180, 5);transform: scale(1.5);">create</mat-icon></a>&nbsp;&nbsp;
           <a class="edit" (click)="deleteVacancy(data.id)"> <mat-icon [inline]="true" style="color: rgb(168, 5, 5);transform: scale(1.5);">delete</mat-icon></a>
         </div>
       </div>
       <div class="row">
-          <div>
-             <h1 class="card-title" (click)="onClick(data)">{{ data.title }}</h1>
-          </div>
+        <div class="col-sm-3"><p>Salary Range: {{ data.salaryRange }}</p></div>
+         <div class="col-sm-3"><p>Category: {{ data.category.title }}</p></div>
+         <div class="col-sm-3"><p>Type: {{ data.type.title }}</p></div>
+         <div class="col-sm-3"><p>Modality: {{ data.modality.title }}</p></div>
       </div>
-      <div class="row">
-      <p>Salary Range: {{ data.salaryRange }}</p>
 
-      </div>
-      <div class="row">
-         <div class="col-sm-4"><p>Category: {{ data.category.title }}</p></div>
-         <div class="col-sm-4"><p>Type: {{ data.type.title }}</p></div>
-         <div class="col-sm-4"><p>Modality: {{ data.modality.title }}</p></div>
-      </div>
-      <div class="row">
-        <p>Posted: {{ data.postedDate }}</p>
-     </div>
 
      <!--start more details-->
     <div class="row" >
@@ -37,12 +31,7 @@
     </div>
     <!--end more details-->
 
-    <div class="row" style="margin-top: 10px;text-align: center;">
-      <div class="form-group">
-        <button type="submit" class="btn btn-success" style="margin: 10px;" (click)="showRequests(data.id)">Show Request</button>
 
-      </div>
-    </div>
     </div>
 
   </div>

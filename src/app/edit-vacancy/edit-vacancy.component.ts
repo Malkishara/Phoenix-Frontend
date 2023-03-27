@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PopUpComponent } from '../pop-up/pop-up.component';
@@ -12,9 +13,11 @@ import { JobVacanciesService } from '../services/job-vacancies.service';
 })
 export class EditVacancyComponent {
 
-  id:any;
-  vacancyData:any;
+  updateJob!:FormGroup;
+  submitted=false;
+
   vacancy:any;
+  vacancyData:any;
 
   jobCategory:any;
   company:any;
@@ -27,6 +30,9 @@ export class EditVacancyComponent {
   category:any;
   type:any;
 
+
+  id:any;
+  cid:any;
   companyId:any;
 
   jobCategoryList:any;
@@ -34,7 +40,7 @@ export class EditVacancyComponent {
   jobTypeList:any;
 
 
-  constructor(private matDialogRef:MatDialog,private employerService:EmployerServiceService,private vacancyService:JobVacanciesService,private route: ActivatedRoute,private router: Router){
+  constructor(private formBuilder:FormBuilder,private matDialogRef:MatDialog,private employerService:EmployerServiceService,private vacancyService:JobVacanciesService,private route: ActivatedRoute,private router: Router){
 
   }
 
@@ -58,7 +64,19 @@ export class EditVacancyComponent {
       this.jobTypeList=data;
     });
 
-    this.companyId=sessionStorage.getItem('userId')
+    this.cid=sessionStorage.getItem('userId');
+    this.companyId=parseInt(this.cid)
+
+    this.updateJob = this.formBuilder.group({
+      jobTitle:[''],
+      salaryRange:[''],
+      jobDescription:[''],
+      category:[''],
+      modality:[''],
+      type:[''],
+
+    })
+
 
   }
   getVacancyById(id:any){
@@ -121,8 +139,13 @@ this.category=event.target.value;
   }
 
   updateVacancy(){
+    this.submitted = true
+
+
+
   this.vacancy={
     "id":this.id,
+    "company":this.companyId,
    "title":this.jobTitle,
    "description":this.jobDescription,
    "salaryRange":this.salaryRange,
@@ -138,7 +161,7 @@ this.category=event.target.value;
     console.warn(res);
 
     if(res==true){
-      this.router.navigateByUrl("employer/"+this.companyId+"/shared");
+      this.router.navigateByUrl("");
       this.openDialog();
     }
   })

@@ -154,37 +154,41 @@
      <div class="row" style="margin-top: 10px;">
       <label for="">Skills:</label>
       <div class="row" *ngFor="let skill of skills;let i=index" >
-        <div class="col-9">
+        <div class="col-11">
           <input type="text" class="form-control" name="skill{{i}}" [(ngModel)]="skill.skill" style="margin-top: 10px;" >
         </div>
-        <div class="col-3" >
-          <button class="btn btn-danger" (click)="removeSkill(i)" style="margin-top: 10px;">Remove</button>
+        <div class="col-1" style="position: relative;">
+          <a  (click)="removeSkill(i)" style="position: absolute; top: 50%; transform: translateY(-50%); right: 0; cursor: pointer;">
+            <mat-icon [inline]="true" style="color: rgb(240, 8, 8); transform: scale(1.5); vertical-align: middle;">remove_circle</mat-icon>
+          </a>
         </div>
       </div>
       <div *ngIf="isSkillEmpty==true" class="text-danger">
         Skill feild can't be empty
        </div>
       <div class="row" style="display: flex;justify-content: center;align-items: center;">
-      <button class="btn btn-success" (click)="addSkill()" style="margin-top: 10px;width: 200px;">Add</button>
+      <a (click)="addSkill()" style="margin-top: 10px;width: 50px;cursor: pointer;"><mat-icon [inline]="true" style="color: rgb(6, 75, 6);transform: scale(1.5);">add_circle</mat-icon></a>
        </div>
      </div>
 
      <div class="row" style="margin-top: 10px;">
       <label for="">Certification:</label>
       <div class="row" *ngFor="let certification of jobSeekerProfileData.certification;let j=index" >
-        <div class="col-9">
+        <div class="col-11">
 
           <input type="text" class="form-control" name="cetification{{j}}" [(ngModel)]="certification.certification" style="margin-top: 10px;">
         </div>
-        <div class="col-3" >
-          <button class="btn btn-danger" (click)="removeCertification(j)" style="margin-top: 10px;">Remove</button>
+        <div class="col-1" style="position: relative;">
+          <a (click)="removeCertification(j)" style="position: absolute; top: 50%; transform: translateY(-50%); right: 0; cursor: pointer;">
+            <mat-icon [inline]="true" style="color: rgb(240, 8, 8); transform: scale(1.5); vertical-align: middle;">remove_circle</mat-icon>
+          </a>
         </div>
       </div>
       <div *ngIf="isCertificationEmpty==true" class="text-danger">
         Certification feild can't be empty
        </div>
        <div class="row" style="display: flex;justify-content: center;align-items: center;">
-        <button class="btn btn-success" (click)="addCertification()" style="margin-top: 10px;width: 200px;">Add</button>
+        <a  (click)="addCertification()" style="margin-top: 10px;width: 50px;cursor: pointer;"><mat-icon [inline]="true" style="color: rgb(6, 75, 6);transform: scale(1.5);">add_circle</mat-icon></a>
        </div>
 
 

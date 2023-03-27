@@ -27,6 +27,8 @@ import { EditVacancyComponent } from './edit-vacancy/edit-vacancy.component';
 import { JobseekerRequestsComponent } from './jobseeker-requests/jobseeker-requests.component';
 import { AppliedJobseekerDataComponent } from './applied-jobseeker-data/applied-jobseeker-data.component';
 import { PostAJobComponent } from './post-a-job/post-a-job.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 
@@ -79,7 +81,8 @@ const routes:Routes=[
     PdfViewerModule,
     MatMenuModule,
     MatButtonModule,
-
+    AngularEditorModule,
+    MatBadgeModule
   ],
   exports:[RouterModule],
   providers: [

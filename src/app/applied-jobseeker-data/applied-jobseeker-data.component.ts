@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JobseekerSignupService } from '../services/signup/jobseeker-signup.service';
+import { saveAs } from 'file-saver'
 
 @Component({
   selector: 'app-applied-jobseeker-data',
@@ -35,6 +36,17 @@ this.jobseekerData=data;
 console.warn(this.jobseekerData)
     })
 
+  }
+
+  downloadPDF() {
+    const url = this.jobseekerData.cv;
+    const filename = 'cv.pdf';
+
+    console.warn(filename)
+
+    fetch(url).then(res => res.blob()).then(blob => {
+      saveAs(blob, filename);
+    });
   }
 
 }

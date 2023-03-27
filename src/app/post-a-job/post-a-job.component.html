@@ -9,10 +9,10 @@
             <div class="form-group">
               <div class="row" style="margin-top: 10px;">
 
-                  <div class="col">
+                  <div class="col-sm-3">
                     <label for="jobTitle">Title:</label>
                   </div>
-                  <div class="col">
+                  <div class="col-sm-9">
                     <input [ngClass]="{'is-invalid':submitted && postJob.controls.jobTitle.errors}" formControlName="jobTitle" type="text" class="form-control" [(ngModel)]="jobTitle" >
                     <div *ngIf="submitted && postJob.controls.jobTitle.errors" class="text-danger">
                       <div *ngIf="submitted && postJob.controls.jobTitle.errors.required">
@@ -24,10 +24,10 @@
               </div>
               <div class="row" style="margin-top: 10px;">
 
-                  <div class="col">
+                  <div class="col-sm-3">
                     <label for="salaryRange">Salary Range:</label>
                   </div>
-                  <div class="col">
+                  <div class="col-sm-9">
                     <input [ngClass]="{'is-invalid':submitted && postJob.controls.salaryRange.errors}" formControlName="salaryRange" type="text" class="form-control" [(ngModel)]="salaryRange" >
                     <div *ngIf="submitted && postJob.controls.salaryRange.errors" class="text-danger">
                       <div *ngIf="submitted && postJob.controls.salaryRange.errors.required">
@@ -39,26 +39,27 @@
               </div>
               <div class="row" style="margin-top: 10px;">
 
-                  <div class="col">
+                  <div class="col-sm-3">
                     <label for="description">Job Description:</label>
                   </div>
-                  <div class="col">
-                    <textarea [ngClass]="{'is-invalid':submitted && postJob.controls.jobDescription.errors}" class="form-control" aria-label="With textarea" formControlName="jobDescription" [(ngModel)]="jobDescription"></textarea>
-
+                  <div class="col-sm-9">
+                    <!-- <textarea [ngClass]="{'is-invalid':submitted && postJob.controls.jobDescription.errors}" class="form-control" aria-label="With textarea" formControlName="jobDescription" [(ngModel)]="jobDescription"></textarea> -->
+                    <angular-editor [ngClass]="{'is-invalid':submitted && postJob.controls.jobDescription.errors}"  formControlName="jobDescription" [(ngModel)]="jobDescription"></angular-editor>
                     <div *ngIf="submitted && postJob.controls.jobDescription.errors" class="text-danger">
                     <div *ngIf="submitted && postJob.controls.jobDescription.errors.required">
                       Job description is required
                     </div>
                   </div>
+
                   </div>
 
               </div>
               <div class="row" style="margin-top: 10px;">
 
-                  <div class="col">
+                  <div class="col-sm-3">
                     <label for="category">Job Category:</label>
                   </div>
-                  <div class="col">
+                  <div class="col-sm-9">
                     <select class="form-control" [ngClass]="{'is-invalid':submitted && postJob.controls.category.errors}" formControlName="category" [(ngModel)]="category">
                       <option  *ngFor="let category of jobCategoryList" [value]="category.id">{{ category.title }}</option>
                     </select>
@@ -73,10 +74,10 @@
 
               <div class="row" style="margin-top: 10px;">
 
-                  <div class="col">
+                  <div class="col-sm-3">
                     <label for="modality">Job Modality:</label>
                   </div>
-                  <div class="col">
+                  <div class="col-sm-9">
                     <select class="form-control"  [ngClass]="{'is-invalid':submitted && postJob.controls.modality.errors}" formControlName="modality" [(ngModel)]="modality" >
                       <option  *ngFor="let modality of jobModalityList" [value]="modality.id">{{ modality.title }}</option>
                     </select>
@@ -90,10 +91,10 @@
             </div>
               <div class="row" style="margin-top: 10px;">
 
-                  <div class="col">
+                  <div class="col-sm-3">
                     <label for="type">Job Type:</label>
                   </div>
-                  <div class="col">
+                  <div class="col-sm-9">
                     <select class="form-control" [ngClass]="{'is-invalid':submitted && postJob.controls.type.errors}" formControlName="type" [(ngModel)]="type"  >
                       <option  *ngFor="let type of jobTypeList" [value]="type.id">{{ type.title }}</option>
                     </select>

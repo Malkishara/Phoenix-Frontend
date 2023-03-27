@@ -13,6 +13,9 @@ export class SharedJobVacanciesComponent {
 vacancyData:any;
 companyId:any;
 
+ numberOfRequest:any;
+ request:any;
+
 visible:boolean=false;//hide more details
 vacancySelected?:any;//for more datails
 
@@ -29,6 +32,8 @@ vacancySelected?:any;//for more datails
     this.getVacancyData(this.companyId);
 
 
+    // this.numRequest=4;
+
   }
 
 
@@ -40,11 +45,6 @@ vacancySelected?:any;//for more datails
     this.employerService.getVacancies(id).subscribe((data:any)=>{
       this.vacancyData=data;
       console.log(this.vacancyData);
-
-
-
-
-
 
     })
 
@@ -86,6 +86,8 @@ vacancySelected?:any;//for more datails
   this.router.navigateByUrl("employer/"+this.companyId+"/shared/edit/"+vid);
 
  }
+
+
 
  showRequests(vid:any){
   this.router.navigateByUrl("employer/"+this.companyId+"/shared/request/"+vid);

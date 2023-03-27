@@ -3,90 +3,86 @@
     <div class="card" >
       <div class="card-body" style="background-color: rgb(175, 232, 250);">
         <h1 class="card-title-center" style="text-align: center;">{{ jobTitle }}</h1>
-        <form>
+        <form (submit)="updateVacancy()" [formGroup]="updateJob">
           <div class="form-group">
-
             <div class="row" style="margin-top: 10px;">
 
-                <div class="col">
+                <div class="col-sm-3">
                   <label for="jobTitle">Title:</label>
                 </div>
-                <div class="col">
-                  <input class="form-control" type="text" value="{{ jobTitle }}" name="jobTitle"  (change)="changeTitle($event)">
+                <div class="col-sm-9">
+                  <input  formControlName="jobTitle" type="text" class="form-control" [(ngModel)]="jobTitle" value="{{ jobTitle }}">
                 </div>
 
             </div>
             <div class="row" style="margin-top: 10px;">
 
-              <div class="col">
-                <label for="salaryRange">Salary Range:</label>
-              </div>
-              <div class="col">
-                <input class="form-control" type="text" value="{{ salaryRange }}" name="salaryRange" (change)="changeSalary($event)">
-              </div>
+                <div class="col-sm-3">
+                  <label for="salaryRange">Salary Range:</label>
+                </div>
+                <div class="col-sm-9">
+                  <input formControlName="salaryRange" type="text" class="form-control" [(ngModel)]="salaryRange" value="{{ salaryRange }}">
+                </div>
 
-          </div>
-          <div class="row" style="margin-top: 10px;">
-
-            <div class="col">
-              <label for="description">Job Description:</label>
             </div>
-            <div class="col">
-              <textarea class="form-control" aria-label="With textarea" type="text" value="{{ jobDescription }}" name="jobDescription" (change)="changeDescription($event)"></textarea>
-              <!-- <input class="form-control" type="text" value="{{ jobDescription }}" name="jobDescription" (change)="changeDescription($event)"> -->
+            <div class="row" style="margin-top: 10px;">
+
+                <div class="col-sm-3">
+                  <label for="description">Job Description:</label>
+                </div>
+                <div class="col-sm-9">
+                  <angular-editor  formControlName="jobDescription" [(ngModel)]="jobDescription">{{ jobDescription }}</angular-editor>
+                </div>
+
             </div>
+            <div class="row" style="margin-top: 10px;">
 
-        </div>
-          <div class="row" style="margin-top: 10px;">
-
-            <div class="col">
-              <label for="jobCategory">Job Category:</label>
+                <div class="col-sm-3">
+                  <label for="category">Job Category:</label>
+                </div>
+                <div class="col-sm-9">
+                  <select class="form-control" formControlName="category" [(ngModel)]="category" >
+                    <option value="jobCategory.id" selected>{{ jobCategory.title }}</option>
+                    <option  *ngFor="let category of jobCategoryList" [value]="category.id">{{ category.title }}</option>
+                  </select>
             </div>
-            <div class="col">
-              <select class="form-control" (change)="changeCategory($event)" >
-                <option value="jobCategory.id">{{ jobCategory.title }}</option>
-                <option  *ngFor="let category of jobCategoryList" [value]="category.id">{{ category.title }}</option>
-              </select>
-            </div>
-
-        </div>
-        <div class="row" style="margin-top: 10px;">
-
-          <div class="col">
-            <label for="jobModality">Job Modality:</label>
-          </div>
-          <div class="col">
-            <select class="form-control"  (change)="changeModality($event)">
-              <option value="jobModality.id">{{ jobModality.title }}</option>
-              <option  *ngFor="let modality of jobModalityList" [value]="modality.id">{{ modality.title }}</option>
-            </select>
           </div>
 
-      </div>
+            <div class="row" style="margin-top: 10px;">
 
-      <div class="row" style="margin-top: 10px;">
+                <div class="col-sm-3">
+                  <label for="modality">Job Modality:</label>
+                </div>
+                <div class="col-sm-9">
+                  <select class="form-control"  formControlName="modality" [(ngModel)]="modality" >
+                    <option  value="jobModality.id" selected>{{ jobModality.title }}</option>
+                    <option  *ngFor="let modality of jobModalityList" [value]="modality.id">{{ modality.title }}</option>
+                  </select>
 
-        <div class="col">
-          <label for="jobType">Job Type:</label>
-        </div>
-        <div class="col">
-          <select class="form-control" (change)="changeType($event)" >
-            <option value="jobType.id">{{ jobType.title }}</option>
-            <option  *ngFor="let type of jobTypeList" [value]="type.id">{{ type.title }}</option>
-          </select>
-        </div>
+                </div>
+          </div>
+            <div class="row" style="margin-top: 10px;">
 
-    </div>
+                <div class="col-sm-3">
+                  <label for="type">Job Type:</label>
+                </div>
+                <div class="col-sm-9">
+                  <select class="form-control" formControlName="type" [(ngModel)]="type"  >
+                    <option  value="jobType.id" selected>{{ jobType.title }}</option>
+                    <option  *ngFor="let type of jobTypeList" [value]="type.id">{{ type.title }}</option>
+                  </select>
 
+
+            </div>
 
             <div class="row" style="margin-top: 10px;text-align: center;">
               <div class="form-group">
-                <button type="submit" class="btn btn-success" style="margin: 10px;" (click)="updateVacancy()">Update</button>
+                <button type="submit" class="btn btn-success" style="margin: 10px;">Update</button>
               </div>
             </div>
 
           </div>
-
+        </div>
         </form>
       </div>
     </div>

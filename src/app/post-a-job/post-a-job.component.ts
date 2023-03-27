@@ -28,6 +28,8 @@ export class PostAJobComponent {
   category:any;
   type:any;
 
+
+  id:any;
   companyId:any;
 
   jobCategoryList:any;
@@ -51,7 +53,8 @@ export class PostAJobComponent {
       this.jobTypeList=data;
     });
 
-    this.companyId=sessionStorage.getItem('userId');
+    this.id=sessionStorage.getItem('userId');
+    this.companyId=parseInt(this.id)
 
     this.postJob = this.formBuilder.group({
       jobTitle:['',Validators.required],
@@ -97,14 +100,14 @@ export class PostAJobComponent {
 
   console.warn(this.vacancy)
     }
-  // this.vacancyService.addVacancy(this.vacancy).subscribe((res)=>{
-  //   console.warn(res);
+  this.vacancyService.addVacancy(this.vacancy).subscribe((res)=>{
+    console.warn(res);
 
-  //   if(res==true){
-  //     this.router.navigateByUrl("");
-  //     this.openDialog();
-  //   }
-  // })
+    if(res==true){
+      this.router.navigateByUrl("");
+      this.openDialog();
+    }
+  })
   }
 
 }
