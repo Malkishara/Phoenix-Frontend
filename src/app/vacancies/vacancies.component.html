@@ -41,7 +41,7 @@
       <div class="card" style="align-items: center;">
         <div class="card-body" style="background-color: rgb(205, 238, 248);">
           <button type="button" class="btn btn-success" style="margin-bottom: 20px;width: 100%;" (click)="selectCategory(categorySelected,searchText)">Search</button>
-          <input [(ngModel)]="searchText" type="text"  placeholder="Type here to search" style="width: 100%;margin-bottom: 20px;">
+          <input [(ngModel)]="searchText" type="search"  placeholder="Type here to search" style="width: 100%;margin-bottom: 20px;">
           <h3 class="card-title">Job Categories</h3>
           <div class="row">
             <!--start of drop down list-->
@@ -146,7 +146,7 @@
         <!--start more details-->
     <div class="row" >
       <div *ngIf="data.id==vacancySelected" >
-        <p class="card-text" *ngIf="visible"style="margin-top:15px;">{{ data.description }}</p>
+        <div  *ngIf="visible"style="margin-top:15px;" [innerHTML]="data.description"></div>
       </div>
     </div>
     <!--end more details-->

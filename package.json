@@ -28,6 +28,7 @@
     "ng2-pdf-viewer": "^9.1.4",
     "ngx": "^0.0.1",
     "ngx-pagination": "^6.0.3",
+    "ngx-quill": "^20.0.1",
     "pagination": "^0.4.6",
     "popper.js": "^1.16.1",
     "quill-delta": "^5.0.0",

@@ -48,6 +48,7 @@ export class JobSeekerProfileComponent {
   //skills:{  skill: any } ={skill:""}
   skills:any[]=[];
   certifications:any[]=[];
+  certificates:any[]=[];
 
   isSkillEmpty:Boolean=false;
   isCertificationEmpty:Boolean=false;
@@ -82,6 +83,7 @@ export class JobSeekerProfileComponent {
 
     this.skills.push({skill:""});
     this.certifications.push({certification:""});
+    //this.certificates.push({certificate:""});
     //this.languages.push()
 
 
@@ -110,6 +112,7 @@ export class JobSeekerProfileComponent {
       this.languages=this.jobSeekerProfileData.languages;
       this.skills=this.jobSeekerProfileData.skills;
      this.certifications=this.jobSeekerProfileData.certification;
+     this.certificates=this.jobSeekerProfileData.certificate;
      if(this.jobSeekerProfileData.profilePicture!=null){
       this.profilePicture=this.jobSeekerProfileData.profilePicture;
      }else{
@@ -290,6 +293,23 @@ openDialog(){
   });
 }
 
+onFileSelected(event: any) {
+  if (event.target.files) {
+    const files = event.target.files;
+    for (let i = 0; i < files.length; i++) {
+      const reader = new FileReader();
+      reader.readAsDataURL(files[i]);
+      reader.onload = () => {
+        // process the uploaded file here
+        console.log(reader.result);
+        this.certificates.push({certificate:reader.result})
+      };
+    }
+  }
+  console.warn(this.certificates)
+}
+
+
 onSubmit(){
   this.submitted = true
 
@@ -319,7 +339,8 @@ onSubmit(){
      "experience":this.experience,
      "languages":this.languagesList,
      "skills":this.skills,
-     "certification":this.certifications
+     "certification":this.certifications,
+     "certificate":this.certificates
   }
   console.warn(profileData)
 
@@ -330,6 +351,16 @@ onSubmit(){
     this.openDialog()
     }
   }
-  )
+ )
 }
+
+currentSlide = 0;
+
+  prevSlide() {
+    this.currentSlide = (this.currentSlide === 0) ? (this.certificates.length - 1) : (this.currentSlide - 1);
+  }
+
+  nextSlide() {
+    this.currentSlide = (this.currentSlide === this.certificates.length - 1) ? 0 : (this.currentSlide + 1);
+  }
 }

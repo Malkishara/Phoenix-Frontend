@@ -194,6 +194,23 @@
 
      </div>
 
+     <div class="row">
+      <label for="">Certificate:</label>
+      <input type="file" multiple (change)="onFileSelected($event)"  accept="image/*">
+      <div class="row" style="margin-top: 20px;">
+        <div class="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item" *ngFor="let certificate of certificates; let i = index" [class.active]="i === currentSlide">
+              <img [src]="certificate.certificate">
+            </div>
+          </div>
+          <a class="carousel-control-prev" (click)="prevSlide()">&lsaquo;</a>
+          <a class="carousel-control-next" (click)="nextSlide()">&rsaquo;</a>
+        </div>
+
+      </div>
+     </div>
+
 
 
             <div class="row" style="margin-top: 10px;text-align: center;">

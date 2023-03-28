@@ -106,4 +106,17 @@
     </div>
   </div>
 
+  <div class="row" style="margin-top: 20px;">
+    <label for="">Certificates:</label>
+    <div class="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item" *ngFor="let certificate of certificates; let i = index" [class.active]="i === currentSlide">
+          <img [src]="certificate.certificate">
+        </div>
+      </div>
+      <a class="carousel-control-prev" (click)="prevSlide()">&lsaquo;</a>
+      <a class="carousel-control-next" (click)="nextSlide()">&rsaquo;</a>
+    </div>
+  </div>
+
 </div>

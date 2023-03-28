@@ -13,6 +13,7 @@ export class AppliedJobseekerDataComponent {
 
   id:any;
   jobseekerData:any;
+  certificates:any;
 
   constructor(private matDialogRef:MatDialog,private jobseekerService:JobseekerSignupService,private route: ActivatedRoute,private router: Router){
 
@@ -34,6 +35,7 @@ export class AppliedJobseekerDataComponent {
     this.jobseekerService.GetJobseekerDataById(id).subscribe((data)=>{
 this.jobseekerData=data;
 console.warn(this.jobseekerData)
+this.certificates=this.jobseekerData.certificate;
     })
 
   }
@@ -47,6 +49,18 @@ console.warn(this.jobseekerData)
     fetch(url).then(res => res.blob()).then(blob => {
       saveAs(blob, filename);
     });
+  }
+
+
+  //for show certificates
+  currentSlide = 0;
+
+  prevSlide() {
+    this.currentSlide = (this.currentSlide === 0) ? (this.certificates.length - 1) : (this.currentSlide - 1);
+  }
+
+  nextSlide() {
+    this.currentSlide = (this.currentSlide === this.certificates.length - 1) ? 0 : (this.currentSlide + 1);
   }
 
 }
