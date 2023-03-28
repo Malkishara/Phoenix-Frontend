@@ -29,6 +29,7 @@ import { AppliedJobseekerDataComponent } from './applied-jobseeker-data/applied-
 import { PostAJobComponent } from './post-a-job/post-a-job.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { MatBadgeModule } from '@angular/material/badge';
+import { ApplyToJobComponent } from './apply-to-job/apply-to-job.component';
 
 
 
@@ -47,7 +48,8 @@ const routes:Routes=[
   ] },
   {path:'employer/:id/shared/edit/:vid',component:EditVacancyComponent},
   {path:'employer/:id/shared/request/:vid',component:JobseekerRequestsComponent},
-  {path:'employer/:id/shared/request/:vid/:jsid',component:AppliedJobseekerDataComponent}
+  {path:'employer/:id/shared/request/:vid/:jsid',component:AppliedJobseekerDataComponent},
+  {path:'apply/:vid',component:ApplyToJobComponent}
 ];
 @NgModule({
   declarations: [
@@ -65,7 +67,8 @@ const routes:Routes=[
     EditVacancyComponent,
     JobseekerRequestsComponent,
     AppliedJobseekerDataComponent,
-    PostAJobComponent
+    PostAJobComponent,
+    ApplyToJobComponent
   ],
   imports: [
     BrowserModule,

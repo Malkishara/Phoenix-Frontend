@@ -10,9 +10,9 @@
           <h1 class="card-title" (click)="onClick(data)">{{ data.title }}</h1>
        </div>
         <div class="col" style="text-align: right;">
-          <a   (click)="showRequests(data.id)" class="requests" [matBadge]="numberOfRequest" matBadgeColor="warn" matBadgeSize="small" matBadgePosition="above after"><mat-icon [inline]="true" style="color: rgba(46, 5, 141, 0.74);transform: scale(1.5);">feedback</mat-icon></a>&nbsp;&nbsp;
-          <a  (click)="editVacancy(data.id)" class="delete"><mat-icon [inline]="true" style="color: rgb(5, 180, 5);transform: scale(1.5);">create</mat-icon></a>&nbsp;&nbsp;
-          <a class="edit" (click)="deleteVacancy(data.id)"> <mat-icon [inline]="true" style="color: rgb(168, 5, 5);transform: scale(1.5);">delete</mat-icon></a>
+          <a   (click)="showRequests(data.id)" class="requests" [matBadge]="data.numOfRequests" matBadgeColor="warn" matBadgeSize="small" matBadgePosition="above after"><mat-icon [inline]="true" style="color: rgba(46, 5, 141, 0.74);transform: scale(1.5);">feedback</mat-icon></a>&nbsp;&nbsp;
+          <a  (click)="editVacancy(data.id)" class="delete"><mat-icon [inline]="true" style="color: rgb(5, 146, 5);transform: scale(1.5);">create</mat-icon></a>&nbsp;&nbsp;
+          <a class="edit" (click)="deleteVacancy(data.id)"> <mat-icon [inline]="true" style="color: rgb(241, 7, 7);transform: scale(1.5);">delete</mat-icon></a>
         </div>
       </div>
       <div class="row">
@@ -26,7 +26,7 @@
      <!--start more details-->
     <div class="row" >
       <div *ngIf="data.id==vacancySelected" >
-        <p class="card-text" *ngIf="visible"style="margin-top:15px;">{{ data.description }}</p>
+        <div  *ngIf="visible"style="margin-top:15px;" [innerHTML]="data.description"></div>
       </div>
     </div>
     <!--end more details-->

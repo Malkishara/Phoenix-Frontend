@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { PopUpComponent } from '../pop-up/pop-up.component';
 import { EmployerServiceService } from '../services/employer-service.service';
+import { JobseekerSignupService } from '../services/signup/jobseeker-signup.service';
 
 @Component({
   selector: 'app-shared-job-vacancies',
@@ -92,5 +93,7 @@ vacancySelected?:any;//for more datails
  showRequests(vid:any){
   this.router.navigateByUrl("employer/"+this.companyId+"/shared/request/"+vid);
  }
+
+
 
 }

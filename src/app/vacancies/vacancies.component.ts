@@ -269,6 +269,14 @@ openDialog(){
   });
 }
 
+openDialogforJobseeker(){
+  this.matDialogRef.open(PopUpComponent,{
+    data : {
+      message : 'For apply for a vacancy,you must be login as a Jobseeker'
+    }
+  });
+}
+
 onClickPostAJob(){
   console.warn(this.loggedinUserType)
   console.warn(typeof this.loggedinUserType)
@@ -277,6 +285,16 @@ onClickPostAJob(){
   }else{
     this.router.navigateByUrl("login");
     this.openDialog()
+  }
+}
+
+//apply for job
+applyForJob(id:any){
+  if(this.isLoggedin==="true" && this.loggedinUserType.includes("JobSeeker")){
+    this.router.navigateByUrl("apply/"+id);
+  }else{
+    this.router.navigateByUrl("login");
+    this.openDialogforJobseeker()
   }
 }
 
