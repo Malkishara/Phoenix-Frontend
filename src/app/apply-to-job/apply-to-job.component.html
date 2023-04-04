@@ -1,25 +1,26 @@
-<div class="profile" style="">
- <div class="row">
-  <div class="col-sm-11" style="text-align: center;"><h1>Apply for Job</h1></div>
-  <div class="col-sm-1" style="text-align: center;"> <button type="submit" class="btn btn-success" style="margin: 10px;" (click)="applyForJob()">Apply</button></div>
+<div class="profile">
+  <div class="card" style="background-color: rgba(255, 255, 255, 0.267);">
+ <div class="row" style="margin: 10px">
+  <div class="col-sm-11" style="text-align: center;"><h1 class="label">Apply for Job</h1></div>
+  <div class="col-sm-1" style="text-align: center;"> <button type="submit" class="btn" style="border-radius: 20px;background-color: rgba(51, 8, 209, 0.219);color: white;" (click)="applyForJob()">APPLY</button></div>
  </div>
 
   <div class="profile_data">
     <div class="row">
       <div class="col-sm-4">
-        <div class="card" style="width: 18rem;height:18rem;display: flex;justify-content: center;align-items: center;margin: 20px;">
+        <div class="card" style="width: 18rem;height:18rem;display: flex;justify-content: center;align-items: center;margin: 20px;background-color: rgba(255, 255, 255, 0.425);">
           <img class="card-img-top" src="{{ profilePicture }}" alt="Card image cap"style="height: 60%;width:60%; border- radius: 50%;border:2px solid black;margin-top:5%">
           <div class="card-body">
             <h2 class="card-title" style="text-align: center;">{{ firstName }} {{ lastName }}</h2>
             <h4 class="card-title" style="text-align: center;">{{ position }} </h4>
           </div>
         </div>
-        <div class="row" style="margin-top: 10px;">
+        <div class="row" style="margin-top: 10px;margin-left: 0;">
           <div >
-             <label >Edit Profile Picture:</label>
+             <label class="label">Edit Profile Picture:</label>
            </div>
            <div >
-             <input class="form-control" type="file" value="{{ profilePicture }}" name="profilePicture" (change)="onSelectImage($event)"  accept="image/*">
+             <input class="form-control" type="file" value="{{ profilePicture }}" name="profilePicture" (change)="onSelectImage($event)"  accept="image/*" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;margin-left: 0px;">
             </div>
          </div>
         </div>
@@ -29,19 +30,19 @@
             <div class="row" style="margin-top: 10px;">
               <div class="col">
                 <div class="col">
-                  <label >First Name:</label>
+                  <label class="label">First Name:</label>
                 </div>
                 <div class="col" >
-                  <input class="form-control" type="text" value="{{ firstName }}" name="firstName" (change)="changeFirstName($event)">
+                  <input class="form-control" type="text" value="{{ firstName }}" name="firstName" (change)="changeFirstName($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
 
                 </div>
               </div>
               <div class="col">
                 <div class="col">
-                  <label>Last Name:</label>
+                  <label class="label">Last Name:</label>
                 </div>
                 <div class="col">
-                  <input class="form-control" type="text" value="{{ lastName }}" name="lastName" (change)="changeLastName($event)">
+                  <input class="form-control" type="text" value="{{ lastName }}" name="lastName" (change)="changeLastName($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
                 </div>
               </div>
 
@@ -50,52 +51,52 @@
 
          <div class="row" style="margin-top: 10px;">
 
-             <label >Location:</label>
+             <label class="label">Location:</label>
 
            <div class="col">
             <label >District:</label>
-             <input class="form-control" type="text" value="{{ district }}"  name="district" (change)="changeDistrict($event)">
+             <input class="form-control" type="text" value="{{ district }}"  name="district" (change)="changeDistrict($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
            </div>
            <div class="col">
-            <label >Country:</label>
-             <input class="form-control" type="text" value="{{ country }}"  name="country" (change)="changeCountry($event)">
+            <label class="label">Country:</label>
+             <input class="form-control" type="text" value="{{ country }}"  name="country" (change)="changeCountry($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
            </div>
          </div>
          <div class="row" style="margin-top: 10px;">
-          <label >Contact Info:</label>
+          <label class="label">Contact Info:</label>
           <div class="col">
-             <label >Email:</label>
-             <input class="form-control" type="text" value="{{ email }}" name="email" (change)="changeEmail($event)">
+             <label class="label">Email:</label>
+             <input class="form-control" type="text" value="{{ email }}" name="email" (change)="changeEmail($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
            </div>
            <div class="col">
-            <label >Phone:</label>
-            <input class="form-control" type="text" value="{{ phone }}"  name="phone" (change)="changePhone($event)">
+            <label class="label">Phone:</label>
+            <input class="form-control" type="text" value="{{ phone }}"  name="phone" (change)="changePhone($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
           </div>
          </div>
          <div class="row" style="margin-top: 10px;">
           <div class="col">
-             <label >Position:</label>
+             <label class="label">Position:</label>
            </div>
            <div class="col">
-             <input class="form-control" type="text" value="{{ position }}"  name="position" (change)="changePosition($event)">
+             <input class="form-control" type="text" value="{{ position }}"  name="position" (change)="changePosition($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
            </div>
          </div>
          <div class="row" style="margin-top: 10px;">
           <div class="col">
-             <label >Linkdin:</label>
+             <label class="label">Linkdin:</label>
            </div>
            <div class="col">
-             <input class="form-control" type="text" value="{{ linkdin }}"  name="linkdin" (change)="changeLinkdin($event)">
+             <input class="form-control" type="text" value="{{ linkdin }}"  name="linkdin" (change)="changeLinkdin($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
            </div>
          </div>
 
          <div class="row" style="margin-top: 10px;">
           <div class="row">
             <div class="col">
-              <label >CV:</label>
+              <label class="label">CV:</label>
             </div>
             <div class="col">
-              <input class="form-control" (change)="onSelectCv($event)" type="file" accept=".doc,.docx,.pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="margin-top: 10px;">
+              <input class="form-control" (change)="onSelectCv($event)" type="file" accept=".doc,.docx,.pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="margin-top: 10px;background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;margin-left: 10px;">
 
             </div>
           </div>
@@ -108,16 +109,16 @@
 
          </div>
          <div class="row" style="margin-top: 10px;">
-             <label >Education Qualification:</label>
+             <label class="label">Education Qualification:</label>
            <div class="col">
             <div class="row" style="margin-top: 10px;">
               <div class="col">
-                <label for="name">Degree:</label>
-                <input  class="form-control" type="text" value="{{degree }}" name="degree" (change)="changeDegree($event)">
+                <label class="label">Degree:</label>
+                <input  class="form-control" type="text" value="{{degree }}" name="degree" (change)="changeDegree($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
               </div>
             <div class="col">
-               <label for="name">College:</label>
-               <input  class="form-control" type="text" value="{{ college }}"  name="college" (change)="changeCollege($event)">
+               <label class="label">College:</label>
+               <input  class="form-control" type="text" value="{{ college }}"  name="college" (change)="changeCollege($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
              </div>
            </div>
 
@@ -127,10 +128,10 @@
          <div class="row" style="margin-top: 10px;">
 
            <div class="col">
-             <label for="name">Work Experince:</label>
+             <label class="label">Work Experince:</label>
            </div>
          <div class="col">
-          <select class="form-control"  (change)="changeExperience($event)">
+          <select class="form-control"  (change)="changeExperience($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
             <option value="null">{{ experience }}</option>
             <option  *ngFor="let experience of experienceList" [value]="experience.title">{{ experience.title }}</option>
           </select>
@@ -139,13 +140,13 @@
           <div class="row" style="margin-top: 10px;">
 
             <div class="col">
-              <label >Languages:</label>
+              <label class="label">Languages:</label>
             </div>
           <div class="col">
             <div class="languages" *ngFor="let language of languagesList" >
 
               <input  class="form-check-input" type="checkbox"  id="flexCheckDefault" [value]="language?.id"
-              [checked]="language?.select" (change)="selectedLanguages($event)" >&nbsp;
+              [checked]="language?.select" (change)="selectedLanguages($event)" style="background-color: rgba(255, 255, 255, 0.425);">&nbsp;
               <label class="form-check-label" for="flexCheckChecked" >
                 {{ language.language }}
               </label>
@@ -155,10 +156,10 @@
       </div>
 
      <div class="row" style="margin-top: 10px;">
-      <label for="">Skills:</label>
+      <label class="label">Skills:</label>
       <div class="row" *ngFor="let skill of skills;let i=index" >
         <div class="col-11">
-          <input type="text" class="form-control" name="skill{{i}}" [(ngModel)]="skill.skill" style="margin-top: 10px;" >
+          <input type="text" class="form-control" name="skill{{i}}" [(ngModel)]="skill.skill" style="margin-top: 10px;background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
         </div>
         <div class="col-1" style="position: relative;">
           <a  (click)="removeSkill(i)" style="position: absolute; top: 50%; transform: translateY(-50%); right: 0; cursor: pointer;">
@@ -175,11 +176,11 @@
      </div>
 
      <div class="row" style="margin-top: 10px;">
-      <label for="">Certification:</label>
+      <label class="label">Certification:</label>
       <div class="row" *ngFor="let certification of jobSeekerProfileData.certification;let j=index" >
         <div class="col-11">
 
-          <input type="text" class="form-control" name="cetification{{j}}" [(ngModel)]="certification.certification" style="margin-top: 10px;">
+          <input type="text" class="form-control" name="cetification{{j}}" [(ngModel)]="certification.certification" style="margin-top: 10px;background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;" >
         </div>
         <div class="col-1" style="position: relative;">
           <a (click)="removeCertification(j)" style="position: absolute; top: 50%; transform: translateY(-50%); right: 0; cursor: pointer;">
@@ -198,8 +199,8 @@
      </div>
 
      <div class="row">
-      <label for="">Certificate:</label>
-      <input type="file" multiple (change)="onFileSelected($event)"  accept="image/*">
+      <label class="label">Certificate:</label>
+      <input class="form-control" type="file" multiple (change)="onFileSelected($event)"  accept="image/*" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
       <div class="row" style="margin-top: 20px;">
         <div class="carousel">
           <div class="carousel-inner">
@@ -215,14 +216,6 @@
      </div>
 
 
-
-            <div class="row" style="margin-top: 10px;text-align: center;">
-              <div class="form-group">
-                <button type="submit" class="btn btn-success" style="margin: 10px;" (click)="onSubmit()">Update Profile</button>
-
-              </div>
-            </div>
-
           </div>
 
         </form>
@@ -232,7 +225,12 @@
       </div>
 
     </div>
+    <div class="row" style="margin-top: 10px;text-align: center;">
+      <div class="form-group">
+        <button type="submit" class="btn " style="border-radius: 20px;width: 60%;background-color: rgba(51, 8, 209, 0.219);color: white;" (click)="onSubmit()">UPDATE PROFILE</button>
 
+      </div>
+    </div>
   </div>
-
+</div>
 </div>

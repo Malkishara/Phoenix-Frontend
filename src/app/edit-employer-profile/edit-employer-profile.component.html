@@ -2,58 +2,58 @@
 
 <div class="employer">
   <div >
-    <div class="card" >
-      <div class="card-body" style="background-color: rgb(175, 232, 250);">
-        <h1 class="card-title-center" style="text-align: center;">Employer Profile</h1>
+    <div class="card" style="background-color: rgba(255, 255, 255, 0.137);">
+      <div class="card-body">
+        <h1 class="card-title-center" style="text-align: center;color: white;">Employer Profile</h1>
         <form>
           <div class="form-group">
             <div class="row" style="margin-top: 10px;">
 
-              <div class="col">
+              <div class="col-sm-4">
                 <img src="{{ logo }}" style="height: 60%;width:60%; ">
               </div>
-              <div class="col">
-                <input class="form-control" type="file" value="{{ logo }}" name="logo"  accept="image/*" (change)="changeLogo($event)">
+              <div class="col-sm-8">
+                <input class="form-control" type="file" value="{{ logo }}" name="logo"  accept="image/*" (change)="changeLogo($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
               </div>
 
           </div>
             <div class="row" style="margin-top: 10px;">
 
-                <div class="col">
-                  <label for="companyName">Company Name:</label>
+                <div class="col-sm-4">
+                  <label for="companyName"  class="label">Company Name:</label>
                 </div>
-                <div class="col">
-                  <input class="form-control" type="text" value="{{ name }}" name="name" (change)="changeName($event)">
+                <div class="col-sm-8">
+                  <input class="form-control" type="text" value="{{ name }}" name="name" (change)="changeName($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
                 </div>
 
             </div>
             <div class="row" style="margin-top: 10px;">
 
-              <div class="col">
-                <label for="address">Address:</label>
+              <div class="col-sm-4">
+                <label for="address"  class="label">Address:</label>
               </div>
-              <div class="col">
-                <input class="form-control" type="text" value="{{ address }}" name="address" (change)="changeAddress($event)">
+              <div class="col-sm-8">
+                <input class="form-control" type="text" value="{{ address }}" name="address" (change)="changeAddress($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
               </div>
 
           </div>
           <div class="row" style="margin-top: 10px;">
 
-            <div class="col">
-              <label for="email">Email Address:</label>
+            <div class="col-sm-4">
+              <label for="email"  class="label">Email Address:</label>
             </div>
-            <div class="col">
-              <input class="form-control" type="text" value="{{ email }}" name="email" (change)="changeEmail($event)">
+            <div class="col-sm-8">
+              <input class="form-control" type="text" value="{{ email }}" name="email" (change)="changeEmail($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
             </div>
 
         </div>
         <div class="row" style="margin-top: 10px;">
 
-          <div class="col">
-            <label for="phone">Phone Number:</label>
+          <div class="col-sm-4">
+            <label for="phone"  class="label">Phone Number:</label>
           </div>
-          <div class="col">
-            <input class="form-control" type="text" value="{{ phone }}" name="phone" (change)="changePhone($event)">
+          <div class="col-sm-8">
+            <input class="form-control" type="text" value="{{ phone }}" name="phone" (change)="changePhone($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
           </div>
 
       </div>
@@ -61,7 +61,7 @@
 
             <div class="row" style="margin-top: 10px;text-align: center;">
               <div class="form-group">
-                <button type="submit" class="btn btn-success" style="margin: 10px;" (click)="onSubmit()">Update</button>
+                <button type="submit" class="btn" style="border-radius: 20px;width: 100%;background-color: rgba(51, 8, 209, 0.219);color: white;" (click)="onSubmit()">Update Profile</button>
               </div>
             </div>
 

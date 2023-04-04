@@ -30,6 +30,8 @@ import { PostAJobComponent } from './post-a-job/post-a-job.component';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ApplyToJobComponent } from './apply-to-job/apply-to-job.component';
+import { DialogBoxComponent } from './dialog-box/dialog-box.component';
+import { UnsuccessPopupComponent } from './unsuccess-popup/unsuccess-popup.component';
 
 
 
@@ -68,7 +70,9 @@ const routes:Routes=[
     JobseekerRequestsComponent,
     AppliedJobseekerDataComponent,
     PostAJobComponent,
-    ApplyToJobComponent
+    ApplyToJobComponent,
+    DialogBoxComponent,
+    UnsuccessPopupComponent
   ],
   imports: [
     BrowserModule,

@@ -1,88 +1,89 @@
 
 <div class="profile" style="margin: 20px;">
+  <div class="card" style="background-color: rgba(255, 255, 255, 0.137);">
   <div class="row" >
     <div class="col-sm-4">
       <div class="row">
-        <div class="card" style="width: 18rem;height:18rem;display: flex;justify-content: center;align-items: center;margin: 20px;">
-          <img class="card-img-top" src="{{ jobseekerData.profilePicture }}" alt="Card image cap"style="height: 60%;width:60%; border- radius: 50%;border:2px solid black;margin-top:5%">
+        <div class="card" style="width: 18rem;height:18rem;display: flex;justify-content: center;align-items: center;margin: 20px;background-color: rgba(255, 255, 255, 0.425);">
+          <img class="card-img-top" src="{{ profilePicture }}" alt="Card image cap"style="height: 60%;width:60%; border- radius: 50%;border:2px solid black;margin-top:5%">
           <div class="card-body">
             <h2 class="card-title" style="text-align: center;">{{jobseekerData.firstName }} {{ jobseekerData.lastName }}</h2>
             <h4 class="card-title" style="text-align: center;">{{ jobseekerData.position }} </h4>
           </div>
         </div>
       </div>
-      <div class="row" style="margin-top: 10px;">
+      <div class="row" style="margin-top: 10px;margin-left: 0px;">
         <div class="col">
-          <label >Email Address:</label>
+          <label class="label">Email Address:</label>
         </div>
         <div class="col">
-          <a href="jobseekerData.email"><input class="form-control" value="{{ jobseekerData.email }}" type="text" ></a>
-        </div>
-      </div>
-
-      <div class="row" style="margin-top: 10px;">
-        <div class="col">
-          <label >Phone Number:</label>
-        </div>
-        <div class="col">
-         <input class="form-control" value="{{ jobseekerData.phone }}" type="text" >
+          <a href="jobseekerData.email"><input class="form-control" value="{{ jobseekerData.email }}" type="text" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;"></a>
         </div>
       </div>
 
-      <div class="row" style="margin-top: 10px;">
+      <div class="row" style="margin-top: 10px;margin-left: 0px;">
         <div class="col">
-          <label >Linkdin:</label>
+          <label class="label">Phone Number:</label>
         </div>
         <div class="col">
-          <a href="jobseekerData.linkdin"><input class="form-control" value="{{ jobseekerData.linkdin }}" type="text" ></a>
+         <input class="form-control" value="{{ jobseekerData.phone }}" type="text" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;" >
         </div>
       </div>
 
-      <div class="row" style="margin-top: 10px;">
+      <div class="row" style="margin-top: 10px;margin-left: 0px;">
         <div class="col">
-          <label >District:</label>
+          <label class="label">Linkdin:</label>
         </div>
         <div class="col">
-          <input class="form-control" value="{{ jobseekerData.district }}" type="text" >
+          <a href="jobseekerData.linkdin"><input class="form-control" value="{{ jobseekerData.linkdin }}" type="text" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;"></a>
         </div>
       </div>
-      <div class="row" style="margin-top: 10px;">
+
+      <div class="row" style="margin-top: 10px;margin-left: 0px;">
         <div class="col">
-          <label >Country:</label>
+          <label class="label">District:</label>
         </div>
         <div class="col">
-          <input class="form-control" value="{{ jobseekerData.country }}" type="text" >
+          <input class="form-control" value="{{ jobseekerData.district }}" type="text" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
         </div>
       </div>
-      <div class="row" style="margin-top: 10px;">
-        <div class="col"> <label >Degree:</label></div>
-          <div class="col"> <input class="form-control" value="{{ jobseekerData.degree }}" type="text" ></div>
-      </div>
-      <div class="row" style="margin-top: 10px;">
-        <div class="col"> <label >University:</label></div>
-          <div class="col"> <input class="form-control" value="{{ jobseekerData.college }}" type="text" ></div>
-      </div>
-      <div class="row" style="margin-top: 10px;">
-        <div class="col"> <label >Experience:</label></div>
-          <div class="col"> <input class="form-control" value="{{ jobseekerData.experience }}" type="text" ></div>
-      </div>
-      <div class="row" style="margin-top: 10px;">
-        <div class="col"> <label >Langulages:</label></div>
+      <div class="row" style="margin-top: 10px;margin-left: 0px;">
         <div class="col">
-          <div class="row" *ngFor="let language of jobseekerData.languages" style="margin-top: 5px;"> <input class="form-control" value="{{ language.language }}" type="text" ></div>
+          <label class="label">Country:</label>
+        </div>
+        <div class="col">
+          <input class="form-control" value="{{ jobseekerData.country }}" type="text" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
         </div>
       </div>
-      <div class="row" style="margin-top: 10px;">
-        <div class="col"> <label >Skills:</label></div>
+      <div class="row" style="margin-top: 10px;margin-left: 0px;">
+        <div class="col"> <label class="label">Degree:</label></div>
+          <div class="col"> <input class="form-control" value="{{ jobseekerData.degree }}" type="text" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;"></div>
+      </div>
+      <div class="row" style="margin-top: 10px;margin-left: 0px;">
+        <div class="col"> <label class="label">University:</label></div>
+          <div class="col"> <input class="form-control" value="{{ jobseekerData.college }}" type="text" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;"></div>
+      </div>
+      <div class="row" style="margin-top: 10px;margin-left: 0px;">
+        <div class="col"> <label class="label">Experience:</label></div>
+          <div class="col"> <input class="form-control" value="{{ jobseekerData.experience }}" type="text" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;"></div>
+      </div>
+      <div class="row" style="margin-top: 10px;margin-left: 0px;">
+        <div class="col"> <label class="label">Langulages:</label></div>
         <div class="col">
-          <div class="row" *ngFor="let skill of jobseekerData.skills" style="margin-top: 5px;"><input class="form-control" value="{{ skill.skill }}" type="text" ></div>
+          <div  *ngFor="let language of jobseekerData.languages" style="margin-top: 5px;"> <input class="form-control" value="{{ language.language }}" type="text" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;"></div>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 10px;margin-left: 0px;">
+        <div class="col"> <label class="label">Skills:</label></div>
+        <div class="col">
+          <div  *ngFor="let skill of jobseekerData.skills" style="margin-top: 5px;"><input class="form-control" value="{{ skill.skill }}" type="text" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;" ></div>
         </div>
 
       </div>
-      <div class="row" style="margin-top: 10px;">
-        <div class="col"> <label >Certifications:</label></div>
+      <div class="row" style="margin-top: 10px;margin-left: 0px;">
+        <div class="col"> <label class="label">Certifications:</label></div>
         <div class="col">
-          <div class="row" *ngFor="let certification of jobseekerData.certification" style="margin-top: 5px;"> <input class="form-control" value="{{ certification.certification }}" type="text" ></div>
+          <div  *ngFor="let certification of jobseekerData.certification" style="margin-top: 5px;"> <input class="form-control" value="{{ certification.certification }}" type="text" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;"></div>
         </div>
       </div>
     </div>
@@ -90,14 +91,14 @@
 
 
         <div class="row">
-          <div class="col"><label >CV:</label></div>
-        <div class="col" style="text-align: right;"><a style="cursor: pointer;" (click)="downloadPDF()" ><mat-icon style="color: rgb(5, 170, 5)">arrow_downward</mat-icon></a></div>
+          <div class="col"><label class="label">CV:</label></div>
+        <div class="col" style="text-align: right;"><a style="cursor: pointer;" (click)="downloadPDF()" ><mat-icon [inline]="true" style="transform: scale(2);color: rgb(255, 255, 255);margin-right: 20px;">arrow_downward</mat-icon></a></div>
         </div>
         <div class="row">
           <pdf-viewer
              [src]=" jobseekerData.cv"
              [render-text]="true"
-             style="display: block; height:1000px;margin-top: 10px;"> </pdf-viewer>
+             style="display: block; height:1000px;width: 95%; margin-top: 10px;"> </pdf-viewer>
         </div>
 
 
@@ -106,17 +107,17 @@
     </div>
   </div>
 
-  <div class="row" style="margin-top: 20px;">
-    <label for="">Certificates:</label>
-    <div class="carousel">
+  <div class="row" style="margin-top: 20px;margin-left: 0px;" *ngIf="showCarousel">
+    <label class="label">Certificates:</label>
+    <div class="carousel" style="height: 600px;width: 500px;">
       <div class="carousel-inner">
-        <div class="carousel-item" *ngFor="let certificate of certificates; let i = index" [class.active]="i === currentSlide">
-          <img [src]="certificate.certificate">
+        <div class="carousel-item" *ngFor="let certificate of certificates; let i = index" [class.active]="i === currentSlide" >
+          <img [src]="certificate.certificate" >
         </div>
       </div>
       <a class="carousel-control-prev" (click)="prevSlide()">&lsaquo;</a>
       <a class="carousel-control-next" (click)="nextSlide()">&rsaquo;</a>
     </div>
   </div>
-
+</div>
 </div>

@@ -53,6 +53,8 @@ export class JobSeekerProfileComponent {
   isSkillEmpty:Boolean=false;
   isCertificationEmpty:Boolean=false;
 
+  showCarousel=false;
+
   constructor(private signup:JobseekerSignupService,private loginService:LoginService,private route:ActivatedRoute,private matDialogRef:MatDialog,private router: Router){
 
   }
@@ -113,6 +115,11 @@ export class JobSeekerProfileComponent {
       this.skills=this.jobSeekerProfileData.skills;
      this.certifications=this.jobSeekerProfileData.certification;
      this.certificates=this.jobSeekerProfileData.certificate;
+     if(this.certificates.length!=0){
+      this.showCarousel=true;
+    }else{
+      this.showCarousel=false;
+    }
      if(this.jobSeekerProfileData.profilePicture!=null){
       this.profilePicture=this.jobSeekerProfileData.profilePicture;
      }else{

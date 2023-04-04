@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { PopUpComponent } from '../pop-up/pop-up.component';
 import { EmployerServiceService } from '../services/employer-service.service';
 import { JobseekerSignupService } from '../services/signup/jobseeker-signup.service';
+import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 
 @Component({
   selector: 'app-shared-job-vacancies',
@@ -60,26 +61,29 @@ vacancySelected?:any;//for more datails
 
  }
 
- openDialog(){
-  this.matDialogRef.open(PopUpComponent,{
-    data : {
-      message : 'Deleted'
+
+
+openConfirmBox(id:any){
+  this.matDialogRef.open(DialogBoxComponent,{
+    data:{
+      id:id
     }
   });
 }
-
  deleteVacancy(id:any){
 
-  if(confirm('Are you sure, you want to delete this vacancy ?')){
-    this.employerService.deleteVacancy(id).subscribe((res)=>{
-      console.warn(res);
+this.openConfirmBox(id);
 
-      if(res==true){
-    this.openDialog();
-    this.getVacancyData(this.companyId);
-      }
-    })
-   }
+  // if(confirm('Are you sure, you want to delete this vacancy ?')){
+  //   this.employerService.deleteVacancy(id).subscribe((res)=>{
+  //     console.warn(res);
+
+  //     if(res==true){
+  //   this.openDialog();
+  //   this.getVacancyData(this.companyId);
+  //     }
+  //   })
+  //  }
  }
 
  editVacancy(vid:any){

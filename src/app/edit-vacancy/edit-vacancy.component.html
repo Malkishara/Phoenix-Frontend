@@ -1,36 +1,39 @@
 <div class="vacancy">
+  <div style="text-align: center;">
+    <h1 class="label">Edit Vacancy</h1>
+  </div>
   <div >
-    <div class="card" >
-      <div class="card-body" style="background-color: rgb(175, 232, 250);">
-        <h1 class="card-title-center" style="text-align: center;">{{ jobTitle }}</h1>
+    <div class="card" style="background-color: rgba(255, 255, 255, 0.137);">
+      <div class="card-body" >
+        <h1 class="card-title-center" style="text-align: center;color: white;">{{ jobTitle }}</h1>
         <form (submit)="updateVacancy()" [formGroup]="updateJob">
           <div class="form-group">
             <div class="row" style="margin-top: 10px;">
 
                 <div class="col-sm-3">
-                  <label for="jobTitle">Title:</label>
+                  <label for="jobTitle" class="label">Title:</label>
                 </div>
                 <div class="col-sm-9">
-                  <input  formControlName="jobTitle" type="text" class="form-control" [(ngModel)]="jobTitle" value="{{ jobTitle }}">
+                  <input  formControlName="jobTitle" type="text" class="form-control" [(ngModel)]="jobTitle" value="{{ jobTitle }}" style="background-color: rgba(255, 255, 255, 0.425);">
                 </div>
 
             </div>
             <div class="row" style="margin-top: 10px;">
 
                 <div class="col-sm-3">
-                  <label for="salaryRange">Salary Range:</label>
+                  <label for="salaryRange" class="label">Salary Range:</label>
                 </div>
                 <div class="col-sm-9">
-                  <input formControlName="salaryRange" type="text" class="form-control" [(ngModel)]="salaryRange" value="{{ salaryRange }}">
+                  <input  formControlName="salaryRange" type="text" class="form-control" [(ngModel)]="salaryRange" value="{{ salaryRange }}" style="background-color: rgba(255, 255, 255, 0.425);">
                 </div>
 
             </div>
             <div class="row" style="margin-top: 10px;">
 
                 <div class="col-sm-3">
-                  <label for="description">Job Description:</label>
+                  <label for="description" class="label">Job Description:</label>
                 </div>
-                <div class="col-sm-9">
+                <div class="col-sm-9" >
                   <angular-editor  formControlName="jobDescription" [(ngModel)]="jobDescription">{{ jobDescription }}</angular-editor>
                 </div>
 
@@ -38,10 +41,10 @@
             <div class="row" style="margin-top: 10px;">
 
                 <div class="col-sm-3">
-                  <label for="category">Job Category:</label>
+                  <label for="category" class="label">Job Category:</label>
                 </div>
                 <div class="col-sm-9">
-                  <select class="form-control" formControlName="category" [(ngModel)]="category" >
+                  <select class="form-control" formControlName="category" [(ngModel)]="category"style="background-color: rgba(255, 255, 255, 0.425);" >
                     <option value="jobCategory.id" selected>{{ jobCategory.title }}</option>
                     <option  *ngFor="let category of jobCategoryList" [value]="category.id">{{ category.title }}</option>
                   </select>
@@ -51,10 +54,10 @@
             <div class="row" style="margin-top: 10px;">
 
                 <div class="col-sm-3">
-                  <label for="modality">Job Modality:</label>
+                  <label for="modality" class="label">Job Modality:</label>
                 </div>
                 <div class="col-sm-9">
-                  <select class="form-control"  formControlName="modality" [(ngModel)]="modality" >
+                  <select class="form-control"  formControlName="modality" [(ngModel)]="modality"style="background-color: rgba(255, 255, 255, 0.425);" >
                     <option  value="jobModality.id" selected>{{ jobModality.title }}</option>
                     <option  *ngFor="let modality of jobModalityList" [value]="modality.id">{{ modality.title }}</option>
                   </select>
@@ -64,10 +67,10 @@
             <div class="row" style="margin-top: 10px;">
 
                 <div class="col-sm-3">
-                  <label for="type">Job Type:</label>
+                  <label for="type" class="label">Job Type:</label>
                 </div>
                 <div class="col-sm-9">
-                  <select class="form-control" formControlName="type" [(ngModel)]="type"  >
+                  <select class="form-control" formControlName="type" [(ngModel)]="type" style="background-color: rgba(255, 255, 255, 0.425);" >
                     <option  value="jobType.id" selected>{{ jobType.title }}</option>
                     <option  *ngFor="let type of jobTypeList" [value]="type.id">{{ type.title }}</option>
                   </select>
@@ -77,7 +80,7 @@
 
             <div class="row" style="margin-top: 10px;text-align: center;">
               <div class="form-group">
-                <button type="submit" class="btn btn-success" style="margin: 10px;">Update</button>
+                <button type="submit"  class="btn " style="border-radius: 20px;width: 100%;background-color: rgba(51, 8, 209, 0.219);color: white;">UPDATE</button>
               </div>
             </div>
 

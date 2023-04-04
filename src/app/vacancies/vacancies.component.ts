@@ -6,6 +6,7 @@ import { PopUpComponent } from '../pop-up/pop-up.component';
 import { JobVacanciesService } from '../services/job-vacancies.service';
 import { LoginService } from '../services/login/login.service';
 import { JobseekerSignupService } from '../services/signup/jobseeker-signup.service';
+import { UnsuccessPopupComponent } from '../unsuccess-popup/unsuccess-popup.component';
 
 @Component({
   selector: 'app-vacancies',
@@ -262,7 +263,7 @@ logout(){
 }
 
 openDialog(){
-  this.matDialogRef.open(PopUpComponent,{
+  this.matDialogRef.open(UnsuccessPopupComponent,{
     data : {
       message : 'For post a vacancy,you must be login as a Employer'
     }
@@ -270,7 +271,7 @@ openDialog(){
 }
 
 openDialogforJobseeker(){
-  this.matDialogRef.open(PopUpComponent,{
+  this.matDialogRef.open(UnsuccessPopupComponent,{
     data : {
       message : 'For apply for a vacancy,you must be login as a Jobseeker'
     }

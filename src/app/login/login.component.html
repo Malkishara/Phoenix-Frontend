@@ -1,8 +1,9 @@
-<section class="login">
-  <div class="logincontent">
-    <div class="card">
-      <div class="card-body" style="background-color: rgb(175, 232, 250);">
-        <h1 class="card-title-center" style="text-align: center;">User Login</h1>
+
+<div class="login " style="margin:0%;">
+    <div class="card" style="background-color: rgba(255, 255, 255, 0.137); width: 40%;">
+      <div class="card-body">
+        <div style="text-align: center;"><mat-icon [inline]="true" style="transform: scale(3);color: rgb(255, 255, 255);">account_circle</mat-icon></div>
+        <h1 class="card-title-center" style="text-align: center; color: rgb(252, 250, 250);">Login Here</h1>
       <form (submit)="onSubmit()" [formGroup]="loginForm">
         <div class="form-group">
 
@@ -14,34 +15,30 @@
         </div>
 
           <div class="row" style="margin-top: 10px;">
-
-              <div class="col">
-                <label for="email">Email Address:</label>
-              </div>
-              <div class="col">
-                <input [ngClass]="{'is-invalid':submitted && loginForm.controls.email.errors}" formControlName="email" type="email" class="form-control" [(ngModel)]="email" placeholder="abc@gmail.com">
-
-              </div>
-
+            <label for="email" class="label">Email Address:</label>
           </div>
           <div class="row" style="margin-top: 10px;">
-
-              <div class="col">
-                <label for="password">Password:</label>
-              </div>
-              <div class="col">
-                <input [ngClass]="{'is-invalid':submitted && loginForm.controls.password.errors}"  formControlName="password" type="password" class="form-control" [(ngModel)]="password"  accept="image/png, image/jpeg">
-
-              </div>
+            <input [ngClass]="{'is-invalid':submitted && loginForm.controls.email.errors}" formControlName="email" type="email" class="form-control" [(ngModel)]="email" placeholder="abc@gmail.com" style="border-radius: 20px;width: 100%;background-color: rgba(255, 255, 255, 0.425);">
+          </div>
+          <div class="row" style="margin-top: 10px;">
+            <label for="password" class="label">Password:</label>
+          </div>
+          <div class="row">
+            <input [ngClass]="{'is-invalid':submitted && loginForm.controls.password.errors}"  formControlName="password" type="password" class="form-control" [(ngModel)]="password" style="border-radius: 20px;width: 100%;background-color: rgba(255, 255, 255, 0.425);">
 
           </div>
-
+          <div class="row" style="text-align: center"><a href="#" class="label">Forgot Password?</a></div>
           <div class="row" style="margin-top: 10px;text-align: center;">
-            <div class="form-group">
-              <button type="submit" class="btn btn-success" style="margin: 10px;">Login</button>
-              <button type="reset" class="btn btn-danger" >Reset</button>
-            </div>
+              <button type="submit" class="btn " style="border-radius: 20px;width: 100%;background-color: rgba(51, 8, 209, 0.219);color: white;" >LOGIN</button>
           </div>
+          <div class="row" style="margin-top: 20px;">
+            <p >You don't have account?</p>
+          </div>
+          <div class="row" style="text-align: center">
+            <div class="col"><a href="employer_signup" class="label">Signup as Employer</a></div>
+            <div class="col"> <a href="jobseeker_signup" class="label">Signup as Job Seeker</a></div>
+          </div>
+
 
         </div>
 
@@ -49,4 +46,4 @@
       </div>
     </div>
   </div>
-  </section>
+

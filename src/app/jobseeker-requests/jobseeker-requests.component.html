@@ -1,13 +1,13 @@
-<div><h1>Requests</h1></div>
+<div style="text-align: center;"><h1 style="color: white">Requests</h1></div>
 
 <div>
-  <div class="card" style=" margin: 5px;" *ngFor="let request of requests" >
+  <div class="card" style=" margin: 5px;background-color: rgba(255, 255, 255, 0.137);" *ngFor="let request of requests" >
 
-    <div class="card-body" style="background-color: rgb(214, 252, 252);" >
+    <div class="card-body" >
 
 
       <div class="row">
-      <p class="title" (click)="onClick(request.jobSeeker.id)">{{ request.jobSeeker.firstName }} {{ request.jobSeeker.lastName }} has apply for this vacancy</p>
+      <p class="title" (click)="onClick(request.jobSeeker.id)" style="color: white">{{ request.jobSeeker.firstName }} {{ request.jobSeeker.lastName }} has apply for this vacancy</p>
       </div>
 
 

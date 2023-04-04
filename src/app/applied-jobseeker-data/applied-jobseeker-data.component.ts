@@ -14,7 +14,8 @@ export class AppliedJobseekerDataComponent {
   id:any;
   jobseekerData:any;
   certificates:any;
-
+  profilePicture:any;
+  showCarousel=true;
   constructor(private matDialogRef:MatDialog,private jobseekerService:JobseekerSignupService,private route: ActivatedRoute,private router: Router){
 
   }
@@ -36,6 +37,16 @@ export class AppliedJobseekerDataComponent {
 this.jobseekerData=data;
 console.warn(this.jobseekerData)
 this.certificates=this.jobseekerData.certificate;
+if(this.certificates.length!=0){
+  this.showCarousel=true;
+}else{
+  this.showCarousel=false;
+}
+if(this.jobseekerData.profilePicture!=null){
+  this.profilePicture=this.jobseekerData.profilePicture;
+ }else{
+  this.profilePicture="../assets/default_p_p.jfif";
+ }
     })
 
   }
