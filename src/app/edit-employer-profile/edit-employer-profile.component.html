@@ -1,7 +1,37 @@
 
 
 <div class="employer">
-  <div >
+  <div class="row" *ngIf="isRegistrationComplted===false">
+    <div class="card" style=" margin: 5px;background-color: rgba(255, 255, 255, 0.137);" >
+
+      <div class="card-body" >
+
+
+        <div class="row">
+          <div>
+            <p class="label">You don't have completed registration.You can completed your registration frome here</p>
+          </div>
+
+        </div>
+
+        <div class="row" style="text-align: center">
+          <google-pay-button
+    environment="TEST"
+    buttonType="pay"
+    buttonColor="black"
+    [paymentRequest]="paymentRequest"
+    (loadpaymentdata)="onLoadPaymentData($event)"
+    (error)="onError($event)"
+    [paymentAuthorizedCallback]="onPaymentDataAuthorized"
+  >
+  </google-pay-button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
     <div class="card" style="background-color: rgba(255, 255, 255, 0.137);">
       <div class="card-body">
         <h1 class="card-title-center" style="text-align: center;color: white;">Employer Profile</h1>

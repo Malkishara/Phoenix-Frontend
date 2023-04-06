@@ -32,7 +32,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { ApplyToJobComponent } from './apply-to-job/apply-to-job.component';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import { UnsuccessPopupComponent } from './unsuccess-popup/unsuccess-popup.component';
-
+import { GooglePayButtonModule } from '@google-pay/button-angular';
 
 
 
@@ -89,7 +89,8 @@ const routes:Routes=[
     MatMenuModule,
     MatButtonModule,
     AngularEditorModule,
-    MatBadgeModule
+    MatBadgeModule,
+    GooglePayButtonModule
   ],
   exports:[RouterModule],
   providers: [

@@ -25,6 +25,8 @@ export class EditEmployerProfileComponent {
   phone:String="";
   logo:any;
 
+  isRegistrationComplted=false;
+
   constructor(private signup:EmployerSignupService,private route:ActivatedRoute,private matDialogRef:MatDialog,private router: Router){
 
   }
@@ -42,6 +44,59 @@ export class EditEmployerProfileComponent {
     this.getUserData(this.user.id);
   }
 
+  paymentRequest: google.payments.api.PaymentDataRequest = {
+    apiVersion: 2,
+    apiVersionMinor: 0,
+    allowedPaymentMethods: [
+      {
+        type: 'CARD',
+        parameters: {
+          allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+          allowedCardNetworks: ['AMEX', 'VISA', 'MASTERCARD']
+        },
+        tokenizationSpecification: {
+          type: 'PAYMENT_GATEWAY',
+          parameters: {
+            gateway: 'example',
+            gatewayMerchantId: 'exampleGatewayMerchantId'
+          }
+        }
+      }
+    ],
+    merchantInfo: {
+      merchantId: '12345678901234567890',
+      merchantName: 'Demo Merchant'
+    },
+    transactionInfo: {
+      totalPriceStatus: 'FINAL',
+      totalPriceLabel: 'Total',
+      totalPrice: '100.00',
+      currencyCode: 'USD',
+      countryCode: 'US'
+    },
+    callbackIntents: ['PAYMENT_AUTHORIZATION']
+  };
+
+  onLoadPaymentData = (
+    event: Event
+  ): void => {
+    const eventDetail = event as CustomEvent<google.payments.api.PaymentData>;
+    console.log('load payment data', eventDetail.detail);
+  }
+
+  onPaymentDataAuthorized: google.payments.api.PaymentAuthorizedHandler = (
+    paymentData
+    ) => {
+      console.log('payment authorized', paymentData);
+      return {
+        transactionState: 'SUCCESS'
+      };
+    }
+
+  onError = (event: ErrorEvent): void => {
+    console.error('error', event.error);
+  }
+
   getUserData(id:Number):void{
 
     this.data={
@@ -56,6 +111,7 @@ export class EditEmployerProfileComponent {
       this.email=this.employer.email;
       this.phone=this.employer.phone;
       this.logo=this.employer.logo;
+      this.isRegistrationComplted=this.employer.verification;
 
 
     })
