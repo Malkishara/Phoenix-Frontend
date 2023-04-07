@@ -35,7 +35,6 @@ import { UnsuccessPopupComponent } from './unsuccess-popup/unsuccess-popup.compo
 import { GooglePayButtonModule } from '@google-pay/button-angular';
 
 
-
 const routes:Routes=[
   {path:'',component:VacanciesComponent},
   {path:'employer_signup',component:EmployerSignupComponent},
@@ -72,7 +71,8 @@ const routes:Routes=[
     PostAJobComponent,
     ApplyToJobComponent,
     DialogBoxComponent,
-    UnsuccessPopupComponent
+    UnsuccessPopupComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -90,7 +90,8 @@ const routes:Routes=[
     MatButtonModule,
     AngularEditorModule,
     MatBadgeModule,
-    GooglePayButtonModule
+    GooglePayButtonModule,
+
   ],
   exports:[RouterModule],
   providers: [

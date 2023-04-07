@@ -19,4 +19,8 @@ export class EmployerSignupService {
   UpdateProfileData(data:any,id:any){
     return this.http.put("http://localhost:8080/employer/"+id,data);
   }
+
+  UpdateVerification(data:any,id:any){
+    return this.http.put("http://localhost:8080/verification/"+id,data);
+  }
 }

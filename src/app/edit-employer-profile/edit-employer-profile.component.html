@@ -15,7 +15,7 @@
         </div>
 
         <div class="row" style="text-align: center">
-          <google-pay-button
+          <!-- <google-pay-button
     environment="TEST"
     buttonType="pay"
     buttonColor="black"
@@ -24,7 +24,10 @@
     (error)="onError($event)"
     [paymentAuthorizedCallback]="onPaymentDataAuthorized"
   >
-  </google-pay-button>
+  </google-pay-button> -->
+  <div class="form-group">
+    <button type="submit" class="btn" style="border-radius: 20px;width: 100%;background-color: rgba(51, 8, 209, 0.219);color: white;" (click)="pay()">PAY REGISTRATION FEES</button>
+  </div>
         </div>
 
       </div>
@@ -91,7 +94,7 @@
 
             <div class="row" style="margin-top: 10px;text-align: center;">
               <div class="form-group">
-                <button type="submit" class="btn" style="border-radius: 20px;width: 100%;background-color: rgba(51, 8, 209, 0.219);color: white;" (click)="onSubmit()">Update Profile</button>
+                <button type="submit" class="btn" style="border-radius: 20px;width: 100%;background-color: rgba(51, 8, 209, 0.219);color: white;" (click)="onSubmit()">UPDATE PROFILE</button>
               </div>
             </div>
 

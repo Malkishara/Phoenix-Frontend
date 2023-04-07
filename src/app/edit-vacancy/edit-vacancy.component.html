@@ -34,7 +34,7 @@
                   <label for="description" class="label">Job Description:</label>
                 </div>
                 <div class="col-sm-9" >
-                  <angular-editor  formControlName="jobDescription" [(ngModel)]="jobDescription">{{ jobDescription }}</angular-editor>
+                  <angular-editor [config]="editorConfig" formControlName="jobDescription" [(ngModel)]="jobDescription">{{ jobDescription }}</angular-editor>
                 </div>
 
             </div>

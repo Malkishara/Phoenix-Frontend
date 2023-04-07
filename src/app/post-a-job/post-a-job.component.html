@@ -43,7 +43,7 @@
                     <label for="description" class="label">Job Description:</label>
                   </div>
                   <div class="col-sm-9">
-                    <angular-editor
+                    <angular-editor [config]="editorConfig"
                      [ngClass]="{'is-invalid':submitted && postJob.controls.jobDescription.errors}"  formControlName="jobDescription" [(ngModel)]="jobDescription"></angular-editor>
                     <div *ngIf="submitted && postJob.controls.jobDescription.errors" class="text-danger">
                     <div *ngIf="submitted && postJob.controls.jobDescription.errors.required">

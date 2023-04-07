@@ -79,6 +79,14 @@ export class EditVacancyComponent {
 
 
   }
+
+  editorConfig = {
+    editable: true,
+    toolbarHiddenButtons: [
+      ['insertVideo','insertImage','strikeThrough','indent', 'outdent','textColor','backgroundColor','fontName', 'fontSize','link', 'unlink','heading','removeFormat','insertHorizontalRule', 'toggleEditorMode']
+    ]
+  };
+
   getVacancyById(id:any){
 console.warn(id)
 this.employerService.getVacancyById(id).subscribe((data:any)=>{

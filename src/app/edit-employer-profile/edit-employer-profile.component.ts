@@ -27,6 +27,7 @@ export class EditEmployerProfileComponent {
 
   isRegistrationComplted=false;
 
+
   constructor(private signup:EmployerSignupService,private route:ActivatedRoute,private matDialogRef:MatDialog,private router: Router){
 
   }
@@ -40,61 +41,120 @@ export class EditEmployerProfileComponent {
       id:this.route.snapshot.params['id']
     }
 
+
     console.warn(this.user.id)
     this.getUserData(this.user.id);
+
+    this.invokeStripe();
   }
 
-  paymentRequest: google.payments.api.PaymentDataRequest = {
-    apiVersion: 2,
-    apiVersionMinor: 0,
-    allowedPaymentMethods: [
-      {
-        type: 'CARD',
-        parameters: {
-          allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
-          allowedCardNetworks: ['AMEX', 'VISA', 'MASTERCARD']
-        },
-        tokenizationSpecification: {
-          type: 'PAYMENT_GATEWAY',
-          parameters: {
-            gateway: 'example',
-            gatewayMerchantId: 'exampleGatewayMerchantId'
-          }
-        }
-      }
-    ],
-    merchantInfo: {
-      merchantId: '12345678901234567890',
-      merchantName: 'Demo Merchant'
-    },
-    transactionInfo: {
-      totalPriceStatus: 'FINAL',
-      totalPriceLabel: 'Total',
-      totalPrice: '100.00',
-      currencyCode: 'USD',
-      countryCode: 'US'
-    },
-    callbackIntents: ['PAYMENT_AUTHORIZATION']
-  };
+  // paymentRequest: google.payments.api.PaymentDataRequest = {
+  //   apiVersion: 2,
+  //   apiVersionMinor: 0,
+  //   allowedPaymentMethods: [
+  //     {
+  //       type: 'CARD',
+  //       parameters: {
+  //         allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+  //         allowedCardNetworks: ['AMEX', 'VISA', 'MASTERCARD']
+  //       },
+  //       tokenizationSpecification: {
+  //         type: 'PAYMENT_GATEWAY',
+  //         parameters: {
+  //           gateway: 'example',
+  //           gatewayMerchantId: 'exampleGatewayMerchantId'
+  //         }
+  //       }
+  //     }
+  //   ],
+  //   merchantInfo: {
+  //     merchantId: '12345678901234567890',
+  //     merchantName: 'Demo Merchant'
+  //   },
+  //   transactionInfo: {
+  //     totalPriceStatus: 'FINAL',
+  //     totalPriceLabel: 'Total',
+  //     totalPrice: '100.00',
+  //     currencyCode: 'USD',
+  //     countryCode: 'US'
+  //   },
+  //   callbackIntents: ['PAYMENT_AUTHORIZATION']
+  // };
 
-  onLoadPaymentData = (
-    event: Event
-  ): void => {
-    const eventDetail = event as CustomEvent<google.payments.api.PaymentData>;
-    console.log('load payment data', eventDetail.detail);
+  // onLoadPaymentData = (
+  //   event: Event
+  // ): void => {
+  //   const eventDetail = event as CustomEvent<google.payments.api.PaymentData>;
+  //   console.log('load payment data', eventDetail.detail);
+  // }
+
+  // onPaymentDataAuthorized: google.payments.api.PaymentAuthorizedHandler = (
+  //   paymentData
+  //   ) => {
+  //     console.log('payment authorized', paymentData);
+  //     return {
+  //       transactionState: 'SUCCESS'
+  //     };
+  //   }
+
+  // onError = (event: ErrorEvent): void => {
+  //   console.error('error', event.error);
+  // }
+
+  pay(){
+const paymentHandler=(<any>window).StripeCheckout.configure({
+  key:'pk_test_51MtkkIHwFsfYf0IYnGXNop7CWntRg7g3icwU5EaM1OC1hXu4mdkPSBCyn3YC7cstoa15ku8dcyr5CHiSWJH35BRH00HLcmSsBm',
+  locale:'auto',
+  token: (stripeToken: any) => {
+    console.warn(stripeToken.card);
+    console.warn("token generated");
+    this.updateVerification();
   }
 
-  onPaymentDataAuthorized: google.payments.api.PaymentAuthorizedHandler = (
-    paymentData
-    ) => {
-      console.log('payment authorized', paymentData);
-      return {
-        transactionState: 'SUCCESS'
-      };
+
+})
+
+paymentHandler.open({
+  name: 'Phoenix',
+  description: 'Registration',
+  amount: 1000,
+});
+  }
+
+  invokeStripe(){
+    if(!window.document.getElementById('stripe-script')){
+      const script=window.document.createElement('script');
+      script.id='stripe-script';
+      script.type='text/javascript';
+      script.src="";
+      window.document.body.appendChild(script);
     }
+  }
 
-  onError = (event: ErrorEvent): void => {
-    console.error('error', event.error);
+  updateVerification () {
+    let data={
+      "id":this.user.id,
+      "verification":true,
+    }
+    console.warn(data)
+
+    this.signup.UpdateVerification(data,this.user.id).subscribe((res:any)=>{
+      this.employer=res;
+      if(res==true){
+      this.getUserData(this.user.id);
+      this.openDialogforPayment();
+      }
+    }
+    )
+  }
+
+  openDialogforPayment(){
+
+    this.matDialogRef.open(PopUpComponent,{
+      data : {
+        message : 'Successfully Completed Your Registration'
+      }
+    });
   }
 
   getUserData(id:Number):void{

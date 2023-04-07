@@ -66,11 +66,14 @@ export class PostAJobComponent {
 
     })
 
-
-
   }
 
-
+  editorConfig = {
+    editable: true,
+    toolbarHiddenButtons: [
+      ['insertVideo','insertImage','strikeThrough','indent', 'outdent','textColor','backgroundColor','fontName', 'fontSize','link', 'unlink','heading','removeFormat','insertHorizontalRule', 'toggleEditorMode']
+    ]
+  };
 
   openDialog(){
     this.matDialogRef.open(PopUpComponent,{
