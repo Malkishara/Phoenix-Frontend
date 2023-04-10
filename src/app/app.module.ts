@@ -33,6 +33,7 @@ import { ApplyToJobComponent } from './apply-to-job/apply-to-job.component';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import { UnsuccessPopupComponent } from './unsuccess-popup/unsuccess-popup.component';
 import { GooglePayButtonModule } from '@google-pay/button-angular';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
 
 
 const routes:Routes=[
@@ -50,7 +51,8 @@ const routes:Routes=[
   {path:'employer/:id/shared/edit/:vid',component:EditVacancyComponent},
   {path:'employer/:id/shared/request/:vid',component:JobseekerRequestsComponent},
   {path:'employer/:id/shared/request/:vid/:jsid',component:AppliedJobseekerDataComponent},
-  {path:'apply/:vid',component:ApplyToJobComponent}
+  {path:'apply/:vid',component:ApplyToJobComponent},
+  {path:'verification/:user',component:EmailVerificationComponent}
 ];
 @NgModule({
   declarations: [
@@ -72,6 +74,7 @@ const routes:Routes=[
     ApplyToJobComponent,
     DialogBoxComponent,
     UnsuccessPopupComponent,
+    EmailVerificationComponent,
 
   ],
   imports: [

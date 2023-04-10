@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Observable, Subscriber } from 'rxjs';
 import { EmployerSignupService } from '../services/signup/employer-signup.service';
 import { MatDialog } from '@angular/material/dialog';
-import { PopUpComponent } from '../pop-up/pop-up.component';
+
 
 
 @Component({
@@ -76,13 +76,7 @@ export class EmployerSignupComponent {
     };
   }
 
-  openDialog(){
-    this.matDialogRef.open(PopUpComponent,{
-      data : {
-        message : 'Registration Successfull'
-      }
-    });
-  }
+
 
   onSubmit(){
 
@@ -107,8 +101,8 @@ export class EmployerSignupComponent {
       this.signup.Signup(signupData).subscribe((res:any)=>{
         this.result=res;
         if(this.result=="1"){
-        this.router.navigateByUrl("");
-        this.openDialog()
+        this.router.navigateByUrl("verification/employer");
+
 
         }else if(this.result=="2"){
           this.isEmailTrue=false;
