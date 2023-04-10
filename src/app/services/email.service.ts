@@ -8,7 +8,12 @@ export class EmailService {
 
   constructor(private http:HttpClient) { }
 
+  url="http://localhost:8080";
   verify(data:any,user:any){
-    return this.http.post("http://localhost:8080/verify/"+user,data)
+    return this.http.post(this.url+"/verify/"+user,data)
+  }
+
+  resend(user:any){
+    return this.http.get(this.url+"/resend/"+user)
   }
 }

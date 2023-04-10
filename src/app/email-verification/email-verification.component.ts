@@ -34,10 +34,10 @@ export class EmailVerificationComponent {
     }
   }
 
-  openDialog(){
+  openDialog(message:any){
     this.matDialogRef.open(PopUpComponent,{
       data : {
-        message : 'Registration Successfull'
+        message : message
       }
     });
   }
@@ -55,13 +55,22 @@ export class EmailVerificationComponent {
       console.warn(res);
       if(res==true){
         this.router.navigateByUrl("");
-        this.openDialog()
+        this.openDialog("Successfully registered")
 
         }
      })
 
     }
 
+  }
+
+  resendCode(){
+   this.email.resend(this.user.userType).subscribe((res)=>{
+    console.warn(res);
+    if(res==true){
+        this.openDialog("Resent Verification Code")
+    }
+   })
   }
 
 }
