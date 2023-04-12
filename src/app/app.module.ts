@@ -34,6 +34,9 @@ import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import { UnsuccessPopupComponent } from './unsuccess-popup/unsuccess-popup.component';
 import { GooglePayButtonModule } from '@google-pay/button-angular';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { VerificationComponent } from './verification/verification.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 const routes:Routes=[
@@ -52,7 +55,10 @@ const routes:Routes=[
   {path:'employer/:id/shared/request/:vid',component:JobseekerRequestsComponent},
   {path:'employer/:id/shared/request/:vid/:jsid',component:AppliedJobseekerDataComponent},
   {path:'apply/:vid',component:ApplyToJobComponent},
-  {path:'verification/:user',component:EmailVerificationComponent}
+  {path:'verification/:user',component:EmailVerificationComponent},
+  {path:'forgot',component:ForgotPasswordComponent},
+  {path:'verification',component:VerificationComponent},
+  {path:'reset',component:ResetPasswordComponent}
 ];
 @NgModule({
   declarations: [
@@ -75,6 +81,9 @@ const routes:Routes=[
     DialogBoxComponent,
     UnsuccessPopupComponent,
     EmailVerificationComponent,
+    ForgotPasswordComponent,
+    VerificationComponent,
+    ResetPasswordComponent,
 
   ],
   imports: [

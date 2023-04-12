@@ -16,4 +16,20 @@ export class EmailService {
   resend(user:any){
     return this.http.get(this.url+"/resend/"+user)
   }
+
+  forgotPassword(data:any){
+    return this.http.post(this.url+"/forgot",data)
+  }
+
+  verifyUser(data:any){
+    return this.http.post(this.url+"/verify",data)
+  }
+
+  resendCode(){
+    return this.http.get(this.url+"/resend")
+  }
+
+  updatePassword(data:any){
+    return this.http.post(this.url+"/update",data)
+  }
 }
