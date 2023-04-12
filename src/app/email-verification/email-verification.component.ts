@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmailService } from '../services/email.service';
 import { PopUpComponent } from '../pop-up/pop-up.component';
+import { UnsuccessPopupComponent } from '../unsuccess-popup/unsuccess-popup.component';
 
 @Component({
   selector: 'app-email-verification',
@@ -42,6 +43,14 @@ export class EmailVerificationComponent {
     });
   }
 
+  openErrorDialog(message:any){
+    this.matDialogRef.open(UnsuccessPopupComponent,{
+      data : {
+        message : message
+      }
+    });
+  }
+
   onSubmit(){
 
     this.submitted = true
@@ -57,6 +66,8 @@ export class EmailVerificationComponent {
         this.router.navigateByUrl("");
         this.openDialog("Successfully registered")
 
+        }else{
+          this.openErrorDialog("Please enter correct verification code")
         }
      })
 

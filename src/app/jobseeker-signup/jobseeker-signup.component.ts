@@ -104,8 +104,7 @@ export class JobseekerSignupComponent {
       this.signup.Signup(userData).subscribe((res:any)=>{
         this.result=res;
         if(this.result=="1"){
-        this.router.navigateByUrl("");
-        this.openDialog()
+          this.router.navigateByUrl("verification/jobseeker");
 
         }else if(this.result=="2"){
           this.isEmailTrue=false;

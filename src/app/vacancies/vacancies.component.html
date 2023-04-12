@@ -6,7 +6,7 @@
       </div>
 
       <div class="col-sm-6" >
-        <ul class="navbar-nav">
+        <ul class="navbar-nav" style="align-items: end;">
           <li class="nav-item ">
             <a (click)="onClickPostAJob()" class="btn " style="margin-right: 4px;margin-bottom: 5px;background-color: rgba(51, 8, 209, 0.219);color: white;">Post a Job</a>
           </li>
@@ -20,7 +20,7 @@
             <a href="/jobseeker_signup" class="btn" style="margin-bottom: 5px;margin-right: 4px;background-color: rgba(51, 8, 209, 0.219);color: white;">Job Seeker Signup</a>
           </li>
           <li class="nav-item" >
-            <a mat-button [matMenuTriggerFor]="menu" *ngIf="isLoggedin" class="profile"><mat-icon [inline]="true" style="transform: scale(2.7);vertical-align: middle;color: rgb(250, 249, 246);margin-top: 100%;">account_circle</mat-icon></a>
+            <a mat-button [matMenuTriggerFor]="menu" *ngIf="isLoggedin" class="profile"><mat-icon [inline]="true" style="transform: scale(2.7);color: rgb(250, 249, 246);margin-top: 70%;">account_circle</mat-icon></a>
             <mat-menu #menu="matMenu">
               <button mat-menu-item (click)="onClickProfile()">Profile</button>
               <button mat-menu-item (click)="logout()">Logout</button>
