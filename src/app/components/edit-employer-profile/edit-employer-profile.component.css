@@ -1,0 +1,15 @@
+.employer{
+  width: 100%;
+    min-height: 80vh;
+    /* FLEX */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+
+}
+
+.label{
+  color: rgb(250, 250, 250);
+}

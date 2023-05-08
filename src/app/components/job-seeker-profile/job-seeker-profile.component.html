@@ -1,0 +1,247 @@
+<div>
+  <div class="row mx-auto">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:rgba(255, 255, 255, 0);; width: 100%;margin: 0%;padding: 0%;">
+      <div class="col-sm-4" style="text-align: left;margin-top: 20px;">
+        <a href=""> <img src="../assets/Phoenix.png" alt=""style="height: 70px;width: 160px;border-radius: 10px;"></a>
+
+      </div>
+
+    </nav>
+  </div>
+
+<div class="profile" style="margin-top: 30px;">
+<div class="card" style="background-color: rgba(255, 255, 255, 0.267);">
+  <div class="title" style="text-align: center;"><h1 class="label">User Profile</h1></div>
+  <div class="profile_data">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card" style="width: 18rem;height:18rem;display: flex;justify-content: center;align-items: center;margin: 20px;background-color: rgba(255, 255, 255, 0.137);">
+          <img class="card-img-top" src="{{ profilePicture }}" alt="Card image cap"style="height: 60%;width:60%; border- radius: 50%;border:2px solid black;margin-top:5%">
+          <div class="card-body">
+            <h2 class="card-title" style="text-align: center;">{{ firstName }} {{ lastName }}</h2>
+            <h4 class="card-title" style="text-align: center;">{{ position }} </h4>
+          </div>
+        </div>
+        <div class="row" style="margin: 20px;">
+          <div >
+             <label class="label">Edit Profile Picture:</label>
+           </div>
+           <div >
+             <input class="form-control" type="file" value="{{ profilePicture }}" name="profilePicture" (change)="onSelectImage($event)"  accept="image/*" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+            </div>
+         </div>
+        </div>
+      <div class="col-sm-7" style="margin: 20px;">
+        <form >
+          <div class="form-group">
+            <div class="row" style="margin-top: 10px;">
+              <div class="col">
+                <div class="col">
+                  <label class="label">First Name:</label>
+                </div>
+                <div class="col" >
+                  <input class="form-control" type="text" value="{{ firstName }}" name="firstName" (change)="changeFirstName($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+
+                </div>
+              </div>
+              <div class="col">
+                <div class="col">
+                  <label class="label">Last Name:</label>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="text" value="{{ lastName }}" name="lastName" (change)="changeLastName($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+                </div>
+              </div>
+
+            </div>
+
+
+         <div class="row" style="margin-top: 10px;">
+
+             <label class="label">Location:</label>
+
+           <div class="col">
+            <label class="label">District:</label>
+             <input class="form-control" type="text" value="{{ district }}"  name="district" (change)="changeDistrict($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+           </div>
+           <div class="col">
+            <label class="label">Country:</label>
+             <input class="form-control" type="text" value="{{ country }}"  name="country" (change)="changeCountry($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+           </div>
+         </div>
+         <div class="row" style="margin-top: 10px;">
+          <label class="label">Contact Info:</label>
+          <div class="col">
+             <label class="label">Email:</label>
+             <input class="form-control" type="text" value="{{ email }}" name="email" (change)="changeEmail($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+           </div>
+           <div class="col">
+            <label class="label">Phone:</label>
+            <input class="form-control" type="text" value="{{ phone }}"  name="phone" (change)="changePhone($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+          </div>
+         </div>
+         <div class="row" style="margin-top: 10px;">
+          <div class="col">
+             <label class="label">Position:</label>
+           </div>
+           <div class="col">
+             <input class="form-control" type="text" value="{{ position }}"  name="position" (change)="changePosition($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+           </div>
+         </div>
+         <div class="row" style="margin-top: 10px;">
+          <div class="col">
+             <label class="label">Linkdin:</label>
+           </div>
+           <div class="col">
+             <input class="form-control" type="text" value="{{ linkdin }}"  name="linkdin" (change)="changeLinkdin($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+           </div>
+         </div>
+
+         <div class="row" style="margin-top: 10px;">
+          <div class="row">
+            <div class="col">
+              <label class="label">CV:</label>
+            </div>
+            <div class="col">
+              <input class="form-control" (change)="onSelectCv($event)" type="file" accept=".doc,.docx,.pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="margin-top: 10px;margin-left: 10px; background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+
+            </div>
+          </div>
+          <div class="row">
+            <!-- <pdf-viewer
+             [src]=" jobSeekerProfileData.cv"
+             [render-text]="true"
+             style="display: block; height:1000px; width: 700px;margin-top: 10px;"> </pdf-viewer> -->
+          </div>
+
+         </div>
+         <div class="row" style="margin-top: 10px;">
+             <label class="label">Education Qualification:</label>
+           <div class="col">
+            <div class="row" style="margin-top: 10px;">
+              <div class="col">
+                <label class="label">Degree:</label>
+                <input  class="form-control" type="text" value="{{degree }}" name="degree" (change)="changeDegree($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+              </div>
+            <div class="col">
+               <label class="label">College:</label>
+               <input  class="form-control" type="text" value="{{ college }}"  name="college" (change)="changeCollege($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+             </div>
+           </div>
+
+           </div>
+         </div>
+
+         <div class="row" style="margin-top: 10px;">
+
+           <div class="col">
+             <label class="label">Work Experince:</label>
+           </div>
+         <div class="col">
+          <select class="form-control"  (change)="changeExperience($event)" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+            <option value="null">{{ experience }}</option>
+            <option  *ngFor="let experience of experienceList" [value]="experience.title">{{ experience.title }}</option>
+          </select>
+          </div>
+        </div>
+          <div class="row" style="margin-top: 10px;">
+
+            <div class="col">
+              <label class="label">Languages:</label>
+            </div>
+          <div class="col">
+            <div class="languages" *ngFor="let language of languagesList" >
+
+              <input  class="form-check-input" type="checkbox"  id="flexCheckDefault" [value]="language?.id"
+              [checked]="language?.select" (change)="selectedLanguages($event)"  style="background-color: rgba(255, 255, 255, 0.425);">&nbsp;
+              <label class="form-check-label" for="flexCheckChecked" >
+                {{ language.language }}
+              </label>
+            </div>
+          </div>
+
+      </div>
+
+     <div class="row" style="margin-top: 10px;">
+      <label class="label">Skills:</label>
+      <div class="row" *ngFor="let skill of skills;let i=index" >
+        <div class="col-11">
+          <input type="text" class="form-control" name="skill{{i}}" [(ngModel)]="skill.skill" style="margin-top: 10px;background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;" >
+        </div>
+        <div class="col-1" style="position: relative;">
+          <a  (click)="removeSkill(i)" style="position: absolute; top: 50%; transform: translateY(-50%); right: 0; cursor: pointer;">
+            <mat-icon [inline]="true" style="color: rgb(240, 8, 8); transform: scale(1.5); vertical-align: middle;">remove_circle</mat-icon>
+          </a>
+        </div>
+      </div>
+      <div *ngIf="isSkillEmpty==true" class="text-danger">
+        Skill feild can't be empty
+       </div>
+      <div class="row" style="display: flex;justify-content: center;align-items: center;">
+      <a (click)="addSkill()" style="margin-top: 10px;width: 50px;cursor: pointer;"><mat-icon [inline]="true" style="color: rgb(6, 75, 6);transform: scale(1.5);">add_circle</mat-icon></a>
+       </div>
+     </div>
+
+     <div class="row" style="margin-top: 10px;">
+      <label class="label">Certification:</label>
+      <div class="row" *ngFor="let certification of jobSeekerProfileData.certification;let j=index" >
+        <div class="col-11">
+
+          <input type="text" class="form-control" name="cetification{{j}}" [(ngModel)]="certification.certification" style="margin-top: 10px;background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+        </div>
+        <div class="col-1" style="position: relative;">
+          <a (click)="removeCertification(j)" style="position: absolute; top: 50%; transform: translateY(-50%); right: 0; cursor: pointer;">
+            <mat-icon [inline]="true" style="color: rgb(240, 8, 8); transform: scale(1.5); vertical-align: middle;">remove_circle</mat-icon>
+          </a>
+        </div>
+      </div>
+      <div *ngIf="isCertificationEmpty==true" class="text-danger">
+        Certification feild can't be empty
+       </div>
+       <div class="row" style="display: flex;justify-content: center;align-items: center;">
+        <a  (click)="addCertification()" style="margin-top: 10px;width: 50px;cursor: pointer;"><mat-icon [inline]="true" style="color: rgb(6, 75, 6);transform: scale(1.5);">add_circle</mat-icon></a>
+       </div>
+
+
+     </div>
+
+     <div class="row">
+      <label class="label">Certificate:</label>
+      <input class="form-control" type="file" multiple (change)="onFileSelected($event)"  accept="image/*" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+      <div class="row" style="margin-top: 20px;" *ngIf="showCarousel">
+        <div class="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item" *ngFor="let certificate of certificates; let i = index" [class.active]="i === currentSlide">
+              <img [src]="certificate.certificate">
+            </div>
+          </div>
+          <a class="carousel-control-prev" (click)="prevSlide()">&lsaquo;</a>
+          <a class="carousel-control-next" (click)="nextSlide()">&rsaquo;</a>
+        </div>
+
+      </div>
+     </div>
+
+
+
+
+
+          </div>
+
+        </form>
+
+
+
+      </div>
+
+    </div>
+    <div class="row" style="margin-top: 10px;margin-bottom: 20px; text-align: center;">
+      <div class="form-group">
+        <button type="submit" class="btn " style="border-radius: 20px;width: 150px;background-color: rgba(51, 8, 209, 0.219);color: white;" (click)="onSubmit()">UPDATE PROFILE</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>

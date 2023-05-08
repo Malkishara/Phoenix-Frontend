@@ -13,7 +13,7 @@ export class EmployerServiceService {
   constructor(private http:HttpClient) { }
 
   getVacancies(id:any){
-    return this.http.get(this.url+"/vacancies/"+id)
+    return this.http.get(this.url+"/company/"+id)
    }
 
    deleteVacancy(id:any){

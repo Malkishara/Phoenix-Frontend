@@ -1,0 +1,178 @@
+
+
+  <div >
+    <div class="row mx-auto">
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color:rgba(255, 255, 255, 0);; width: 100%;margin: 0%;padding: 0%;">
+        <div class="col-sm-4" style="text-align: left;margin-top: 20px;">
+          <a href=""> <img src="../assets/Phoenix.png" alt="" style="height: 70px;width: 160px;border-radius: 10px;"></a>
+
+        </div>
+
+      </nav>
+    </div>
+    <div class="vacancy">
+      <div class="card" style="background-color: rgba(255, 255, 255, 0.137);">
+        <div class="card-body" >
+          <h1 class="card-title-center" style="text-align: center;color: rgb(252, 250, 250);">Add a New Vacancy</h1>
+          <form (submit)="addVacancy()" [formGroup]="postJob">
+            <div class="form-group">
+              <div class="row" style="margin-top: 10px;">
+
+                  <div class="col-sm-3">
+                    <label for="jobTitle" class="label">Title:</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <input [ngClass]="{'is-invalid':submitted && postJob.controls.jobTitle.errors}" formControlName="jobTitle" type="text" class="form-control" [(ngModel)]="jobTitle" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;" >
+                    <div *ngIf="submitted && postJob.controls.jobTitle.errors" class="text-danger">
+                      <div *ngIf="submitted && postJob.controls.jobTitle.errors.required">
+                        Title is required
+                      </div>
+                    </div>
+                  </div>
+
+              </div>
+              <div class="row" style="margin-top: 10px;">
+
+                  <div class="col-sm-3">
+                    <label for="salaryRange" class="label">Salary Range:</label>
+                  </div>
+                  <div class="col-sm-4">
+                    <select class="form-control"  [ngClass]="{'is-invalid':submitted && postJob.controls.lowSalaryLimit.errors}" formControlName="lowSalaryLimit" [(ngModel)]="lowSalaryLimit" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+
+                      <option value="0">0</option>
+                      <option value="5000">5000</option>
+                      <option value="10000">10000</option>
+                      <option value="15000">20000</option>
+                      <option value="20000">50000</option>
+                      <option value="15000">80000</option>
+                      <option value="20000">120000</option>
+                      <option value="20000">180000</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-1" style="margin-top: 10px;"><label class="label">to</label></div>
+                  <div class="col-sm-4">
+                    <select class="form-control"  [ngClass]="{'is-invalid':submitted && postJob.controls.upperSalaryLimit.errors}" formControlName="upperSalaryLimit" [(ngModel)]="upperSalaryLimit" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+
+                      <option value="5000">5000</option>
+                      <option value="10000">10000</option>
+                      <option value="15000">20000</option>
+                      <option value="20000">50000</option>
+                      <option value="25000">80000</option>
+                      <option value="20000">120000</option>
+                      <option value="20000">180000</option>
+                      <option value="more">More</option>
+                    </select>
+                  </div>
+
+              </div>
+              <div class="row" style="margin-top: 10px;">
+
+                  <div class="col-sm-3">
+                    <label for="description" class="label">Job Description:</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <angular-editor [config]="editorConfig" formControlName="jobDescription" [(ngModel)]="jobDescription"></angular-editor>
+                  </div>
+
+              </div>
+
+              <div class="row" style="margin-top: 10px;">
+
+                <div class="col-sm-3">
+                  <label for="logo" class="label">Description Image:</label>
+                </div>
+                <div class="col-sm-9" >
+                  <input  formControlName="logo" type="file" class="form-control" (change)="onSelectFile($event)"  accept="image/*" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+
+                </div>
+
+
+            </div>
+            <div class="row">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-9"><div *ngIf="noDescription" class="text-danger">
+                Description is required
+              </div></div>
+            </div>
+              <div class="row" style="margin-top: 10px;">
+
+                  <div class="col-sm-3">
+                    <label for="category" class="label">Job Category:</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <select class="form-control" [ngClass]="{'is-invalid':submitted && postJob.controls.category.errors}" formControlName="category" [(ngModel)]="category" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+                      <option  *ngFor="let category of jobCategoryList" [value]="category.id" style="color: black">{{ category.title }}</option>
+                    </select>
+                    <div *ngIf="submitted && postJob.controls.category.errors" class="text-danger">
+                    <div *ngIf="submitted && postJob.controls.category.errors.required">
+                      Job category is required
+                    </div>
+                  </div>
+
+              </div>
+            </div>
+
+              <div class="row" style="margin-top: 10px;">
+
+                  <div class="col-sm-3">
+                    <label for="modality" class="label">Job Modality:</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <select class="form-control"  [ngClass]="{'is-invalid':submitted && postJob.controls.modality.errors}" formControlName="modality" [(ngModel)]="modality" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+                      <option  *ngFor="let modality of jobModalityList" [value]="modality.id"  style="color: black">{{ modality.title }}</option>
+                    </select>
+                    <div *ngIf="submitted && postJob.controls.modality.errors" class="text-danger">
+                      <div *ngIf="submitted && postJob.controls.modality.errors.required">
+                        Job modality is required
+                      </div>
+                  </div>
+
+              </div>
+            </div>
+              <div class="row" style="margin-top: 10px;">
+
+                  <div class="col-sm-3">
+                    <label for="type" class="label">Job Type:</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <select class="form-control" [ngClass]="{'is-invalid':submitted && postJob.controls.type.errors}" formControlName="type" [(ngModel)]="type"  style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+                      <option  *ngFor="let type of jobTypeList" [value]="type.id"  style="color: black">{{ type.title }}</option>
+                    </select>
+                    <div *ngIf="submitted && postJob.controls.type.errors" class="text-danger">
+                      <div *ngIf="submitted && postJob.controls.type.errors.required">
+                        Job type is required
+                      </div>
+                  </div>
+
+              </div>
+              <div class="row" style="margin-top: 10px;">
+                <div class="col-sm-3"><label for="expirationDate" class="label">Expiration Date:</label></div>
+                <div class="col-sm-9">
+                  <div class="row">
+                    <div class="col-11">
+                      <input  [matDatepicker]="picker" placeholder="Choose expiration date" formControlName="expirationDate" [(ngModel)]="expirationDate" type="datetime" class="form-control"   style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+
+                    </div>
+                    <div class="col-1">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row" style="margin-top: 10px;text-align: center;">
+                <div class="form-group">
+                  <button type="submit" class="btn " style="border-radius: 20px;width: 150px;background-color: rgba(51, 8, 209, 0.219);color: white;">SAVE</button>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>

@@ -1,0 +1,154 @@
+<div >
+  <div class="row mx-auto">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:rgba(255, 255, 255, 0);; width: 100%;margin: 0%;padding: 0%;">
+      <div class="col-sm-4" style="text-align: left;margin-top: 20px;">
+        <a href=""> <img src="../assets/Phoenix.png" alt=""style="height: 70px;width: 160px;border-radius: 10px;"></a>
+
+      </div>
+
+    </nav>
+  </div>
+  <div class="vacancy">
+    <div class="card" style="background-color: rgba(255, 255, 255, 0.137);">
+      <div class="card-body" >
+        <h1 class="card-title-center" style="text-align: center;color: white;">Edit Vacancy</h1>
+        <form (submit)="updateVacancy()" [formGroup]="updateJob">
+          <div class="form-group">
+            <div class="row" style="margin-top: 10px;">
+
+                <div class="col-sm-3">
+                  <label for="jobTitle" class="label">Title:</label>
+                </div>
+                <div class="col-sm-9">
+                  <input  formControlName="jobTitle" type="text" class="form-control" [(ngModel)]="jobTitle" value="{{ jobTitle }}" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;">
+                </div>
+
+            </div>
+            <div class="row" style="margin-top: 10px;">
+
+                <div class="col-sm-3">
+                <label for="salaryRange" class="label">Salary Range:</label>
+              </div>
+              <div class="col-sm-4">
+                <select class="form-control"  formControlName="lowSalaryLimit" [(ngModel)]="lowSalaryLimit" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+                  <option value="{{ lowSalaryLimit }}" selected>{{ lowSalaryLimit }}</option>
+                  <option value="0">0</option>
+                  <option value="5000">5000</option>
+                  <option value="10000">10000</option>
+                  <option value="15000">20000</option>
+                  <option value="20000">50000</option>
+                  <option value="15000">80000</option>
+                  <option value="20000">120000</option>
+                  <option value="20000">180000</option>
+                </select>
+              </div>
+              <div class="col-sm-1" style="margin-top: 10px;"><label class="label">to</label></div>
+              <div class="col-sm-4">
+                <select class="form-control"   formControlName="upperSalaryLimit" [(ngModel)]="upperSalaryLimit" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+                  <option value="{{ upperSalaryLimit }}" selected>{{ upperSalaryLimit }}</option>
+                  <option value="5000">5000</option>
+                  <option value="10000">10000</option>
+                  <option value="15000">20000</option>
+                  <option value="20000">50000</option>
+                  <option value="25000">80000</option>
+                  <option value="20000">120000</option>
+                  <option value="20000">180000</option>
+                  <option value="More">More</option>
+                </select>
+              </div>
+
+
+            </div>
+            <div class="row" style="margin-top: 10px;">
+
+                <div class="col-sm-3">
+                  <label for="description" class="label">Job Description:</label>
+                </div>
+                <div class="col-sm-9" >
+                  <angular-editor [config]="editorConfig" formControlName="jobDescription" [(ngModel)]="jobDescription">{{ jobDescription }}</angular-editor>
+                </div>
+
+            </div>
+
+            <div class="row" style="margin-top: 10px;">
+
+              <div class="col-sm-3">
+                <label for="logo" class="label">Description Image:</label>
+              </div>
+              <div class="col-sm-9" >
+                <input  formControlName="jobDescriptionImg" type="file" class="form-control" (change)="onSelectFile($event)"  accept="image/*" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+
+              </div>
+
+
+          </div>
+            <div class="row" style="margin-top: 10px;">
+
+                <div class="col-sm-3">
+                  <label for="category" class="label">Job Category:</label>
+                </div>
+                <div class="col-sm-9">
+                  <select class="form-control" formControlName="category" [(ngModel)]="category"style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;" >
+                    <option value="jobCategory.id" selected>{{ jobCategory.title }}</option>
+                    <option  *ngFor="let category of jobCategoryList" [value]="category.id">{{ category.title }}</option>
+                  </select>
+            </div>
+          </div>
+
+            <div class="row" style="margin-top: 10px;">
+
+                <div class="col-sm-3">
+                  <label for="modality" class="label">Job Modality:</label>
+                </div>
+                <div class="col-sm-9">
+                  <select class="form-control"  formControlName="modality" [(ngModel)]="modality"style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;" >
+                    <option  value="jobModality.id" selected>{{ jobModality.title }}</option>
+                    <option  *ngFor="let modality of jobModalityList" [value]="modality.id">{{ modality.title }}</option>
+                  </select>
+
+                </div>
+          </div>
+            <div class="row" style="margin-top: 10px;">
+
+                <div class="col-sm-3">
+                  <label for="type" class="label">Job Type:</label>
+                </div>
+                <div class="col-sm-9">
+                  <select class="form-control" formControlName="type" [(ngModel)]="type" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;" >
+                    <option  value="jobType.id" selected>{{ jobType.title }}</option>
+                    <option  *ngFor="let type of jobTypeList" [value]="type.id">{{ type.title }}</option>
+                  </select>
+
+
+            </div>
+
+            <div class="row" style="margin-top: 10px;">
+              <div class="col-sm-3"><label for="expirationDate" class="label">Expiration Date:</label></div>
+              <div class="col-sm-9">
+                <div class="row">
+                  <div class="col-11">
+                    <input  [matDatepicker]="picker" placeholder="Choose expiration date" formControlName="expirationDate" [(ngModel)]="expirationDate" type="datetime" class="form-control"   style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+
+                  </div>
+                  <div class="col-1">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="row" style="margin-top: 10px;text-align: center;">
+              <div class="form-group">
+                <button type="submit"  class="btn " style="border-radius: 20px;width: 150px;background-color: rgba(51, 8, 209, 0.219);color: white;">UPDATE</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>

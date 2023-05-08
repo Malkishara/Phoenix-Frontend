@@ -1,0 +1,159 @@
+<div >
+  <div class="row mx-auto">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:rgba(255, 255, 255, 0);; width: 100%;margin: 0%;padding: 0%;">
+      <div class="col-sm-4" style="text-align: left;margin-top: 20px;">
+        <a href=""> <img src="../assets/Phoenix.png" alt=""style="height: 70px;width: 160px;border-radius: 10px;"></a>
+
+      </div>
+
+    </nav>
+  </div>
+<div class="signup">
+  <div class="card" style="background-color: rgba(255, 255, 255, 0.137);">
+    <div class="card-body" style="margin: 20px;">
+      <div style="text-align: center;"><mat-icon [inline]="true" style="transform: scale(3);color: rgb(255, 255, 255);">account_circle</mat-icon></div>
+      <h1 class="card-title-center" style="text-align: center;color: rgb(252, 250, 250);">Employer Signup</h1>
+    <form (submit)="onSubmit()" [formGroup]="registerForm">
+      <div class="form-group">
+        <div class="row" style="margin-top: 10px;">
+
+            <div class="col">
+              <label for="name" class="label">Company Name:</label>
+            </div>
+            <div class="col">
+              <input [ngClass]="{'is-invalid':submitted && registerForm.controls.name.errors}" formControlName="name" type="text" class="form-control" [(ngModel)]="name" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+              <div *ngIf="submitted && registerForm.controls.name.errors" class="text-danger">
+                <div *ngIf="submitted && registerForm.controls.name.errors.required">
+                  Company Name is required
+                </div>
+              </div>
+            </div>
+
+        </div>
+        <div class="row" style="margin-top: 10px;">
+
+            <div class="col">
+              <label for="address" class="label">Company Address:</label>
+            </div>
+            <div class="col">
+              <input [ngClass]="{'is-invalid':submitted && registerForm.controls.address.errors}" formControlName="address" type="text" class="form-control" [(ngModel)]="address"  style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+                        <div *ngIf="submitted && registerForm.controls.address.errors" class="text-danger">
+                          <div *ngIf="submitted && registerForm.controls.address.errors.required">
+                            Company Address is required
+                          </div>
+                        </div>
+            </div>
+
+        </div>
+        <div class="row" style="margin-top: 10px;">
+
+            <div class="col">
+              <label for="phone" class="label">Contact Number:</label>
+            </div>
+            <div class="col">
+              <input [ngClass]="{'is-invalid':submitted && registerForm.controls.phoneNumber.errors}" formControlName="phoneNumber" type="text" class="form-control" [(ngModel)]="phoneNumber" placeholder="94*********" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+            <div *ngIf="submitted && registerForm.controls.phoneNumber.errors" class="text-danger">
+              <div *ngIf="submitted && registerForm.controls.phoneNumber.errors.required">
+                Contact Number is required
+              </div>
+              <div *ngIf="submitted && registerForm.controls.phoneNumber.errors.minlength && registerForm.controls.phoneNumber.errors.maxlength">
+                Phone Number Should be 11 characters
+              </div>
+            </div>
+            </div>
+
+        </div>
+        <div class="row" style="margin-top: 10px;">
+
+            <div class="col">
+              <label for="email" class="label">Email Address:</label>
+            </div>
+            <div class="col">
+              <input [ngClass]="{'is-invalid':submitted && registerForm.controls.email.errors}" formControlName="email" type="email" class="form-control" [(ngModel)]="email" placeholder="abc@gmail.com" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+                        <div *ngIf="submitted && registerForm.controls.email.errors" class="text-danger">
+                          <div *ngIf="submitted && registerForm.controls.email.errors.required">
+                            Email Address is required
+                          </div>
+                          <div *ngIf="submitted && registerForm.controls.email.errors.email">
+                            Email Address is not Valid
+                          </div>
+                        </div>
+                        <div *ngIf="isEmailTrue==false" class="text-danger">
+                          Email is already used.
+                        </div>
+            </div>
+
+        </div>
+        <div class="row" style="margin-top: 10px;">
+
+            <div class="col">
+              <label for="password" class="label">Password:</label>
+            </div>
+            <div class="col">
+              <input [ngClass]="{'is-invalid':submitted && registerForm.controls.password.errors}" formControlName="password" type="password" class="form-control" [(ngModel)]="password"  accept="image/png, image/jpeg" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+                        <div *ngIf="submitted && registerForm.controls.password.errors" class="text-danger">
+                          <div *ngIf="submitted && registerForm.controls.password.errors.required">
+                            Password is required
+                          </div>
+                          <div *ngIf="submitted && registerForm.controls.password.errors.minlength">
+                            Password should be atleast 8 characters
+                          </div>
+                        </div>
+            </div>
+
+        </div>
+        <div class="row" style="margin-top: 10px;">
+
+            <div class="col">
+              <label for="confirmPassword" class="label">Confirm Password:</label>
+            </div>
+            <div class="col">
+              <input [ngClass]="{'is-invalid':submitted && registerForm.controls.confirmPassword.errors}" formControlName="confirmPassword" type="password" class="form-control" [(ngModel)]="confirmPassword" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+                        <div *ngIf="submitted && registerForm.controls.confirmPassword.errors" class="text-danger">
+                          <div *ngIf="submitted && registerForm.controls.confirmPassword.errors.required">
+                            Confirm Password is required
+                          </div>
+                          <div *ngIf="submitted && registerForm.controls.confirmPassword.errors.minlength">
+                            Confirm Password should be atleast 8 characters
+                          </div>
+                        </div>
+                        <div *ngIf="isPasswordTrue==false" class="text-danger">
+                         Confirm Password not matching
+                        </div>
+            </div>
+
+        </div>
+        <div class="row" style="margin-top: 10px;">
+
+            <div class="col">
+              <label for="logo" class="label">Company Logo:</label>
+            </div>
+            <div class="col" >
+              <input [ngClass]="{'is-invalid':submitted && registerForm.controls.logo.errors}" formControlName="logo" type="file" class="form-control" (change)="onSelectFile($event)"  accept="image/*" style="background-color: rgba(255, 255, 255, 0.425);border-radius: 20px;width: 100%;">
+                        <div *ngIf="submitted && registerForm.controls.logo.errors" class="text-danger">
+                          <div *ngIf="submitted && registerForm.controls.logo.errors.required">
+                            Company Logo is required
+                          </div>
+                        </div>
+            </div>
+
+        </div>
+
+
+        <div class="row" style="margin-top: 10px;text-align: center;">
+          <div class="col" style="text-align: center;">
+            <button type="submit" class="btn " style="border-radius: 20px;width: 150px;background-color: rgba(51, 8, 209, 0.219);color: white;">SIGNUP</button>
+
+          </div>
+        </div>
+        <div class="row" style="margin-top: 20px;">
+          <div class="col"><p>Already have an account?</p></div>
+          <div class="col"> <a href="login" class="label">Login</a></div>
+        </div>
+      </div>
+
+    </form>
+    </div>
+  </div>
+</div>
+</div>

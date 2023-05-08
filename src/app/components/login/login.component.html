@@ -1,0 +1,61 @@
+<div>
+  <div class="row mx-auto">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:rgba(255, 255, 255, 0);; width: 100%;margin: 0%;padding: 0%;">
+      <div class="col-sm-4" style="text-align: left;margin-top: 20px;">
+        <a href=""> <img src="../assets/Phoenix.png" alt="" style="height: 70px;width: 160px;border-radius: 10px;"></a>
+
+      </div>
+
+    </nav>
+  </div>
+
+<div class="login " style="margin:0%;">
+    <div class="card" style="background-color: rgba(255, 255, 255, 0.137); width: 40%;">
+      <div class="card-body" style="margin: 20px;">
+        <div style="text-align: center;"><mat-icon [inline]="true" style="transform: scale(3);color: rgb(255, 255, 255);">account_circle</mat-icon></div>
+        <h1 class="card-title-center" style="text-align: center; color: rgb(252, 250, 250);">Login Here</h1>
+      <form (submit)="onSubmit()" [formGroup]="loginForm">
+        <div class="form-group">
+
+          <div class="row" style="margin-top: 10px;text-align: center;" >
+
+              <label for="validation" *ngIf="isInvalid" class="text-danger" >Invalid Email or Password</label>
+
+
+        </div>
+
+          <div class="row" style="margin-top: 10px;">
+            <label for="email" class="label">Email Address:</label>
+          </div>
+          <div class="row" style="margin-top: 10px;">
+            <input [ngClass]="{'is-invalid':submitted && loginForm.controls.email.errors}" formControlName="email" type="email" class="form-control" [(ngModel)]="email" placeholder="abc@gmail.com" style="border-radius: 20px;width: 100%;background-color: rgba(255, 255, 255, 0.425);">
+          </div>
+          <div class="row" style="margin-top: 10px;">
+            <label for="password" class="label">Password:</label>
+          </div>
+          <div class="row">
+            <input [ngClass]="{'is-invalid':submitted && loginForm.controls.password.errors}"  formControlName="password" type="password" class="form-control" [(ngModel)]="password" style="border-radius: 20px;width: 100%;background-color: rgba(255, 255, 255, 0.425);">
+
+          </div>
+          <div class="row" style="text-align: center"><a href="forgot" class="label">Forgot Password?</a></div>
+          <div class="row" style="margin-top: 10px;">
+            <div class="col" style="text-align: center;">
+              <button type="submit" class="btn " style="border-radius: 20px;width: 150px;background-color: rgba(51, 8, 209, 0.219);color: white;" >LOGIN</button></div>
+
+          </div>
+          <div class="row" style="margin-top: 20px;">
+            <p >You don't have account?</p>
+          </div>
+          <div class="row" style="text-align: center">
+            <div class="col"><a href="employer_signup" class="label">Signup as Employer</a></div>
+            <div class="col"> <a href="jobseeker_signup" class="label">Signup as Job Seeker</a></div>
+          </div>
+
+
+        </div>
+
+      </form>
+      </div>
+    </div>
+  </div>
+</div>

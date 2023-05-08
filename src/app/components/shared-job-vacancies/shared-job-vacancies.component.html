@@ -1,0 +1,42 @@
+<div style="text-align: center;">
+  <h1 class="label">Vacancies</h1>
+</div>
+<div>
+  <div class="card" style=" margin: 5px;background-color: rgba(255, 255, 255, 0.137);" *ngFor="let data of vacancyData" >
+
+    <div class="card-body"  >
+      <div class="row">
+        <div class="col" style="text-align: left;">
+          <h1 class="card-title" (click)="onClick(data)" style="color: white">{{ data.title }}</h1>
+       </div>
+        <div class="col" style="text-align: right;">
+          <a   (click)="showRequests(data.id)" class="requests" [matBadge]="data.numOfRequests" matBadgeColor="warn" matBadgeSize="small" matBadgePosition="above after"><mat-icon [inline]="true" style="color: rgb(6, 196, 31);transform: scale(1.5);">feedback</mat-icon></a>&nbsp;&nbsp;
+          <a  (click)="editVacancy(data.id)" class="delete"><mat-icon [inline]="true" style="color: rgb(6, 196, 31);transform: scale(1.5);">create</mat-icon></a>&nbsp;&nbsp;
+          <a class="edit" (click)="deleteVacancy(data.id)"> <mat-icon [inline]="true" style="color: rgb(241, 7, 7);transform: scale(1.5);">delete</mat-icon></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3"><p class="label">Salary Range: {{ data.salaryRange }}</p></div>
+         <div class="col-sm-3"><p class="label">Category: {{ data.category.title }}</p></div>
+         <div class="col-sm-3"><p class="label">Type: {{ data.type.title }}</p></div>
+         <div class="col-sm-3"><p class="label">Modality: {{ data.modality.title }}</p></div>
+      </div>
+
+
+     <!--start more details-->
+    <div class="row" >
+      <div *ngIf="data.visible" >
+        <div class="label" style="margin-top:15px;" [innerHTML]="data.description"></div>
+        <div *ngIf="data.descriptionImg" style="margin-top: 10px;text-align: center;"><img src="{{ data.descriptionImg }}" alt="" style="height: 500px; width: 500px;"></div>
+      </div>
+    </div>
+    <!--end more details-->
+
+
+    </div>
+
+  </div>
+</div>
+
+
+

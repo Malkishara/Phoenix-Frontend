@@ -18,7 +18,7 @@ export class JobVacanciesService {
 
   //get vacancies data
   vacancies(){
-    return this.http.get(this.url+"/vacancies")
+    return this.http.get(this.url+"/vacancy")
    }
 //get job types
 types(){
@@ -32,7 +32,7 @@ modality(){
 
 //search vacancies by company
 searchByCompany(companyId:any){
-  return this.http.post(this.url+"/company",companyId)
+  return this.http.get(this.url+"/company/"+companyId)
 }
 
 //search vacancies by selected data
